@@ -1,0 +1,63 @@
+<?php
+$paramController = $this->request->params['controller'];
+$paramAction = $this->request->params['action'];
+?>
+<style>
+    .main-sidebar{
+        background-color: #222d32!important;
+    }
+</style>
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+
+            <li class="treeview <?php if ($paramController == 'Appadmins' && $paramAction == 'index') { ?> active <?php } ?>">
+                <a href="<?php echo HTTP_ROOT ?>appadmins/index" >
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+            </li>
+            <?php if ($type == 1) { ?>
+                <li class="treeview <?php if ($paramController == 'Appadmins' && ($paramAction == 'createAdmin' || $paramAction == 'viewAdmin')) { ?> active <?php } ?>">
+                    <a href="javascript:;"><i class="fa  fa-user"></i><span>Employee</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'createAdmin') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/create_admin"><i class="fa  fa-user"></i> Create  Employee</a></li>
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'viewAdmin') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/view_admin"><i class="fa  fa-eye"></i> View  Employee</a></li>
+                    </ul>
+                </li>
+                <li class="treeview <?php if ($paramController == 'Appadmins' && ($paramAction == 'cmsPage' || $paramAction == 'editpages')) { ?> active <?php } ?>">
+                    <a href="<?php echo HTTP_ROOT ?>appadmins/cms_page" ><i class="fa  fa-file-text"></i> <span>CMS pages</span></a>
+                </li>
+                
+                 <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'socialMedia') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/social_media"><i class="fa  fa-link"></i>Social media</a></li>
+            <?php } ?>
+
+
+
+            <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'viewUsers') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/view_users"><i class="fa  fa-clone"></i> Current  Work list</a></li>
+            <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'previousworklist') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/previousworklist"><i class="fa  fa-tasks"></i> Previous Work list</a></li>
+
+
+
+            <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'scanProduct') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/scan_product"><i class="fa  fa-eye"></i> Scan Product</a></li>
+
+
+            <li class="treeview <?php if ($paramController == 'Appadmins' && $paramAction == 'profile') { ?> active <?php } ?>">
+                <a href="<?php echo HTTP_ROOT ?>appadmins/profile" ><i class="fa fa-wrench"></i> <span>Setting</span></a>
+            </li>
+            <?php if ($type == 1) { ?>
+                <li class="treeview <?php if ($paramController == 'Appadmins' && $paramAction == 'promocode') { ?> active <?php } ?>">
+                    <a href="<?php echo HTTP_ROOT ?>appadmins/promocode" ><i class="fa fa-code"></i> <span>Promocode Setting</span></a>
+                </li>
+                <li class="treeview <?php if ($paramController == 'Appadmins' && $paramAction == 'giftcard') { ?> active <?php } ?>">
+                    <a href="<?php echo HTTP_ROOT ?>appadmins/giftcard" ><i class="fa fa-gift"></i> <span>Giftcard Setting</span></a>
+                </li>
+                <li class="treeview <?php if ($paramController == 'Appadmins' && $paramAction == 'promocode') { ?> active <?php } ?>">
+                    <a href="<?php echo HTTP_ROOT ?>appadmins/empty_all_tables" ><i class="fa fa-archive"></i> <span>Empty all tables</span></a>
+                </li>
+            <?php } ?>
+
+            <li><a style="color: red;" href="<?= h(HTTP_ROOT) ?>appadmins/logout"><i class="fa fa-key"></i> <span>Logout</span></a></li>
+
+        </ul>
+    </section>
+</aside>
