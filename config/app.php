@@ -22,7 +22,7 @@
       * Development Mode:
       * true: Errors and warnings shown.
       */
-     'debug' => filter_var(env('DEBUG', true), FILTER_VALIDATE_BOOLEAN),
+     'debug' => filter_var(env('DEBUG',false), FILTER_VALIDATE_BOOLEAN),
      /**
       * Configure basic information about the application.
       *
@@ -199,7 +199,7 @@
                     'port' => 465,
                     'username' =>'support@drapefittest.com', // id
                     'password' =>'Welcome@555', // password
-                    'timeout' => 600,
+                    'timeout' => 60,
                     'secure' => 'ssl',
                     'tls' =>false,
                     'className' => 'Smtp'
@@ -241,9 +241,9 @@
             */
            //'port' => 'non_standard_port_number',
            //'port' => 'non_standard_port_number',
-         'username' => 'root',
-           'password' => '',
-           'database' => 'drape_fit',
+         'username' => 'drapefit_test',
+           'password' => 'Debasish@123',
+           'database' => 'drapefit_test',
            'encoding' => 'utf8',
            'timezone' => 'UTC',
            'flags' => [],
@@ -347,7 +347,7 @@
       * To use database sessions, load the SQL file located at config/Schema/sessions.sql
       */
      'Session' => [
-        'defaults' => 'php',
+        'defaults' => 'cake',
          'timeout'  => 1800
      ],
   ];

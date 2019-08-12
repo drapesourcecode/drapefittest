@@ -135,9 +135,9 @@ $errorHandler = new AppError();
    */
   $domain = $_SERVER['HTTP_HOST'];
  
-  $siteName = 'http://' . $domain . '/2019/drapeNew/';
-  //define('WS_URL', 'wss://drapefittest.com/wss2/');
-   define('WS_URL', 'ws://localhost.com:8081');
+  $siteName = 'https://' . $domain . '/';
+  define('WS_URL', 'wss://drapefittest.com/wss2/');
+  // define('WS_URL', 'ws://localhost.com:8081');
 
 define('HTTP_ROOT', $siteName);
   define('SITE_NAME', "DrapeFit");
@@ -163,10 +163,11 @@ define('HELP', 'files/help/');
 define('BARCODE_PROFILE', 'files/barcode_profile/');
 define('CATELOG', 'files/catelog/');
 define('USER_CUSTOM', 'files/custom_designe/');
-
 define('FACEBOOK_APP_ID', '444684589387412');
 define('FACEBOOK_APP_SECRET', 'd34b30b1c262688f5f746107b10f6d3b');
 define('FACEBOOK_REDIRECT_URI', HTTP_ROOT . 'users/fbreturn');
+
+
 
 define('GOOGLE_APP_NAME', 'Drape-Server');
 define('GOOGLE_OAUTH_CLIENT_ID', '125599522565-r6aq1puh6rqachtsqe1uevm5btt4gdto.apps.googleusercontent.com');
@@ -175,14 +176,13 @@ define('GOOGLE_OAUTH_REDIRECT_URI', HTTP_ROOT . 'googleLoginReturn');
 define("GOOGLE_SITE_NAME", 'Drapefit');
 
 
-define("G_CLINT_ID", '785865837294-eig8ghad8u8ribl98m6blppt4njec8m3.apps.googleusercontent.com');
-define("G_SITE_KEY", 'pQM9ze8kcSwX9JcKz-m-k-9o');
-define("G_R_U", 'https://localhost/2019/drapeNew/clients/gmail');
+define("G_CLINT_ID", '817739170487-2qckmuh9c3tcs8u9jhu949pjdbb4f1gr.apps.googleusercontent.com');
+define("G_SITE_KEY", 'TFxYmIFXnIK_gUA7ZtPmcy9K');
+define("G_R_U", 'https://drapefittest.com/clients/gmail');
 
-define('FACEBOOK_APP_ID_CON', '307907030152546');
-define('FACEBOOK_APP_SECRET_CON', '221dbc99208e5c2b575b58c984df6c5c');
-define('FACEBOOK_REDIRECT_URI_CON', HTTP_ROOT . 'users/fbreturnCon');
-
+define('FACEBOOK_APP_ID_CON', '2006336636340685');
+define('FACEBOOK_APP_SECRET_CON', '73eafc52b1a95fe912554d92e5d07f76');
+define('FACEBOOK_REDIRECT_URI_CON', HTTP_ROOT . 'users/fbreturncon');
 
 
 

@@ -65,10 +65,12 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/fb-login', ['controller' => 'users', 'action' => 'fb_login']);
     $routes->connect('/fblogin', ['controller' => 'users', 'action' => 'fblogin']);
+    $routes->connect('/fbloginCon', ['controller' => 'users', 'action' => 'fbloginCon']);
+    
     $routes->connect('/payment-success', ['controller' => 'users', 'action' => 'paymentSuccess']);
     $routes->connect('/login', ['controller' => 'users', 'action' => 'index']);
     $routes->connect('/users/login', ['controller' => 'users', 'action' => 'index']);
-    $routes->connect('/users/logoout', ['controller' => 'users', 'action' => 'index']);
+    $routes->connect('/users/logout', ['controller' => 'users', 'action' => 'index']);
     $routes->connect('/size_fit', ['controller' => 'users', 'action' => 'size_fit']);
 
     $routes->connect('/catgeogryAdd/*', ['controller' => 'users', 'action' => 'catgeogryAdd']);
@@ -106,7 +108,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
 
 
-    $routes->connect('/account', ['controller' => 'users', 'action' => 'setAccount']);
+    $routes->connect('/account/*', ['controller' => 'users', 'action' => 'setAccount']);
     $routes->connect('/change-account-password', ['controller' => 'users', 'action' => 'changeAccountPassword']);
     $routes->connect('/profile-setting', ['controller' => 'users', 'action' => 'profileSetting']);
     $routes->connect('/shippingaddress', ['controller' => 'users', 'action' => 'shippingInfo']);
@@ -131,7 +133,6 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/not-yet-shipped/*', array('controller' => 'users', 'action' => 'notYetShipped'));
     $routes->connect('/order/*', array('controller' => 'users', 'action' => 'order'));
     $routes->connect('/unsubscribe/*', array('controller' => 'users', 'action' => 'unsubscribe'));
-
 
 
     /**
