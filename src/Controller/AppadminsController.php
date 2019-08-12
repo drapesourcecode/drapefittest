@@ -10,7 +10,6 @@ use Cake\ORM\Query;
 use Cake\ORM\TableRegistry;
 use Cake\Datasource\ConnectionManager;
 
-require_once(ROOT . '/vendor/' . DS . '/phpoffice/vendor/autoload.php');
 require_once(ROOT . '/vendor/' . DS . '/barcode/vendor/autoload.php');
 
 use \PHPExcel_IOFactory;
