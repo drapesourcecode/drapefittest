@@ -170,69 +170,67 @@ class UsersController extends AppController {
                 return $this->redirect(HTTP_ROOT . 'welcome/style');
             }
             $LetsPlanYourFirstFixData = $this->LetsPlanYourFirstFix->find('all')->where(['LetsPlanYourFirstFix.user_id' => $this->Auth->user('id'), 'kid_id' => 0])->first();
-           // pj($LetsPlanYourFirstFixData); exit;
+            // pj($LetsPlanYourFirstFixData); exit;
         }
-        
-        
-        
+
+
+
         if ($this->request->is('post')) {
-              $data = $this->request->data;
-              //pj($data); exit;
-            
+            $data = $this->request->data;
+            //pj($data); exit;
+
             if (@$data['try_new_items_with_scheduled_fixes'] == '') {
-                    $try_new_items_with_scheduled_fixes = 0;
-                } else {
-                    $try_new_items_with_scheduled_fixes = $data['try_new_items_with_scheduled_fixes'];
-                }
-                if (@$data['how_often_would_you_lik_fixes'] == '') {
-                    $how_often_would_you_lik_fixes = 0;
-                } else {
-                    $how_often_would_you_lik_fixes = $data['how_often_would_you_lik_fixes'];
-                }
+                $try_new_items_with_scheduled_fixes = 0;
+            } else {
+                $try_new_items_with_scheduled_fixes = $data['try_new_items_with_scheduled_fixes'];
+            }
+            if (@$data['how_often_would_you_lik_fixes'] == '') {
+                $how_often_would_you_lik_fixes = 0;
+            } else {
+                $how_often_would_you_lik_fixes = $data['how_often_would_you_lik_fixes'];
+            }
 
-               
 
-                $LetsPlanYourFirstFix = $this->LetsPlanYourFirstFix->newEntity();
+
+            $LetsPlanYourFirstFix = $this->LetsPlanYourFirstFix->newEntity();
+            if (!empty($this->request->session()->read('KID_ID'))) {
+
+                $getdata = $this->LetsPlanYourFirstFix->find('all')->where(['LetsPlanYourFirstFix.kid_id' => $this->request->session()->read('KID_ID'), 'LetsPlanYourFirstFix.user_id' => $this->Auth->user('id')])->first();
+                if (@$getdata->kid_id) {
+                    $data['id'] = $getdata->id;
+                } else {
+                    $data['id'] = '';
+                }
+                $exitdata = 0;
+            } else {
+                $exitdata = $this->LetsPlanYourFirstFix->find('all')->where(['LetsPlanYourFirstFix.user_id' => $this->Auth->user('id')])->count();
+            }
+
+            if ($exitdata >= 1) {
                 if (!empty($this->request->session()->read('KID_ID'))) {
-                   
-                    $getdata = $this->LetsPlanYourFirstFix->find('all')->where(['LetsPlanYourFirstFix.kid_id' => $this->request->session()->read('KID_ID'), 'LetsPlanYourFirstFix.user_id' => $this->Auth->user('id')])->first();
-                    if (@$getdata->kid_id) {
-                        $data['id'] = $getdata->id;
-                    } else {
-                        $data['id'] = '';
-                    }
-                    $exitdata = 0;
+                    $this->LetsPlanYourFirstFix->updateAll(['try_new_items_with_scheduled_fixes' => $try_new_items_with_scheduled_fixes, 'how_often_would_you_lik_fixes' => $how_often_would_you_lik_fixes], ['kid_id' => $this->request->session()->read('KID_ID')]);
                 } else {
-                    $exitdata = $this->LetsPlanYourFirstFix->find('all')->where(['LetsPlanYourFirstFix.user_id' => $this->Auth->user('id')])->count();
-                }
 
-                if ($exitdata >= 1) {
-                    if (!empty($this->request->session()->read('KID_ID'))) {
-                        $this->LetsPlanYourFirstFix->updateAll(['try_new_items_with_scheduled_fixes' => $try_new_items_with_scheduled_fixes, 'how_often_would_you_lik_fixes' => $how_often_would_you_lik_fixes], ['kid_id' => $this->request->session()->read('KID_ID')]);
-                    } else {
-                        
-                        //echo $this->Auth->user('id'); exit;
-                        $this->LetsPlanYourFirstFix->updateAll(['try_new_items_with_scheduled_fixes' => $try_new_items_with_scheduled_fixes, 'how_often_would_you_lik_fixes' => $how_often_would_you_lik_fixes], ['user_id' => $this->Auth->user('id')]);
-                        
-                    }
-                } else {
-                    $data['user_id'] = $this->Auth->user('id');
-                    $data['kid_id'] = (@$this->request->session()->read('KID_ID')) ? @$this->request->session()->read('KID_ID') : 0;
-                    $data['try_new_items_with_scheduled_fixes'] = $try_new_items_with_scheduled_fixes;
-                    $data['how_often_would_you_lik_fixes'] = $how_often_would_you_lik_fixes;
-                    $LetsPlanYourFirstFix = $this->LetsPlanYourFirstFix->patchEntity($LetsPlanYourFirstFix, $data);
-                    $this->LetsPlanYourFirstFix->save($LetsPlanYourFirstFix);
-                    
+                    //echo $this->Auth->user('id'); exit;
+                    $this->LetsPlanYourFirstFix->updateAll(['try_new_items_with_scheduled_fixes' => $try_new_items_with_scheduled_fixes, 'how_often_would_you_lik_fixes' => $how_often_would_you_lik_fixes], ['user_id' => $this->Auth->user('id')]);
                 }
-            
-            
-            
-            
+            } else {
+                $data['user_id'] = $this->Auth->user('id');
+                $data['kid_id'] = (@$this->request->session()->read('KID_ID')) ? @$this->request->session()->read('KID_ID') : 0;
+                $data['try_new_items_with_scheduled_fixes'] = $try_new_items_with_scheduled_fixes;
+                $data['how_often_would_you_lik_fixes'] = $how_often_would_you_lik_fixes;
+                $LetsPlanYourFirstFix = $this->LetsPlanYourFirstFix->patchEntity($LetsPlanYourFirstFix, $data);
+                $this->LetsPlanYourFirstFix->save($LetsPlanYourFirstFix);
+            }
+
+
+
+
 
             $enty = $this->DeliverDate->newEntity();
-          
 
-           
+
+
             $exitData = $this->DeliverDate->find('all')->where(['DeliverDate.user_id' => $this->Auth->user('id')])->first();
             if ($exitData->user_id) {
                 $data['id'] = $exitData->id;
@@ -246,14 +244,14 @@ class UsersController extends AppController {
             }
             $dateTime = date('l, F d, Y', strtotime($data['datepick']));
             $data['date_in_time'] = $dateTime;
-            $data['weeks'] =0;
+            $data['weeks'] = 0;
             $data['is_send_me'] = $is_send_me;
             $user = $this->DeliverDate->patchEntity($enty, $data);
-           
+
             if ($this->DeliverDate->save($user)) {
 
-                 
-     
+
+
                 return $this->redirect(HTTP_ROOT . 'welcome/reservation');
             }
         }
@@ -610,7 +608,7 @@ class UsersController extends AppController {
 
                 $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'HELP_MESSAGE'])->first();
                 $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
-                $toMail = $this->Settings->find('all')->where(['Settings.name' => 'TO_EMAIL'])->first();
+                $toMail = $this->Settings->find('all')->where(['Settings.name' => 'TO_HELP'])->first();
                 $i = 0;
                 foreach ($data['itmes'] as $item) {
                     $ftype[] = $data['itmes'][$i]['type'];
@@ -651,7 +649,13 @@ class UsersController extends AppController {
 
 //echo $to, $subject, $message, $headers; exit;
                 $ok = @mail($to, $subject, $message, $headers);
+                $toUser= $data['email'];
+                @mail($toUser, $subject, $message, $headers);
+                
                 if ($ok) {
+                    
+                    
+                    
                     $this->request->session()->write('help-active', '2');
 //$this->Flash->success(__('Your help send successfully'));
                     return $this->redirect(HTTP_ROOT);
@@ -661,6 +665,8 @@ class UsersController extends AppController {
                     return $this->redirect(HTTP_ROOT);
                 }
             }
+            
+            
 
             $exitEmail = $this->Users->find('all')->where(['Users.email' => @$data['email']])->count();
             if ($exitEmail >= 1) {
@@ -1356,14 +1362,14 @@ class UsersController extends AppController {
             if ($this->request->session()->read('PROFILE') == 'MEN') {
 
                 $kidmenu = $this->KidsDetails->find('all')->where(['KidsDetails.id' => $this->request->session()->read('KID_ID')])->first();
-                $LetsPlanYourFirstFixData = $this->LetsPlanYourFirstFix->find('all')->where(['user_id' => $this->Auth->user('id'),'kid_id'=>0])->first();
+                $LetsPlanYourFirstFixData = $this->LetsPlanYourFirstFix->find('all')->where(['user_id' => $this->Auth->user('id'), 'kid_id' => 0])->first();
             }
-            
-            
+
+
             if ($this->request->session()->read('PROFILE') == 'WOMEN') {
 
                 $kidmenu = $this->KidsDetails->find('all')->where(['KidsDetails.id' => $this->request->session()->read('KID_ID')])->first();
-                $LetsPlanYourFirstFixData = $this->LetsPlanYourFirstFix->find('all')->where(['user_id' => $this->Auth->user('id'),'kid_id'=>0])->first();
+                $LetsPlanYourFirstFixData = $this->LetsPlanYourFirstFix->find('all')->where(['user_id' => $this->Auth->user('id'), 'kid_id' => 0])->first();
 //                 pj($LetsPlanYourFirstFixData);exit;
             }
         }
@@ -1467,7 +1473,7 @@ class UsersController extends AppController {
 
                 $PersonalizedFix = $this->PersonalizedFix->find('all')->where(['PersonalizedFix.user_id' => $this->Auth->user('id')])->first();
                 $SizeChart = $this->SizeChart->find('all')->where(['SizeChart.user_id' => $this->Auth->user('id')])->first();
-                
+
                 $FitCut = $this->FitCut->find('all')->where(['FitCut.user_id' => $this->Auth->user('id')])->first();
 
                 $WomenJeansStyle = $this->WomenJeansStyle->find('all')->where(['WomenJeansStyle.user_id' => $this->Auth->user('id')])->first();
@@ -1537,7 +1543,7 @@ class UsersController extends AppController {
 
                 $LetsPlanYourFirstFix = $this->LetsPlanYourFirstFix->newEntity();
                 if (!empty($this->request->session()->read('KID_ID'))) {
-                   
+
                     $getdata = $this->LetsPlanYourFirstFix->find('all')->where(['LetsPlanYourFirstFix.kid_id' => $this->request->session()->read('KID_ID'), 'LetsPlanYourFirstFix.user_id' => $this->Auth->user('id')])->first();
                     if (@$getdata->kid_id) {
                         $data['id'] = $getdata->id;
@@ -1551,7 +1557,7 @@ class UsersController extends AppController {
 
                 if ($exitdata >= 1) {
                     if (!empty($this->request->session()->read('KID_ID'))) {
-                       
+
                         $this->LetsPlanYourFirstFix->updateAll(['try_new_items_with_scheduled_fixes' => $try_new_items_with_scheduled_fixes, 'how_often_would_you_lik_fixes' => $how_often_would_you_lik_fixes], ['kid_id' => $this->request->session()->read('KID_ID')]);
                     } else {
                         $this->LetsPlanYourFirstFix->updateAll(['try_new_items_with_scheduled_fixes' => $try_new_items_with_scheduled_fixes, 'how_often_would_you_lik_fixes' => $how_often_would_you_lik_fixes], ['user_id' => $this->Auth->user('id')]);
@@ -1570,8 +1576,8 @@ class UsersController extends AppController {
                 $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $this->Auth->user('id')]);
                 return $this->redirect(HTTP_ROOT . 'welcome/reservation');
             }
-            
-            
+
+
 
             if (@$data['shipping_address'] == 'shipping_address') {
 
@@ -1988,8 +1994,6 @@ class UsersController extends AppController {
 //                    return $this->redirect(HTTP_ROOT . 'welcome/schedule');
 //                }
 //            }
-
-
 //            if (@$data['fitcut'] == 'fitcut') {
 //                $FitCut = $this->FitCut->find('all')->where(['FitCut.user_id' => $this->Auth->user('id')])->first();
 //                $fitcut = $this->FitCut->newEntity();
@@ -2053,7 +2057,6 @@ class UsersController extends AppController {
 //                $this->UserDetails->updateAll(['is_progressbar' => 55], ['user_id' => $this->Auth->user('id')]);
 //                return $this->redirect(HTTP_ROOT . 'welcome/style/section3');
 //            }
-
 //            if (@$data['wemonstyle'] == 'wemonstyle') {
 ////                pj($data);exit;  
 //                $womanStyle = $this->WomenStyle->find('all')->where(['WomenStyle.user_id' => $this->Auth->user('id')])->first();
@@ -2170,8 +2173,6 @@ class UsersController extends AppController {
 //                $this->UserDetails->updateAll(['is_progressbar' => 60], ['user_id' => $this->Auth->user('id')]);
 //                return $this->redirect(HTTP_ROOT . 'welcome/style/section4');
 //            }
-
-
 //            if (@$data['price'] == 'price') {
 //                $exitdata = $this->WomenPrice->find('all')->where(['WomenPrice.user_id' => $this->Auth->user('id')])->first();
 //                $price = $this->WomenPrice->newEntity();
@@ -2914,7 +2915,7 @@ class UsersController extends AppController {
             $savecard = $this->PaymentCardDetails->find('all')->where(['PaymentCardDetails.user_id' => $this->Auth->user('id'), 'PaymentCardDetails.is_save' => 1]);
 
 
-            $LetsPlanYourFirstFixData = $this->LetsPlanYourFirstFix->find('all')->where(['kid_id'=>0,'user_id' => $this->Auth->user('id')])->first();
+            $LetsPlanYourFirstFixData = $this->LetsPlanYourFirstFix->find('all')->where(['kid_id' => 0, 'user_id' => $this->Auth->user('id')])->first();
 
 
             $this->set(compact('LetsPlanYourFirstFixData', 'savecard', 'user_details', 'PersonalizedFix', 'SizeChart', 'ship_address', 'credit_balance', 'bill_address', 'ShippingAddress', 'EmailPreference', 'slg'));
@@ -3401,9 +3402,9 @@ class UsersController extends AppController {
             $customerProductReview = $this->CustomerProductReview->patchEntity($customerProductReview, $data);
             $this->CustomerProductReview->save($customerProductReview);
             if (@$this->request->session()->read('PROFILE') == 'KIDS') {
-                $this->KidsDetails->updateAll(['is_redirect' => 4], ['id' => @$this->request->session()->read('KID_ID')]);
+                $this->KidsDetails->updateAll(['is_redirect' => 6], ['id' => @$this->request->session()->read('KID_ID')]);
             } else {
-                $this->Users->updateAll(['is_redirect' => 4], ['id' => $this->Auth->user('id')]);
+                $this->Users->updateAll(['is_redirect' => 6], ['id' => $this->Auth->user('id')]);
             }
 
             return $this->redirect(HTTP_ROOT . 'customer-order-review');
@@ -3459,8 +3460,7 @@ class UsersController extends AppController {
                     $percentage = 25;
                 } else {
                     $allKeepsProducts = 2;
-                    $percentage=0;
-                    
+                    $percentage = 0;
                 }
             }
         }
@@ -3556,14 +3556,14 @@ class UsersController extends AppController {
 
                     if (@$data['stotal'] <= $price) {
                         //echo "hji";
-                       // echo $data['stotal'];
+                        // echo $data['stotal'];
                         $remening = $data['stotal'];
                     } else {
                         //echo "dfd";
                         $remening = $price;
                     }
 
-                  
+
                     $walletsd = $this->Wallets->newEntity();
                     $walletsd->user_id = $this->request->session()->read('Auth.User.id');
                     $walletsd->type = 1; //debit
@@ -3629,7 +3629,7 @@ class UsersController extends AppController {
                     } else {
                         $priceMail = 0;
                     }
-                    
+
                     if ($dataMail->keep_status == 3) {
                         $this->Products->updateAll(['is_complete' => '1', 'is_exchange_pending' => 0], ['id' => $dataMail->id]);
                         $keep = 'Keeps';
@@ -3673,18 +3673,18 @@ class UsersController extends AppController {
 
 
                 if ($paymentId) {
-                     $productCount = $this->Products->find('all')->where(['payment_id' => $paymentId, 'is_altnative_product' => 0])->Count(); 
+                    $productCount = $this->Products->find('all')->where(['payment_id' => $paymentId, 'is_altnative_product' => 0])->Count();
 
 
                     $exCountKeeps = $this->Products->find('all')->where(['Products.payment_id' => $paymentId, 'keep_status' => 3])->Count();
                     $exCountretun = $this->Products->find('all')->where(['Products.payment_id' => $paymentId, 'Products.keep_status' => 1])->Count();
                     $exCountexchange = $this->Products->find('all')->where(['Products.payment_id' => $paymentId, 'Products.keep_status ' => 2, 'is_complete' => 0])->Count();
                     $exCountreturn = $this->Products->find('all')->where(['Products.payment_id' => $paymentId, 'Products.keep_status IN' => [1, 2, 3], 'is_complete' => 1])->Count();
-                    
-                     $lastCount = $this->Products->find('all')->where(['Products.payment_id' => $paymentId, 'Products.keep_status IN' => [1, 2, 3], 'is_complete' => 1,'is_altnative_product'=>0])->Count();
-                    
+
+                    $lastCount = $this->Products->find('all')->where(['Products.payment_id' => $paymentId, 'Products.keep_status IN' => [1, 2, 3], 'is_complete' => 1, 'is_altnative_product' => 0])->Count();
+
                     if (@$productCount == $lastCount) {
-                        
+
                         if (@$this->request->session()->read('PROFILE') == 'KIDS') {
                             $this->KidsDetails->updateAll(['is_redirect' => 5], ['id' => $this->request->session()->read('KID_ID')]);
                         } else {
@@ -3692,11 +3692,11 @@ class UsersController extends AppController {
                         }
 
                         $this->PaymentGetways->updateAll(['work_status' => 2], ['id' => $paymentId]);
-                       // echo $paymentId; exit;
-                    } 
-                    
+                        // echo $paymentId; exit;
+                    }
+
                     if (@$productCount == @$exCountKeeps) {
-                        
+
                         if (@$this->request->session()->read('PROFILE') == 'KIDS') {
                             $this->KidsDetails->updateAll(['is_redirect' => 5], ['id' => $this->request->session()->read('KID_ID')]);
                         } else {
@@ -3704,12 +3704,8 @@ class UsersController extends AppController {
                         }
 
                         $this->PaymentGetways->updateAll(['work_status' => 2], ['id' => $paymentId]);
-                        
-                    } 
-                    
-                  
-                    else if (@$productCount == @$exCountretun) {
-                        
+                    } else if (@$productCount == @$exCountretun) {
+
                         if (@$this->request->session()->read('PROFILE') == 'KIDS') {
                             $this->KidsDetails->updateAll(['is_redirect' => 5], ['id' => $this->request->session()->read('KID_ID')]);
                         } else {
@@ -3717,7 +3713,7 @@ class UsersController extends AppController {
                         }
                         $this->PaymentGetways->updateAll(['work_status' => 1], ['id' => $paymentId]);
                     } else if (@$exCountexchange == @$productCount) {
-echo "2";
+                        echo "2";
                         if (@$this->request->session()->read('PROFILE') == 'KIDS') {
                             $this->KidsDetails->updateAll(['is_redirect' => 2], ['id' => $this->request->session()->read('KID_ID')]);
                         } else {
@@ -3727,7 +3723,7 @@ echo "2";
 
                         $this->PaymentGetways->updateAll(['work_status' => 1, 'mail_status' => '0'], ['id' => $paymentId]);
                     } else if (@$exCountexchange >= 1) {
-                       
+
                         if (@$this->request->session()->read('PROFILE') == 'KIDS') {
                             $this->KidsDetails->updateAll(['is_redirect' => 2], ['id' => $this->request->session()->read('KID_ID')]);
                         } else {
@@ -3736,7 +3732,7 @@ echo "2";
 
                         $this->PaymentGetways->updateAll(['work_status' => 1, 'mail_status' => '0'], ['id' => $paymentId]);
                     } else if (@$exCountreturn >= 1) {
-                       
+
                         if (@$exCountreturn == @$productCount) {
                             if (@$this->request->session()->read('PROFILE') == 'KIDS') {
                                 $this->KidsDetails->updateAll(['is_redirect' => 5], ['id' => $this->request->session()->read('KID_ID')]);
@@ -3745,13 +3741,12 @@ echo "2";
                             }
 
                             $this->PaymentGetways->updateAll(['work_status' => 1], ['id' => $paymentId]);
-                        } 
-                       
+                        }
                     }
                 }
-                
-                
-                
+
+
+
 
                 $paymentG = $this->PaymentGetways->newEntity();
                 $table1['user_id'] = $this->Auth->user('id');
@@ -4682,11 +4677,11 @@ echo "2";
 
 
                     $checkUserApplyDataGift = $this->UserUsesGiftcode->find('all')->where(['UserUsesGiftcode.giftcode' => $data['promocode'], 'UserUsesGiftcode.user_id' => $this->Auth->user('id')])->first();
-                    
+
                     $checkUserApplay = $this->UserAppliedCodeOrderReview->find('all')->where(['code' => $data['promocode'], 'user_id' => $this->Auth->user('id')])->first();
 
 
-                    if ((@$checkUserApplyData->id == '') && (@$checkUserApplyDataGift == '') && ($checkUserApplay->id=='')) {
+                    if ((@$checkUserApplyData->id == '') && (@$checkUserApplyDataGift == '') && ($checkUserApplay->id == '')) {
                         if (@$checkData->price != '') {
                             $price1 = $checkData->price;
                         }
@@ -4725,13 +4720,13 @@ echo "2";
 
                 $checkDataGift = $this->Giftcard->find('all')->where(['Giftcard.giftcode' => $data['promocode'], 'DATE(Giftcard.expiry_date) >=' => $currentDate])->first();
 
-                $checkDataUserUsesGift = $this->UserUsesGiftcode->find('all')->where(['giftcode' =>  $data['promocode'], 'user_id' => $this->Auth->user('id')])->first();
-                $checkDataUserUsesPromo = $this->UserUsesPromocode->find('all')->where(['promocode' =>  $data['promocode'], 'user_id' => $this->Auth->user('id')])->first();
+                $checkDataUserUsesGift = $this->UserUsesGiftcode->find('all')->where(['giftcode' => $data['promocode'], 'user_id' => $this->Auth->user('id')])->first();
+                $checkDataUserUsesPromo = $this->UserUsesPromocode->find('all')->where(['promocode' => $data['promocode'], 'user_id' => $this->Auth->user('id')])->first();
 
 
                 $checkUserAppliedCodeOrderReview = $this->UserAppliedCodeOrderReview->find('all')->where(['code' => $data['promocode'], 'user_id' => $this->Auth->user('id')])->first();
 
-                
+
 //                echo $checkDataUserUsesGift->id; 
 //                echo "<br>";
 //                echo $checkDataUserUsesPromo->id; 
@@ -4740,7 +4735,7 @@ echo "2";
 //                exit;
                 if ((@$checkData->id == '') && (@$checkDataGift == '')) {
                     echo json_encode(['msg' => 'Invalid  code', 'status' => 'error']);
-                } else if ((@$checkDataUserUsesGift->id != '') || ($checkDataUserUsesPromo->id != '') || ($checkUserAppliedCodeOrderReview->id!='')) {
+                } else if ((@$checkDataUserUsesGift->id != '') || ($checkDataUserUsesPromo->id != '') || ($checkUserAppliedCodeOrderReview->id != '')) {
                     echo json_encode(['msg' => 'All ready uses this code', 'status' => 'error']);
                 } else {
                     if (@$checkUserAppliedCodeOrderReview->id == '') {
@@ -5125,16 +5120,38 @@ echo "2";
                     if (@$data['profile_note']) {
                         $this->MenStyle->updateAll(['profile_note' => $data['profile_note']], ['user_id' => $userId]);
                     }
+
                     $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $userId]);
-                    $checkPagePosition = $this->Users->find('all')->where(['id' => $this->Auth->user('id')])->first()->is_redirect;
-                    if (@$checkPagePosition != 4) {
-                    $this->Users->updateAll(['is_redirect' => '1'], ['id' => $this->Auth->user('id')]);
-                    echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'welcome/schedule']);
+                    $checkPagePosition = $this->UserDetails->find('all')->where(['user_id' => $this->Auth->user('id')])->first()->is_progressbar;
+                    if (@$checkPagePosition != 100) {
+                        $this->Users->updateAll(['is_redirect' => '1'], ['id' => $this->Auth->user('id')]);
+                        echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'welcome/schedule']);
                     } else {
-                        echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'order_review']);
+                        $Usersdata = $this->Users->find('all')->where(['id' => $this->Auth->user('id')])->first();
+                        if ($Usersdata->is_redirect == 0) {
+                            $url = 'welcome/style/';
+                        } elseif ($Usersdata->is_redirect == 0) {
+                            $url = 'welcome/schedule/';
+                        } elseif ($Usersdata->is_redirect == 0) {
+                            $url = 'welcome/style/';
+                        } elseif ($Usersdata->is_redirect == 1) {
+                            $url = 'welcome/schedule/';
+                        } elseif ($Usersdata->is_redirect == 2) {
+                            $url = 'not-yet-shipped';
+                        } elseif ($Usersdata->is_redirect == 3) {
+                            $url = 'profile-review/';
+                        } elseif ($Usersdata->is_redirect == 4) {
+                            $url = 'order_review/';
+                        } elseif ($Usersdata->is_redirect == 5) {
+                            $url = 'calendar-sechedule/';
+                        } elseif ($Usersdata->is_redirect == 6) {
+                            $url = 'customer-order-review';
+                        }
+
+                        echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . $url]);
+                    }
                 }
             }
-        }
         }
 
         exit;
@@ -5441,15 +5458,37 @@ echo "2";
                     }
                     $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $userId]);
 
-                    $checkPagePosition = $this->Users->find('all')->where(['id' => $this->Auth->user('id')])->first()->is_redirect;
-                    if (@$checkPagePosition != 4) {
-                    $this->Users->updateAll(['is_redirect' => '1'], ['id' => $this->Auth->user('id')]);
-                    echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'welcome/schedule']);
+                    $checkPagePosition = $this->UserDetails->find('all')->where(['user_id' => $this->Auth->user('id')])->first()->is_progressbar;
+                    if (@$checkPagePosition != 100) {
+                        $this->Users->updateAll(['is_redirect' => '1'], ['id' => $this->Auth->user('id')]);
+                        echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'welcome/schedule']);
                     } else {
-                        echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'order_review']);
+
+                        $Usersdata = $this->Users->find('all')->where(['id' => $this->Auth->user('id')])->first();
+                        if ($Usersdata->is_redirect == 0) {
+                            $url = 'welcome/style/';
+                        } elseif ($Usersdata->is_redirect == 0) {
+                            $url = 'welcome/schedule/';
+                        } elseif ($Usersdata->is_redirect == 0) {
+                            $url = 'welcome/style/';
+                        } elseif ($Usersdata->is_redirect == 1) {
+                            $url = 'welcome/schedule/';
+                        } elseif ($Usersdata->is_redirect == 2) {
+                            $url = 'not-yet-shipped';
+                        } elseif ($Usersdata->is_redirect == 3) {
+                            $url = 'profile-review/';
+                        } elseif ($Usersdata->is_redirect == 4) {
+                            $url = 'order_review/';
+                        } elseif ($Usersdata->is_redirect == 5) {
+                            $url = 'calendar-sechedule/';
+                        } elseif ($Usersdata->is_redirect == 6) {
+                            $url = 'customer-order-review';
+                        }
+
+                        echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . $url]);
+                    }
                 }
             }
-        }
         }
 
         exit;
@@ -5847,16 +5886,38 @@ echo "2";
                         'brands' => implode(",", $data['brands']),
                         'profile_note' => $data['profile_note']
                             ], ['kid_id' => $kidId]);
-                    
-                    $checkPagePosition = $this->KidsDetails->find('all')->where(['id' => $kidId])->first()->is_redirect;
-                    if (@$checkPagePosition != 4) {
-                    $this->KidsDetails->updateAll(['is_progressbar' => 100, 'is_redirect' => '1'], ['id' => $kidId]);
-                    echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'welcome/schedule']);
+
+                    $checkPagePosition = $this->KidsDetails->find('all')->where(['id' => $kidId])->first()->is_progressbar;
+                    if (@$checkPagePosition != 100) {
+                        $this->KidsDetails->updateAll(['is_progressbar' => 100, 'is_redirect' => '1'], ['id' => $kidId]);
+                        echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'welcome/schedule']);
                     } else {
-                        echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'order_review']);
+
+                        $Usersdata = $this->KidsDetails->find('all')->where(['id' => $this->request->session()->read('KID_ID')])->first();
+                        if ($Usersdata->is_redirect == 0 && @$Usersdata->is_progressbar != 100) {
+                            $url = 'welcome/style/';
+                        } elseif ($Usersdata->is_redirect == 0 && $Usersdata->is_progressbar == 100) {
+                            $url = 'welcome/schedule/';
+                        } elseif ($Usersdata->is_redirect == 0) {
+                            $url = 'welcome/style/';
+                        } elseif ($Usersdata->is_redirect == 1) {
+                            $url = 'welcome/schedule/';
+                        } elseif ($Usersdata->is_redirect == 2) {
+                            $url = 'not-yet-shipped';
+                        } elseif ($Usersdata->is_redirect == 3) {
+                            $url = 'profile-review/';
+                        } elseif ($Usersdata->is_redirect == 4) {
+                            $url = 'order_review/';
+                        } elseif ($Usersdata->is_redirect == 5) {
+                            $url = 'calendar-sechedule/';
+                        } elseif ($Usersdata->is_redirect == 6) {
+                            $url = 'customer-order-review';
+                        }
+
+                        echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . $url]);
+                    }
                 }
             }
-        }
         }
 
         exit;
