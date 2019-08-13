@@ -331,3 +331,33 @@
         </div><!-- /.row -->
     </section>
 </div>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var sizeKB = input.files[0].size / 1000;
+            //alert(sizeKB);
+            if (parseFloat(sizeKB) <= 16) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = $('<img />', {
+                        src: e.target.result,
+                        alt: 'MyAlt',
+                        width: '200'
+                    });
+                    $('#imagePreview').html(img);
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                //alert("hi");
+                $("#image").val('');
+                 $('#imagePreview').html('');
+            }
+        }
+    }
+
+    $("#image").change(function () {
+        readURL(this);
+
+    });
+</script>

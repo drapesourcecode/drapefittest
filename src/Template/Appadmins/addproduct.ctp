@@ -227,6 +227,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputFile">Image<span style="color: red;">*</span></label>
                                                 <?= $this->Form->input('image', ['type' => 'file', 'id' => 'image', 'class' => "form-control-file", 'label' => false, 'kl_virtual_keyboard_secure_input' => "on", 'required' => "required", 'data-error' => 'Please Browse  image']); ?>
+                                                <div id="imagePreview"></div>
                                                 <div class="help-block with-errors"></div>
 
                                             </div>
@@ -314,8 +315,7 @@
                                             <?php
                                             if ($list->checkedout == 'Y') {
                                                 if ($list->keep_status == 3) {
-                                                     echo 'Keep';
-                                                    
+                                                    echo 'Keep';
                                                 } elseif ($list->keep_status == 2) {
                                                     if ($list->is_altnative_product == 1) {
                                                         echo "Exchange Altnative product";
@@ -342,10 +342,10 @@
                                         <td style="text-align:  left;"> <?php echo $list->barcode_value; ?></td>
                                         <td style="text-align: center;">
                                             <?php if ($user_type == 1) { ?>
-        <?php if ($list->checkedout == "N" || $list->keep_status == 3 || $list->keep_status == 2 || $list->keep_status == 1) { ?>
+                                                <?php if ($list->checkedout == "N" || $list->keep_status == 3 || $list->keep_status == 2 || $list->keep_status == 1) { ?>
                                                     <a  data-placement="top" data-hint="Edit product" class="btn btn-info  hint--top  hint isDisabled" style="padding: 0 7px!important;"><i class="fa fa-pencil "></i></a>
-        <?php } else { ?>
-            <?= $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-pencil ')), ['action' => 'addproduct', $list->payment_id, $list->id], ['escape' => false, "data-placement" => "top", "data-hint" => "Edit product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 7px!important;']); ?>
+                                                <?php } else { ?>
+                                                    <?= $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-pencil ')), ['action' => 'addproduct', $list->payment_id, $list->id], ['escape' => false, "data-placement" => "top", "data-hint" => "Edit product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 7px!important;']); ?>
                                                 <?php } ?>
                                                 <?php if ($list->checkedout == "Y" || $list->keep_status == 3 || $list->keep_status == 2 || $list->keep_status == 1) { ?>
                                                     <a target="_blank" data-placement="top" data-hint="Print barcode" class="btn btn-info  hint--top  hint isDisabled" style="padding: 0 7px!important;"><i class="fa fa-print "></i></a>
@@ -359,7 +359,7 @@
                                                     <a  data-placement="top" data-hint="Finalize" class="btn btn-info  hint--top  hint isDisabled" style="padding: 0 12px!important;"><i class="fa fa-plus">N</i></a>
                                                 <?php } else { ?>
                                                     <?= $this->Html->link($this->Html->tag('i', @$list->checkedout, array('class' => 'fa fa-plus')), ['action' => 'finalize', $list->id, $list->user_id], ['escape' => false, "data-placement" => "top", "data-hint" => "Finalize", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?>
-        <?php } ?>
+                                                <?php } ?>
 
 
                                                 <?= $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-trash')), ['action' => 'deleteproduct', $list->id], ['escape' => false, "data-placement" => "top", "data-hint" => "Delete product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 7px!important;', 'confirm' => 'Are you sure you want to delete  ?']); ?>
@@ -372,8 +372,8 @@
                                             <?php if ($user_type == 3) { ?>
                                                 <?php if ($list->checkedout == "N" || $list->keep_status == 3 || $list->keep_status == 2 || $list->keep_status == 1) { ?>
                                                     <a  data-placement="top" data-hint="Edit product" class="btn btn-info  hint--top  hint isDisabled" style="padding: 0 7px!important;"><i class="fa fa-pencil "></i></a>
-        <?php } else { ?>
-            <?= $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-pencil ')), ['action' => 'addproduct', $list->payment_id, $list->id], ['escape' => false, "data-placement" => "top", "data-hint" => "Edit product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 7px!important;']); ?>
+                                                <?php } else { ?>
+                                                    <?= $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-pencil ')), ['action' => 'addproduct', $list->payment_id, $list->id], ['escape' => false, "data-placement" => "top", "data-hint" => "Edit product", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 7px!important;']); ?>
                                                 <?php } ?>
                                                 <?php if ($list->checkedout == "Y" || $list->keep_status == 3 || $list->keep_status == 2 || $list->keep_status == 1) { ?>
                                                     <a target="_blank" data-placement="top" data-hint="Print barcode" class="btn btn-info  hint--top  hint isDisabled" style="padding: 0 7px!important;"><i class="fa fa-print "></i></a>
@@ -387,7 +387,7 @@
                                                     <a  data-placement="top" data-hint="Finalize" class="btn btn-info  hint--top  hint isDisabled" style="padding: 0 12px!important;"><i class="fa fa-plus">N</i></a>
                                                 <?php } else { ?>
                                                     <?= $this->Html->link($this->Html->tag('i', @$list->checkedout, array('class' => 'fa fa-plus')), ['action' => 'finalize', $list->id, $list->user_id], ['escape' => false, "data-placement" => "top", "data-hint" => "Finalize", 'class' => 'btn btn-info  hint--top  hint', 'style' => 'padding: 0 12px!important;']); ?>
-        <?php } ?>
+                                                <?php } ?>
 
                                             <?php } ?>
 
@@ -395,7 +395,7 @@
                                     </tr>
 
 
-                                        <?php endforeach; ?>
+                                <?php endforeach; ?>
 
 
                             </tbody>
@@ -421,4 +421,34 @@
     </script>
 
 <?php } ?>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var sizeKB = input.files[0].size / 1000;
+            //alert(sizeKB);
+            if (parseFloat(sizeKB) <= 16) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = $('<img />', {
+                        src: e.target.result,
+                        alt: 'MyAlt',
+                        width: '200'
+                    });
+                    $('#imagePreview').html(img);
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                //alert("hi");
+                $("#image").val('');
+                 $('#imagePreview').html('');
+            }
+        }
+    }
+
+    $("#image").change(function () {
+        readURL(this);
+
+    });
+</script>
 

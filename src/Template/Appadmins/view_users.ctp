@@ -1,3 +1,5 @@
+
+
 <style>
     .btn.btn-info.hint--top.hint .fa.fa-fw.fa-user-plus {
         width: 3.286em !important;
@@ -54,12 +56,15 @@
                                 </script>
                                 
                                 <th>Full Name</th>
+                                 <th>Rq Date</th> 
                                 <th>Gender</th>         
                                 <th>Fit number</th>         
 
 
                                 <th>Order date</th> 
+                                 <th>Previous Stylist</th>
                                 <th>Assign Customer stylist</th>
+                               
                                 <th>Customer Action</th>
                                 <th>Kid Name </th>
                                 <th>Assign Kid stylist</th>
@@ -96,7 +101,9 @@
                                     <tr>
                                         <?php if ($type != 3) { ?>
                                             <td style="display: none"><?= h($pages->created_dt) ?></td>
+                                            
                                             <td><?= h(@$pages->user->user_detail->first_name) ?>&nbsp;<?= h(@$pages->user->user_detail->last_name) ?></td>
+                                            <td><?php echo $this->Custom->requestDate($pages->user_id,$pages->kid_id) ?></td>
                                             <td><?php
                                                 if (@$pages->profile_type == 1) {
                                                     echo "Men";
@@ -119,7 +126,9 @@
                                                 echo $pages->count . $ptype;
                                                 ?></td>
 
-                                            <td><?php echo @$pages->created_dt; ?> </td>                                         
+                                            <td><?php echo @$pages->created_dt; ?> </td> 
+                                             <td><?php echo $this->Custom->previousStyleistName(@$pages->user_id,@$pages->id); ?> </td>   
+                                            
 
                                             <td> 
                                                 <div class="form-group">
