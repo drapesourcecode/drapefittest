@@ -135,7 +135,7 @@
      } else {
       $emailTemplate = $this->Settings->find('all')->where(['Settings.name' => 'CONTACT_US'])->first();
       $emailFrom = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
-      $toAdminEmail = $this->Settings->find('all')->where(['Settings.name' => 'TO_EMAIL'])->first();
+      $toAdminEmail = $this->Settings->find('all')->where(['Settings.name' => 'TO_HELP'])->first();
       $from = $emailFrom->value;
       $name = $data['firstName'] . ' &nbsp;' . $data['lastName'];
       $email = $data['emailAddress'];
@@ -148,6 +148,7 @@
       $message = $this->Custom->contactUs($emailTemplate->value, $name, $email, $phone, $subject, $body_subject,$msg, SITE_NAME); 
 
       $this->Custom->sendEmail($toAdminEmail->value, $from, $subject, $message);
+      //$this->Custom->sendEmail('devadash143@gmail.com', $from, $subject, $message);
       
       /* Mail sending below code */
       $this->Flash->success(__('Thank you, We will get back to you soon.'));
