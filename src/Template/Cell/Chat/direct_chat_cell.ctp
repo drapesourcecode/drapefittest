@@ -98,12 +98,12 @@
                         <div class="box-header with-border">
                             <h3 class="box-title" id="client_name<?php echo $detail->id; ?>"><a target="_blank" href="<?php echo HTTP_ROOT . 'appadmins/single_direct_chat/' . $detail->id; ?>"><?php echo $detail->name; ?></a></h3>
                             <div class="box-tools pull-right">                            
-                                <button data-id="<?php echo $detail->id; ?>" class="btn btn-box-tool direct-chatx" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button data-id="<?php echo $detail->id; ?>" class="btn btn-box-tool direct-chatx" data-widget="collapse"><i class="fa fa-plus"></i>
                                 </button> 
                                 <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                             </div>
                         </div><!-- /.box-header -->
-                        <div class="box-body">
+                        <div class="box-body" style="display: none;">
                             <!-- Conversations are loaded here -->
                             <div class="direct-chat-messages msg_container_base"  >
                                 <table  class="table table-striped" id="chats-<?php echo $detail->id; ?>">
@@ -126,7 +126,7 @@
 
 
 
-                        <div class="box-footer" style="position: relative;">
+                        <div class="box-footer" style="position: relative; display: none;">
 
                             <span id="typigng-<?php echo $detail->id; ?>"style="position: absolute;left:10px; top:0"></span>
                                 <div class="input-group" style="padding-top: 13px">
