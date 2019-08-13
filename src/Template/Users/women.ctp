@@ -233,7 +233,7 @@
                                 <img src="<?= HTTP_ROOT . MAN ?>northface.png" alt="">
                             </div>
                         </li>
-                        <li>
+                        <!-- <li>
                             <div class="small-images">
                                 <img src="<?= HTTP_ROOT . MAN ?>h&m.png" alt="">
                             </div>
@@ -257,7 +257,7 @@
                             <div class="small-images">
                                 <img src="<?= HTTP_ROOT . MAN ?>express.png" alt="">
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
