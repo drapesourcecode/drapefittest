@@ -23,7 +23,6 @@ page {
   display: inline-block;
   margin: 0 auto;
   margin-bottom: 0.5cm;
-  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
 }
 page[size="A4"] {  
   width: 21cm;
@@ -33,7 +32,7 @@ page[size="A4"] {
 
     <body onload="window.print();">
         <page size="A4">
-        <div style="float: left; width: 100%; padding: 20px;">
+        <div style="float: left; width: 100%; padding: 20px 20px 20px 10px;">
             <div style="float: left; width: 95%;">
                 <div style="text-align:center;">
                     <div class="post" style="margin: 0;padding: 0;border:none;color: none;display: inline-block;">     
@@ -105,6 +104,7 @@ page[size="A4"] {
                     </div>
                 </div>
             </div>
+            <div style="float: left; width: 96%; margin: 50px 0 41%;">Page 1</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">What is your profession?</h3>
                 <ul style="float: left; width: 100%; padding:0; list-style-type: none; margin: 0;">
@@ -208,6 +208,7 @@ page[size="A4"] {
                     <li style="float: left; width: 100px; height: 100px; <?php if(@$TypicallyWearMen->skin_tone == 6){ ?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #e6e6e6; border-radius: 100%; text-align: center; text-transform: uppercase; font-weight: bold; font-size: 12px; padding-top: 35px; box-sizing: border-box; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg6.jpg" alt=""><span style=" position: relative; z-index: 111;">Other</span></li>
                 </ul>
             </div>
+            <div style="float: left; width: 96%; margin: 50px 0 5%;">Page 2</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">You social media profiles will help your personal Stylist to know you better. </h3>
                 <div style="float: left;width: 45%;">
@@ -235,6 +236,7 @@ page[size="A4"] {
                     </div>
                 </div>
             </div>
+            
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">What do you typically wear to work?</h3>
                 <ul style="float: left; width:100%; margin:0; padding: 0; list-style-type: none;">
@@ -289,6 +291,7 @@ page[size="A4"] {
                     </li>
                 </ul>
             </div>
+            <div style="float: left; width: 100%; margin: 50px 0 26%;">Page 3</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">How do you like your button-up shirts to fit?</h3>
                 <ul style="float: left; width:100%; margin:0; padding: 0; list-style-type: none;">
@@ -370,6 +373,7 @@ page[size="A4"] {
                     </li>
                 </ul>
             </div>
+            <div style="float: left; width: 100%; margin: 50px 0 11%;">Page 4</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">How long do you prefer your shorts? </h3>
                 <ul style="float: left; width:100%; margin:0; padding: 0; list-style-type: none;">
@@ -466,11 +470,7 @@ page[size="A4"] {
                     </li>
                 </ul>
             </div>
-            
-            
-            
-            
-            
+            <div style="float: left; width: 100%; margin: 50px 0 48%;">Page 5</div>
             
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Tell us which of these outfits would you prefer to wear?</h3>
@@ -618,6 +618,7 @@ page[size="A4"] {
                     </li>
                 </ul>
             </div>
+            <div style="float: left; width: 100%; margin: 50px 0 10%;">Page 6</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Any fit issues to take note of? </h3>
                 <ul style="float: left; width: 100%; margin: 0; padding: 0; list-style-type: none;">
@@ -710,6 +711,7 @@ page[size="A4"] {
                 </ul>
                 </div>
             </div>
+            <div style="float: left; width: 100%; margin: 50px 0 1%;">Page 7</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0; margin-bottom: 0;"> Accessories</h3>
                 <ul style="float: left; width: 100%; margin: 0; padding: 0;">
@@ -877,6 +879,7 @@ text-align: center;"><?php echo $this->Custom->removeDoller(@$menSccessories->me
                             <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/mens-brand-logo/vineyard.png" alt="">
                         </div>
                     </li>
+                    <div style="float: left; width: 100%; margin: 50px 0 3%; text-align: center;">Page 8</div>
                     <li style="display: inline-block;width: 20%;margin: 10px 11px;vertical-align: top;position: relative;">
                         <div style="position: relative;<?php if (isset($menbrand) && in_array('vans', @$menbrand)) { ?> border: 2px solid #ff6c00; <?php }else{ ?>border: 1px solid #e0e0e0;<?php } ?>padding: 2px;display: inline-block;width: 100%;">
                         <?php if (isset($menbrand) && in_array('vans', @$menbrand)) { ?>   
@@ -1076,6 +1079,7 @@ text-align: center;"><?php echo $this->Custom->removeDoller(@$menSccessories->me
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Add additional comments</h3>
                 <p style="margin-top: 0;color: #8c8c8c;font-size: 13px; margin-bottom: 0;"><?php echo @$MenStyle->profile_note; ?></p>
             </div>
+            <div style="float: left; width: 100%; margin: 50px 0 50px;">Page 9</div>
             <div class="pagebreak"> </div>
         </div>
         </page>
