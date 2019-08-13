@@ -10,6 +10,7 @@ use Cake\ORM\Query;
 use Cake\ORM\TableRegistry;
 use Cake\Datasource\ConnectionManager;
 
+//require_once(ROOT . '/vendor/' . DS . '/phpoffice/vendor/autoload.php');
 require_once(ROOT . '/vendor/' . DS . '/barcode/vendor/autoload.php');
 
 use \PHPExcel_IOFactory;
@@ -487,7 +488,7 @@ class AppadminsController extends AppController {
 
 
             if (!empty($data['image']['tmp_name'])) {
-                if ($data['image']['size'] <= 8000) {
+                if ($data['image']['size'] <= 15000) {
                     $imageName = $this->Custom->uploadImageBanner($data['image']['tmp_name'], $data['image']['name'], PRODUCT_IMAGES, 400);
                     $data['product_image'] = $imageName;
                 } else {
@@ -498,7 +499,7 @@ class AppadminsController extends AppController {
             }
 
             if (!empty($data['product']['tmp_name'])) {
-                if ($data['product']['size'] <= 8000) {
+                if ($data['product']['size'] <= 15000) {
                     $imageName1 = $this->Custom->uploadImageBanner($data['product']['tmp_name'], $data['product']['name'], PRODUCT_RECEIPT, 400);
                 } else {
                     $this->Flash->error(__('Image size should be 8  to 10 kb'));
