@@ -406,6 +406,27 @@ class CustomHelper extends Helper {
         
         return "";
     }
-   
+    function previousStyleistName($userId=null,$paymenId){
+        $table = TableRegistry::get('PaymentGetways');
+        $user = TableRegistry::get('Users');
+        $query = $table->find('all')->where(['user_id' => $userId])->order(['id'=>'desc'])->first()->emp_id; 
+        $name = $user->find('all')->where(['id' =>$query])->first()->name; 
+        if($name!=''){
+         return $name;    
+        }else{
+            return "No yet";     
+        }
+      
+    }
+    function requestDate($userId=null,$kid_id=null){
+        $table = TableRegistry::get('DeliverDate');
+       if($kid_id==0){
+        $query = $table->find('all')->where(['user_id' => $userId,'kid_id'=>0])->first()->date_in_time; 
+       }else{
+           $query = $table->find('all')->where(['user_id' => $userId,'kid_id'=>$kid_id])->first()->date_in_time;   
+       }
+       
+       return $query;
+    }
 
 }
