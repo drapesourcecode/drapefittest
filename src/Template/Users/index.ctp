@@ -40,10 +40,10 @@
     }
     .chat-form-new .chat-top {
         background: #232f3e;
-        padding: 10px 0;
+        padding: 10px 18px;
         color: #fff;
         font-size: 19px;
-        text-align: center;
+        text-align: left;
         width: 100%;
         border-radius: 17px 17px 0 0;
         font-weight: bold;
@@ -62,9 +62,9 @@
         display: inline-block;
         font-size: 18px !important;
         position: absolute;
-        width: 100%;
+        width: 30px;
         text-align: center;
-        left: 0;
+        left: -17px;
         top: 0;
         height: 100%;
         padding-top: 12px;
@@ -182,13 +182,18 @@
         border-radius: 4px;
         border: solid #232f3e 1px;
     }
-
+    .chat-form-new .chat-top .ico-pl-min span.fullclose {
+    left: 16px;
+}
+.chat-form-new .chat-top .ico-pl-min span.fullclose .fa{
+    font-size: 19px;
+}
 </style>
 
 
 <div class="chat-form-new" id="chat-help" style="display: none;">
     <div class="chat-login">
-        <div class="chat-top" data-toggle="collapse" data-target="#demo">Leave us a message<div class="ico-pl-min"><span class="minus"><i class="fa fa-minus"></i></span><span class="close-b"><i class="fa fa-times"></i></span></div></div>
+        <div class="chat-top" data-toggle="collapse" data-target="#demo">Leave us a message<div class="ico-pl-min"><span class="minus"><i class="fa fa-plus"></i></span><span class="close-b"><i class="fa fa-minus"></i></span><span class="fullclose" id="close-bt"><a href="<?php echo HTTP_ROOT . 'help-close' ?>" style="color: #fff;"><i class="fa fa-times"></i></a></span></div></div>
         <div id="demo" class="collapse in">
             <?php echo $this->Form->create('', ['type' => 'file', 'data-toggle' => "validator", 'novalidate' => "true", 'id' => 'chatHelp', 'class' => "chatHelp"]); ?>
             <label for="fname">Your name (optional)</label>
@@ -208,7 +213,7 @@
                 </span>
             </div>
             <div class="cans"> 
-                <span><a href="<?php echo HTTP_ROOT . 'help-close' ?>">Cancel</a></span>
+                <span><a id="cancel-bt" href="<?php echo HTTP_ROOT . 'help-close' ?>">Cancel</a></span>
                 <input type="submit" value="Send" name="submit" class="submit">
             </div>
             <?= $this->Form->end(); ?>
@@ -242,6 +247,11 @@
 <script>
     $(".chat-top").click(function () {
         $(this).toggleClass("highlight");
+    });
+</script>
+<script type="text/javascript">
+    $('docoment') .on('click','#close-bt', function(){
+        $('#cancel-bt').click();
     });
 </script>
 <script>
