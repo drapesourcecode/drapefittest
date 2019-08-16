@@ -5121,9 +5121,10 @@ class UsersController extends AppController {
                         $this->MenStyle->updateAll(['profile_note' => $data['profile_note']], ['user_id' => $userId]);
                     }
 
-                    $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $userId]);
+                    
                     $checkPagePosition = $this->UserDetails->find('all')->where(['user_id' => $this->Auth->user('id')])->first()->is_progressbar;
                     if (@$checkPagePosition != 100) {
+                        $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $userId]);
                         $this->Users->updateAll(['is_redirect' => '1'], ['id' => $this->Auth->user('id')]);
                         echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'welcome/schedule']);
                     } else {
@@ -5456,10 +5457,11 @@ class UsersController extends AppController {
                     if (@$data['profile_note']) {
                         $this->WomenStyle->updateAll(['profile_note' => $data['profile_note']], ['user_id' => $userId]);
                     }
-                    $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $userId]);
+                   
 
                     $checkPagePosition = $this->UserDetails->find('all')->where(['user_id' => $this->Auth->user('id')])->first()->is_progressbar;
                     if (@$checkPagePosition != 100) {
+                         $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $userId]);
                         $this->Users->updateAll(['is_redirect' => '1'], ['id' => $this->Auth->user('id')]);
                         echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'welcome/schedule']);
                     } else {
