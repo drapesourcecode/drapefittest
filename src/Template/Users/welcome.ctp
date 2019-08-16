@@ -584,7 +584,7 @@ if ($slug == 'schedule') {
                                 <div id="optionsDIV"
                                 <?php if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 1) { ?>
                                          style='display: block;'
-                                     <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?>
+                                     <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '0') { ?>
                                           style='display: none;'
                                           <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?>
                                          style='display: block;'
@@ -1095,7 +1095,7 @@ if ($slug == 'reservation') {
             if (cardValid == 0) {
                 $("#card_number").addClass('required');
                 $("#card_number").focus();
-                $('#cart-type-msg').html('<span style="color:red">Please enter your valid card no</span>');
+                $('#cart-type-msg').html('<span style="color:red">Please enter your valid card number</span>');
 
                 return false;
             } else if (!regMonth.test(expMonth)) {
@@ -1338,7 +1338,7 @@ if ($slug == 'reservation') {
                             if (cardNu == '') {
                                 $('#card_number').focus();
                                 $('#card_number').attr("style", "border:#FF0000 1px solid!important");
-                                $('#cart-type-msg').html('<span style="color:red">In valid card please check</span>').fadeIn('slow');
+                                $('#cart-type-msg').html('<span style="color:red">Please enter your card number </span>').fadeIn('slow');
                                 $('#card_number').val('');
                                 $('#card_number').focus();
                                 return false;
