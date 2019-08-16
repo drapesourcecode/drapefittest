@@ -77,7 +77,16 @@ page[size="A4"] {
                 <div style="float: right;width: 45%;">
                     <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Are you parent ? </h3>
                     <div style="float: left; width: 100%;">
-                        <div style="display: inline-block;"><span style="float: left; padding: 10px;width: 32px;text-align: center;<?php if (@$MenStats->are_you_a_parent == 1) { ?> /*background: #ff6c00;*/ border: 1px solid #ff6c00;<?php } else{?> border: 1px solid #ccc;<?php } ?>border-top-left-radius: 3px; border-bottom-left-radius: 3px; font-size: 15px; position: relative; overflow: hidden;"><img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""><span style="position: relative; z-index: 111;">Yes</span></span><span style="float: left; <?php if (@$MenStats->are_you_a_parent == 2) { ?>background: #ff6c00; border: 1px solid #ff6c00; <?php } else{ ?>border: 1px solid #ccc; <?php } ?> border: 1px solid #ccc; padding: 10px;width: 32px;text-align: center; border-top-right-radius: 3px; border-bottom-right-radius: 3px;font-size: 15px;">No</span></div>
+                        <div style="display: inline-block;"><span style="float: left; padding: 10px;width: 32px;text-align: center;<?php if (@$MenStats->are_you_a_parent == 1) { ?> /*background: #ff6c00;*/ border: 1px solid #ff6c00;<?php } else{?> border: 1px solid #ccc;<?php } ?>border-top-left-radius: 3px; border-bottom-left-radius: 3px; font-size: 15px; position: relative; overflow: hidden;">
+                            <?php if (@$MenStats->are_you_a_parent == 1) { ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                <?php } ?>
+                            <span style="position: relative; z-index: 111;">Yes</span></span>
+                            <span style="float: left; <?php if (@$MenStats->are_you_a_parent == 2) { ?>background: #ff6c00; border: 1px solid #ff6c00; <?php } else{ ?>border: 1px solid #ccc; <?php } ?> border: 1px solid #ccc; padding: 10px;width: 32px;text-align: center; border-top-right-radius: 3px; border-bottom-right-radius: 3px;font-size: 15px;position: relative; overflow: hidden;">
+                                <?php if (@$MenStats->are_you_a_parent == 2) { ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                <?php } ?>
+                                <span style="position: relative; z-index: 111;">No</span></span></div>
                     </div>
                 </div>
             </div>
@@ -110,37 +119,194 @@ page[size="A4"] {
                 <ul style="float: left; width: 100%; padding:0; list-style-type: none; margin: 0;">
                     
                     <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;">
-                        <span style="<?php if(@$MenStats->your_occupation == 1){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Architecture / Engineering</li> 
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 2){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Art / Design</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 3){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Building / Maintenance</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 4){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Business / Client Service</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 5){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Community / Social Service</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 6){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Computer / IT</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 7){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Education</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 8){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Entertainer / Performer</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 9){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Farming / Fishing / Forestry</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 10){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Financial Services</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 11){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Health Practitioner / Technician</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 12){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Hospitality / Food Service</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 13){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""></span>Management</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 14){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Media / Communications</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 15){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Military / Protective Service</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 16){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Legal</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 17){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Office / Administration</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 18){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Average</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 19){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Personal Care & Service</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 20){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Production / Manufacturing</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 21){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Retail</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 22){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Sales</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 23){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Science</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 24){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Technology</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 25){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Transportation</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 26){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Self-Employed</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 27){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Stay-At-Home Parent</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 28){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Student</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 29){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Retired</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 30){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Not Employed</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 31){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Other</li>
+                        <span style="<?php if(@$MenStats->your_occupation == 1){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px; position: relative; overflow: hidden;">
+                            <?php if(@$MenStats->your_occupation == 1){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+
+                        </span>Architecture / Engineering</li> 
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 2){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                         <?php if(@$MenStats->your_occupation == 2){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Art / Design</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 3){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                         <?php if(@$MenStats->your_occupation == 3){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                    </span>Building / Maintenance</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 4){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                         <?php if(@$MenStats->your_occupation == 4){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                    </span>Business / Client Service</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 5){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                         <?php if(@$MenStats->your_occupation == 5){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                    </span>Community / Social Service</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 6){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 6){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Computer / IT</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 7){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 7){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Education</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 8){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 8){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Entertainer / Performer</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 9){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 9){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Farming / Fishing / Forestry</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 10){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 10){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Financial Services</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 11){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 11){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Health Practitioner / Technician</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 12){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 12){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Hospitality / Food Service</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 13){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                         <?php if(@$MenStats->your_occupation == 13){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                    </span>Management</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 14){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 14){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?> 
+                        </span>Media / Communications</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 15){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 15){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?> 
+                        </span>Military / Protective Service</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 16){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 16){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Legal</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 17){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 17){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?> 
+                        </span>Office / Administration</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 18){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 18){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Average</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 19){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 19){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Personal Care & Service</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 20){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 20){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Production / Manufacturing</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 21){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"> <?php if(@$MenStats->your_occupation == 21){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Retail</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 22){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStats->your_occupation == 22){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Sales</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 23){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStats->your_occupation == 23){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Science</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 24){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStats->your_occupation == 24){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Technology</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 25){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStats->your_occupation == 25){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Transportation</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 26){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStats->your_occupation == 26){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Self-Employed</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 27){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStats->your_occupation == 27){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Stay-At-Home Parent</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 28){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStats->your_occupation == 28){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Student</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 29){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStats->your_occupation == 29){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Retired</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 30){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStats->your_occupation == 30){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?>
+                        </span>Not Employed</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStats->your_occupation == 31){ ?> background-color: #ef6a04; <?php } else{?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStats->your_occupation == 31){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Other</li>
                 </ul>
             </div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
@@ -171,7 +337,7 @@ page[size="A4"] {
                         <div style=" float: left; width: 100%; <?php if(@$TypicallyWearMen->body_type == 1){ ?> border: 2px solid #ff6c00;<?php } else{ ?> border: 1px solid #ccc; <?php } ?> text-align: center; position: relative;">
                             <?php if(@$TypicallyWearMen->body_type == 1){ ?>
                             <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;">
-                                <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
+                                <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""> <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
                             <?php } ?>                            
                             <img style="width: 80px;" src="<?php echo HTTP_ROOT ?>assets/images/men/size-1.png" alt=""></div>
                     </li>
@@ -180,7 +346,7 @@ page[size="A4"] {
                         <div style=" float: left; width: 100%; <?php if(@$TypicallyWearMen->body_type == 4){ ?> border: 2px solid #ff6c00;<?php } else{ ?> border: 1px solid #ccc; <?php } ?> text-align: center; position: relative;">
                             <?php if(@$TypicallyWearMen->body_type == 4){ ?>
                             <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;">
-                                <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
+                                <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""> <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
                             <?php } ?>
                             <img style="width: 80px;" src="<?php echo HTTP_ROOT ?>assets/images/men/size-4.png" alt=""></div>
                     </li>
@@ -190,7 +356,7 @@ page[size="A4"] {
                             
                             <?php if(@$TypicallyWearMen->body_type == 5){ ?>
                             <span style="height: 25px; width: 25px; background: #ef6a04; display: inline-block; position: absolute; border-radius: 100%; right: -8px; top: -11px; padding-top: 6px; box-sizing: border-box; overflow: hidden;">
-                                <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""> <img style="width: 17px;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
+                                <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""> <img style="width: 17px;position: relative; z-index: 111;" src="<?php echo HTTP_ROOT ?>assets/images/tick2.png" alt=""></span>
                             <?php } ?>
                             
                             <img style="width: 80px;" src="<?php echo HTTP_ROOT ?>assets/images/men/size-5.png" alt=""></div>
@@ -211,25 +377,25 @@ page[size="A4"] {
             <div style="float: left; width: 96%; margin: 50px 0 5%;">Page 2</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">You social media profiles will help your personal Stylist to know you better. </h3>
-                <div style="float: left;width: 45%;">
+                <div style="float: left;width: 45%; min-height: 60px;">
                     <div style="float: left; width: 100%;">
                         <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 0;">LINKEDIN PROFILE</h4>
                         <p style="margin-top: 0;color: #8c8c8c;font-size: 15px;"><?= @$MenStyle->linkdin_profile; ?></p>
                     </div>
                 </div>
-                <div style="float: right;width: 45%;">
+                <div style="float: right;width: 45%; min-height: 60px;">
                     <div style="float: left; width: 100%;">
                         <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 0;">INSTAGRAM HANDLE</h4>
                         <p style="margin-top: 0;color: #8c8c8c;font-size: 15px;"><?= @$MenStyle->instagram; ?></p>
                     </div>
                 </div>
-                <div style="float: left;width: 45%;">
+                <div style="float: left;width: 45%; min-height: 60px;">
                     <div style="float: left; width: 100%;">
                         <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 0;">TWITTER HANDLE</h4>
                         <p style="margin-top: 0;color: #8c8c8c;font-size: 15px; margin-bottom: 0;"><?= @$MenStyle->twitter; ?></p>
                     </div>
                 </div>
-                <div style="float: right;width: 45%;">
+                <div style="float: right;width: 45%; min-height: 60px;">
                     <div style="float: left; width: 100%;">
                         <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 0;">PINTEREST HANDLE</h4>
                         <p style="margin-top: 0;color: #8c8c8c;font-size: 15px; margin-bottom: 0;"><?= @$MenStyle->pinterest; ?></p>
@@ -622,21 +788,71 @@ page[size="A4"] {
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Any fit issues to take note of? </h3>
                 <ul style="float: left; width: 100%; margin: 0; padding: 0; list-style-type: none;">
-                        <li style=" position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(1, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Long Arms</span></li>
-                    <li style=" position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(2, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Short Arms</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(3, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Thick Arms</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(15, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Broad Shoulders</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(4, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Man Boobs</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(5, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Big Belly</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(6, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Big Butt</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(14, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Small Butt</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(7, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Thunder Things</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(8, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Thick Neck</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(9, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Short Torso</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(13, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Long Torso</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(10, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Broad Cheast</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(11, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Very Skinny</span></li>
-                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(12, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt=""><span style="position: relative;z-index: 111;">Skinny Legs</span></li>
+                        <li style=" position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(1, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>">
+                             <?php if(in_array(1, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?>
+                            <span style="position: relative;z-index: 111;">Long Arms</span></li>
+                    <li style=" position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(2, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>">'
+                        <?php if(in_array(2, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?>
+                            <span style="position: relative;z-index: 111;">Short Arms</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(3, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>">
+                        <?php if(in_array(3, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?>
+                            <span style="position: relative;z-index: 111;">Thick Arms</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(15, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><?php if(in_array(15, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?><span style="position: relative;z-index: 111;">Broad Shoulders</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(4, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>">
+                        <?php if(in_array(4, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?>
+                        <span style="position: relative;z-index: 111;">Man Boobs</span></li>
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(5, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><?php if(in_array(5, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?><span style="position: relative;z-index: 111;">Big Belly</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(6, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><?php if(in_array(6, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?><span style="position: relative;z-index: 111;">Big Butt</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(14, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><?php if(in_array(14, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?><span style="position: relative;z-index: 111;">Small Butt</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(7, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><?php if(in_array(7, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?><span style="position: relative;z-index: 111;">Thunder Things</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(8, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><?php if(in_array(8, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?><span style="position: relative;z-index: 111;">Thick Neck</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(9, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><?php if(in_array(9, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?><span style="position: relative;z-index: 111;">Short Torso</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(13, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><?php if(in_array(13, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?><span style="position: relative;z-index: 111;">Long Torso</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(10, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><?php if(in_array(10, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?><span style="position: relative;z-index: 111;">Broad Cheast</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(11, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><?php if(in_array(11, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?><span style="position: relative;z-index: 111;">Very Skinny</span></li>
+
+                    <li style="position: relative; float: left; border: 1px solid #ccc;padding: 7px 15px;font-size: 15px;text-align: center; margin: 7px 5px; <?php if(in_array(12, explode(",", @$MenFit->take_note_of))) {?>background: #232f3e;color: #fff;<?php } ?>"><?php if(in_array(12, explode(",", @$MenFit->take_note_of))) {?>
+                            <img style="width: 100%; height:100%; position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg2.jpg" alt="">
+                            <?php } ?><span style="position: relative;z-index: 111;">Skinny Legs</span></li>
                 </ul>
             </div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
@@ -644,70 +860,214 @@ page[size="A4"] {
                 <div style="float: left; width: 100%;">
                     <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 15px;">SHIRTS</h4>
                 <ul style="float: left; width: 100%; padding:0; list-style-type: none; margin: 0;">
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->button_shirts == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Under $50</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->button_shirts == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$50 - $75</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->button_shirts == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$75 - $100</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->button_shirts == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""></span>$100 - $125</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->button_shirts == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$125+</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->button_shirts == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                        <?php if(@$MenStyle->button_shirts == 1){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Under $50</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->button_shirts == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                        <?php if(@$MenStyle->button_shirts == 2){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$50 - $75</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->button_shirts == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                        <?php if(@$MenStyle->button_shirts == 3){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$75 - $100</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->button_shirts == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                        <?php if(@$MenStyle->button_shirts == 4){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$100 - $125</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->button_shirts == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                        <?php if(@$MenStyle->button_shirts == 5){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$125+</li>
                 </ul>
                 </div>
                 <div style="float: left; width: 100%;">
                     <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 15px;">TEES & POLOS</h4>
                 <ul style="float: left; width: 100%; padding:0; list-style-type: none; margin: 0;">
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->tees_polos == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Under $30</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->tees_polos == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$30 - $50</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->tees_polos == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$50 - $70</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->tees_polos == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$70 - $90</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->tees_polos == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$90+</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->tees_polos == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                        <?php if(@$MenStyle->tees_polos == 1){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Under $30</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->tees_polos == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->tees_polos == 2){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$30 - $50</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->tees_polos == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->tees_polos == 3){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$50 - $70</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->tees_polos == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->tees_polos == 4){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$70 - $90</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->tees_polos == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->tees_polos == 5){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$90+</li>
                 </ul>
                 </div>
                 <div style="float: left; width: 100%;">
                     <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 15px;">SWEATERS & SWEATSHIRTS</h4>
                 <ul style="float: left; width: 100%; padding:0; list-style-type: none; margin: 0;">
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->weaters_sweatshirts == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Under $50</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->weaters_sweatshirts == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$50 - $75</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->weaters_sweatshirts == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$75 - $100</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->weaters_sweatshirts == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$100 - $125</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->weaters_sweatshirts == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$125+</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->weaters_sweatshirts == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;">
+                        <?php if(@$MenStyle->weaters_sweatshirts == 1){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Under $50</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->weaters_sweatshirts == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->weaters_sweatshirts == 2){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$50 - $75</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->weaters_sweatshirts == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->weaters_sweatshirts == 3){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$75 - $100</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->weaters_sweatshirts == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->weaters_sweatshirts == 4){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$100 - $125</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->weaters_sweatshirts == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->weaters_sweatshirts == 5){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$125+</li>
                 </ul>
                 </div>
                 <div style="float: left; width: 100%;">
                     <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 15px;">PANTS & DENIM</h4>
                 <ul style="float: left; width: 100%; padding:0; list-style-type: none; margin: 0;">
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->pants_denim == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Under $75</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->pants_denim == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$75 - $100</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->pants_denim == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$100 - $125</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->pants_denim == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt=""></span>$125 - $175</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->pants_denim == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$175+</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->pants_denim == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px; position: relative; overflow: hidden;">
+                        <?php if(@$MenStyle->pants_denim == 1){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Under $75</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->pants_denim == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->pants_denim == 2){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$75 - $100</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->pants_denim == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->pants_denim == 3){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$100 - $125</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->pants_denim == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->pants_denim == 4){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$125 - $175</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->pants_denim == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->pants_denim == 5){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$175+</li>
                 </ul>
                 </div>
                 <div style="float: left; width: 100%;">
                     <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 15px;">SHORTS</h4>
                 <ul style="float: left; width: 100%; padding:0; list-style-type: none; margin: 0;">
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shorts == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Under $40</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shorts == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$40 - $60</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shorts == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$60 - $80</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shorts == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$80 - $100</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shorts == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$100+</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shorts == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->shorts == 1){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Under $40</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shorts == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->shorts == 2){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$40 - $60</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shorts == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->shorts == 3){ ?> 
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$60 - $80</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shorts == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->shorts == 4){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$80 - $100</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shorts == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->shorts == 5){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$100+</li>
                 </ul>
                 </div>
                 <div style="float: left; width: 100%;">
                     <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 15px;">SHOES</h4>
                 <ul style="float: left; width: 100%; padding:0; list-style-type: none; margin: 0;">
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shoes == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Under $75</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shoes == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$75 - $125</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shoes == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$125 - $175</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shoes == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$175 - $250</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shoes == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$250+</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shoes == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->shoes == 1){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Under $75</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shoes == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->shoes == 2){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$75 - $125</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shoes == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->shoes == 3){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$125 - $175</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shoes == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->shoes == 4){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$175 - $250</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->shoes == 5){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->shoes == 5){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$250+</li>
                 </ul>
                 </div>
                 <div style="float: left; width: 100%;">
                     <h4 style="margin-top: 15px; font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 15px;">OUTERWEAR</h4>
                 <ul style="float: left; width: 100%; padding:0; list-style-type: none; margin: 0;">
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->blazers_outerwear == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>Under $75</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->blazers_outerwear == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$75 - $125</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->blazers_outerwear == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$125 - $175</li>
-                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->blazers_outerwear == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt=""></span>$175 - $250</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->blazers_outerwear == 1){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->blazers_outerwear == 1){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>Under $75</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->blazers_outerwear == 2){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->blazers_outerwear == 2){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$75 - $125</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->blazers_outerwear == 3){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->blazers_outerwear == 3){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$125 - $175</li>
+                    <li style="float: left; width: 33%;font-size: 15px; padding: 8px 0;"><span style="<?php if(@$MenStyle->blazers_outerwear == 4){ ?> background: #ef6a04; <?php }else{ ?> background: #c1c0c0; <?php } ?> height: 15px; width: 15px;border-radius: 100%; float: left; margin-right: 5px;position: relative; overflow: hidden;"><?php if(@$MenStyle->blazers_outerwear == 4){ ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                            <?php } else{ ?>    
+                            <img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/color2.jpg" alt="">
+                            <?php } ?></span>$175 - $250</li>
                 </ul>
                 </div>
             </div>
