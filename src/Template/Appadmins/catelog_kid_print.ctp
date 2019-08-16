@@ -266,7 +266,7 @@ color: #232f3e;
                     <div class="col-sm-3 col-lg-3 col-md-3 first-three">
                         <div class="cat-log-smallbox">
                             <img src="<?php echo HTTP_ROOT ?>/images/dflogo.png" style="width: 80px;">
-                            <h4>DRAe fit &reg;</h4>
+                            <h4>Drape fit</h4>
                             <h3>We Do best fit</h3>
                         </div>
                     </div>
@@ -289,7 +289,7 @@ color: #232f3e;
                     <div class="col-sm-3 col-lg-3 col-md-3 first-three">
                         <div class="cat-log-smallbox">
                             <img src="<?php echo HTTP_ROOT ?>/images/dflogo.png" style="width: 80px;">
-                            <h4>Drape fit &reg;</h4>
+                            <h4>Drape fit</h4>
                             <h3>We Do best fit</h3>
                         </div>
                     </div>

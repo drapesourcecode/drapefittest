@@ -1292,7 +1292,7 @@
                                         What is your due date?                     
                                     </h3> 
                                     <div class="timeline-footer">
-                                        <a class="btn btn-primary btn-xs blue" style="width: 100px;"><?php echo date('m/d/Y', strtotime(@$SizeChart->expected_due_date)) ?></a> 
+                                        <a class="btn btn-primary btn-xs blue" style="width: 160px;"><?php echo date('m/d/Y', strtotime(@$SizeChart->expected_due_date)) ?></a> 
                                     </div>
                                 </div>
                                 <div class="post">
@@ -1300,7 +1300,7 @@
                                         your maternity fit ?                    
                                     </h3> 
                                     <div class="timeline-footer">
-                                        <a class="btn btn-primary btn-xs blue" style="width: 100px;"><?php echo @$SizeChart->is_prefer_maternity; ?></a> 
+                                        <a class="btn btn-primary btn-xs blue" style="width: 100px;"><?php if($SizeChart->is_prefer_maternity==0){echo '';}else{echo $SizeChart->is_prefer_maternity;} ?></a> 
                                     </div>
                                 </div>
                                 <div class="post">
@@ -1308,7 +1308,7 @@
                                         Loose Fitted mix of both                   
                                     </h3> 
                                     <div class="timeline-footer">
-                                        <a class="btn btn-primary btn-xs blue" style="width: 100px;"><?php echo @$SizeChart->loose_fitted; ?></a> 
+                                        <a class="btn btn-primary btn-xs blue" style="width: 100px;"><?php if($SizeChart->loose_fitted==0){echo '';}else{echo $SizeChart->loose_fitted;} ?></a> 
                                     </div>
                                 </div>
                                 <div class="post">      
@@ -1825,7 +1825,7 @@
                                                     <?php if (@$wemenDesigne->img_3 == '') { ?>
                                                     <img src="<?php echo HTTP_ROOT ?>assets/women-img/Women-costum3.jpg" alt="">
                                                     <?php } else {?>
-                                                    <img   src="<?php echo HTTP_ROOT . USER_CUSTOM . @$wemenDesigne->img_2; ?>" alt="">
+                                                    <img   src="<?php echo HTTP_ROOT . USER_CUSTOM . @$wemenDesigne->img_3; ?>" alt="">
                                                     <?php } ?>
                                                 </div>
                                                 <h4 style="text-align: center;">Third Design</h4>
