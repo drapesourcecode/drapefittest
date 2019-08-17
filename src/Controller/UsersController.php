@@ -649,13 +649,13 @@ class UsersController extends AppController {
 
 //echo $to, $subject, $message, $headers; exit;
                 $ok = @mail($to, $subject, $message, $headers);
-                $toUser= $data['email'];
+                $toUser = $data['email'];
                 @mail($toUser, $subject, $message, $headers);
-                
+
                 if ($ok) {
-                    
-                    
-                    
+
+
+
                     $this->request->session()->write('help-active', '2');
 //$this->Flash->success(__('Your help send successfully'));
                     return $this->redirect(HTTP_ROOT);
@@ -665,8 +665,8 @@ class UsersController extends AppController {
                     return $this->redirect(HTTP_ROOT);
                 }
             }
-            
-            
+
+
 
             $exitEmail = $this->Users->find('all')->where(['Users.email' => @$data['email']])->count();
             if ($exitEmail >= 1) {
@@ -2871,11 +2871,28 @@ class UsersController extends AppController {
 
         $this->Custom->sendEmail($to, $from, $subject, $email_message);
 
+
+
+
+
+
         $subjectProfile = $emailMessageProfile->display;
         $email_message_profile = $this->Custom->paymentEmailCount($emailMessageProfile->value, $name, $usermessage, $sitename, $paymentCount);
 
 
         $this->Custom->sendEmail($to, $from, $subjectProfile, $email_message_profile);
+
+
+
+        //message to Admin support
+        $toSupport = $this->Settings->find('all')->where(['name' => 'TO_HELP'])->first()->value;
+        $this->Custom->sendEmail($toSupport, $from, $subject, $email_message);
+        $this->Custom->sendEmail($toSupport, $from, $subjectProfile, $email_message_profile);
+
+
+
+
+
 
         exit;
     }
@@ -3769,6 +3786,11 @@ class UsersController extends AppController {
                 $email_message = $this->Custom->order($emailMessage1->value, $name, $sitename, $productData, $total, $grand_price, $sales_tax);
 
                 $this->Custom->sendEmail($to, $from, $subject, $email_message);
+
+                //message to Admin support
+                $toSupport = $this->Settings->find('all')->where(['name' => 'TO_HELP'])->first()->value;
+                $this->Custom->sendEmail($toSupport, $from, $subject, $email_message);
+
                 return $this->redirect(HTTP_ROOT . 'payment-success');
             } else {
                 $this->Flash->error(__($message['ErrorCode']));
@@ -5121,7 +5143,7 @@ class UsersController extends AppController {
                         $this->MenStyle->updateAll(['profile_note' => $data['profile_note']], ['user_id' => $userId]);
                     }
 
-                    
+
                     $checkPagePosition = $this->UserDetails->find('all')->where(['user_id' => $this->Auth->user('id')])->first()->is_progressbar;
                     if (@$checkPagePosition != 100) {
                         $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $userId]);
@@ -5457,11 +5479,11 @@ class UsersController extends AppController {
                     if (@$data['profile_note']) {
                         $this->WomenStyle->updateAll(['profile_note' => $data['profile_note']], ['user_id' => $userId]);
                     }
-                   
+
 
                     $checkPagePosition = $this->UserDetails->find('all')->where(['user_id' => $this->Auth->user('id')])->first()->is_progressbar;
                     if (@$checkPagePosition != 100) {
-                         $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $userId]);
+                        $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $userId]);
                         $this->Users->updateAll(['is_redirect' => '1'], ['id' => $this->Auth->user('id')]);
                         echo json_encode(['status' => 'success', 'url' => HTTP_ROOT . 'welcome/schedule']);
                     } else {
