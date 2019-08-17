@@ -1428,10 +1428,11 @@ button#signupbtn {
     line-height: 1;
     font-family: "Amazon Ember", Arial, sans-serif;
 }
-.footer-social ul 
-{
+.footer-social ul {
     margin: 0;
     padding: 0;
+    float: left;
+    width: 100%;
 }
 .footer-social ul li 
 {
@@ -1547,6 +1548,8 @@ button#signupbtn {
     display: inline-block;
     z-index: 999;
     left: 0;
+    height: 59px;
+
 }
 .customer-details ul
 {
@@ -1601,7 +1604,7 @@ button#signupbtn {
     color: #ff6c00;
     border-bottom: 2px solid #ff6c00;
         position: relative;
-    top: 7px;
+ /*   top: 7px;*/
 }
 .check-out-address-details
 {
@@ -1883,6 +1886,7 @@ label.error{
     background: #fff;
     min-height: 370px;
     padding-top: 80px;
+    min-height: 600px;
 }
 .payment h2 
 {
@@ -2389,6 +2393,7 @@ label.error{
     margin-bottom: 20px;
     border: 1px solid #ccc;
     margin: 61px auto 0;
+    text-align: center;
 }
 .conformation-message i
 {
@@ -2413,8 +2418,8 @@ label.error{
     text-align: left;
     font-family: "Amazon Ember", Arial, sans-serif;
 }
-.conformation-message p.go-home{
-	text-align: right;
+.conformation-message p.go-home {
+    text-align: center;
 }
 .conformation-message h5
 {
@@ -3284,11 +3289,11 @@ label.error{
 }
 .live-button {
     left: inherit;
-    right: 0;
+    right: 6px;
     transform: rotate(0);
     -webkit-transform: rotate(0);
     top: inherit;
-    bottom: 0;
+    bottom: 6px;
     border-radius: 29px;
     padding: 10px 17px;
     font-size: 14px;
@@ -3962,7 +3967,7 @@ a.a.defult-setting-button:focus
 .order-review {
     float: left;
     width: 100%;
-    padding-top: 13%;
+    padding-top: 10%;
     background: #fff;
     margin-bottom: 3px;
     padding-bottom: 40px;
@@ -4159,6 +4164,24 @@ a.a.defult-setting-button:focus
 }
 .order-detailbox .table>thead>tr>th {
     font-size: 15px;
+}
+.current-bal{
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+}
+.current-bal li{
+    display: inline-block;
+    width: 100%;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-size: 14px;
+    color: #232e3e;
+    text-align: left;
+    padding: 6px 0;
+}
+.current-bal li span{
+    float: right;
+    font-weight: bold;
 }
 details summary {
     font-weight: bold;
@@ -5921,6 +5944,7 @@ details summary:hover
         border-bottom: 1px solid #ccc;
         margin-bottom: 14px;
         border-right: none;
+        text-align: center;
         padding-bottom: 20px;
     }
     .Address-details form ul 
@@ -5931,6 +5955,7 @@ details summary:hover
         float: left;
         width: 100%;
             height: auto;
+                text-align: left;
     }
     .Address-details form button
     {
@@ -5957,7 +5982,11 @@ details summary:hover
         width: 200px;
         height: 200px;
     }
-    .Address-details form a{ width: 117px;}
+    .Address-details form a{
+    width: 117px;
+    float: none;
+    display: inline-block;
+    }
     .shipping-track {width: 100%;}
     .conformation-message p{ margin-left: 0;}
     .menu-bar ul li:hover .submenu {position: relative;}
@@ -6367,6 +6396,9 @@ details summary:hover
 }
 .inquiryForm .foram-box {
     width: 100% !important;
+}
+.customer-details {
+    height: 55px;
 }
 }
 
