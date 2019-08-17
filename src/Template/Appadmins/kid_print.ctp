@@ -84,8 +84,17 @@ page[size="A4"] {
                     <li style="float: left; width:45%;">
                         <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">FIT you are looking for?</h3>
                         <div style=" float: left; width: 100%; text-align: left;">
-                            <span style="display: inline-block;padding: 10px; margin: 0 -1px 0 0; text-align: center;font-size: 15px; <?php if (@$kid->kids_clothing_gender == 'girls') { ?> background: #ff6c00;border: 1px solid #ff6c00; <?php } else{ ?> border: 1px solid #ccc; <?php }?>">Girl’s Product</span>
-                            <span style="display: inline-block;padding: 10px;text-align: center;border-top-left-radius: 3px;border-bottom-right-radius: 3px;font-size: 15px;<?php if (@$kid->kids_clothing_gender == 'boys') { ?>background: #ff6c00;border: 1px solid #ff6c00;<?php } else{ ?> border: 1px solid #ccc; <?php } ?>">Boy’s Product</span>
+                            <span style="position: relative; overflow: hidden;display: inline-block;padding: 10px; margin: 0 -1px 0 0; text-align: center;font-size: 15px; <?php if (@$kid->kids_clothing_gender == 'girls') { ?> background: #ff6c00;border: 1px solid #ff6c00; <?php } else{ ?> border: 1px solid #ccc; <?php }?>">
+
+                                <?php if (@$kid->kids_clothing_gender == 'girls') { ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                <?php } ?>
+                            <span style="position: relative; z-index: 111;">Girl’s Product</span></span>
+                            <span style="position: relative; overflow: hidden;display: inline-block;padding: 10px;text-align: center;border-top-left-radius: 3px;border-bottom-right-radius: 3px;font-size: 15px;<?php if (@$kid->kids_clothing_gender == 'boys') { ?>background: #ff6c00;border: 1px solid #ff6c00;<?php } else{ ?> border: 1px solid #ccc; <?php } ?>">
+                                <?php if (@$kid->kids_clothing_gender == 'boys') { ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                <?php } ?>
+                            <span style="position: relative; z-index: 111;">Boy’s Product</span></span>
                         </div>
                     </li>
                     <li style="float: right; width:45%;">
@@ -1020,8 +1029,17 @@ page[size="A4"] {
                     <li style="float: left; width:45%;">
                         <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">FIT you are looking for?</h3>
                         <div style=" float: left; width: 100%; text-align: left;">
-                            <span style="display: inline-block;padding: 10px; margin: 0 -1px 0 0; text-align: center;font-size: 15px; <?php if (@$kid->kids_clothing_gender == 'girls') { ?> background: #ff6c00;border: 1px solid #ff6c00; <?php } else{ ?> border: 1px solid #ccc; <?php }?>">Girl’s Product</span>
-                            <span style="display: inline-block;padding: 10px;text-align: center;border-top-left-radius: 3px;border-bottom-right-radius: 3px;font-size: 15px;<?php if (@$kid->kids_clothing_gender == 'boys') { ?>background: #ff6c00;border: 1px solid #ff6c00;<?php } else{ ?> border: 1px solid #ccc; <?php } ?>">Boy’s Product</span>
+                            <span style="position: relative; overflow: hidden;display: inline-block;padding: 10px; margin: 0 -1px 0 0; text-align: center;font-size: 15px; <?php if (@$kid->kids_clothing_gender == 'girls') { ?> background: #ff6c00;border: 1px solid #ff6c00; <?php } else{ ?> border: 1px solid #ccc; <?php }?>">
+                                <?php if (@$kid->kids_clothing_gender == 'girls') { ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                <?php } ?>
+                            <span style="position: relative; z-index: 111;">Girl’s Product</span>
+                            </span>
+                            <span style="position: relative; overflow: hidden;display: inline-block;padding: 10px;text-align: center;border-top-left-radius: 3px;border-bottom-right-radius: 3px;font-size: 15px;<?php if (@$kid->kids_clothing_gender == 'boys') { ?>background: #ff6c00;border: 1px solid #ff6c00;<?php } else{ ?> border: 1px solid #ccc; <?php } ?>">
+                                <?php if (@$kid->kids_clothing_gender == 'boys') { ?>
+                                    <img style="width: 17px;width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/print-bg.jpg" alt="">
+                                <?php } ?>
+                            <span style="position: relative; z-index: 111;">Boy’s Product</span></span>
                         </div>
                     </li>
                     <li style="float: right; width:45%;">
