@@ -2,9 +2,9 @@
 <html>
     <head>
         <meta https-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <title><?php echo!empty($pageDetails->meta_title) ? $pageDetails->meta_title : SITE_NAME; ?></title>
-        <?php echo $this->Html->meta('keywords', (empty($pageDetails->meta_keyword) ? '' : $pageDetails->meta_keyword)); ?>
-        <?php echo $this->Html->meta('description', (empty($pageDetails->meta_description) ? '' : $pageDetails->meta_description)); ?>
+        <title><?php echo!empty($title_for_layout) ? $title_for_layout : SITE_NAME; ?></title>
+        <?php echo $this->Html->meta('keywords', (empty($metaKeyword) ? '' : $metaKeyword)); ?>
+        <?php echo $this->Html->meta('description', (empty($metaDescription) ? '' : $metaDescription)); ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?= $this->Url->css('bootstrap.min.css'); ?>" type="text/css">
