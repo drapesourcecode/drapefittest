@@ -338,8 +338,8 @@
     #demo{ padding-top: 14px;}
     .add-new{ cursor: pointer;}
     .form-box-data .date-box input::placeholder {
-text-transform: lowercase !important;
-}
+        text-transform: lowercase !important;
+    }
 </style>
 <style>
     .address
@@ -585,8 +585,8 @@ if ($slug == 'schedule') {
                                 <?php if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 1) { ?>
                                          style='display: block;'
                                      <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '0') { ?>
-                                          style='display: none;'
-                                          <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?>
+                                         style='display: none;'
+                                     <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?>
                                          style='display: block;'
                                      <?php } else { ?>
                                          style='display: none;'
@@ -659,7 +659,7 @@ if ($slug == 'schedule') {
                                 <?php if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 1) { ?>
                                          style='display: block;'
                                      <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '0') { ?>
-                                          style='display: none;'
+                                         style='display: none;'
                                      <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?>
                                          style='display: block;'
                                      <?php } else { ?>
@@ -1200,9 +1200,12 @@ if ($slug == 'reservation') {
                             $('#loaderPyament').hide();
                             $('#msg').html('<p class="alert alert-danger">Your payment is failer.You will try to again</p>');
                             $('.apply_card').removeAttr("disabled");
-                        } else {
+                        } 
+                        
+                        else if(data['ErrorCode']!='') {
                             $('#loaderPyament').hide();
-                            $('#msg').html('<p class="alert alert-danger">' + data['ErrorCode'] + '</p>');
+                            var errorMessg = getErrorMessgeDetils(data['ErrorCode']);
+                            $('#msg').html('<p class="alert alert-danger">' + errorMessg + '</p>');
                             $('.apply_card').removeAttr("disabled");
                         }
                     }
@@ -1215,6 +1218,7 @@ if ($slug == 'reservation') {
     <div style="display:none;">
         <?php echo $this->Form->create("User", array('data-toggle' => "validator", 'id' => 'paymentForm1')) ?>
         <input type="hidden" name="payableAmount" id="payableAmount" value="20"/>
+        <input type="hidden" name="payment_card_details_id" id="payment_card_details_id" value=""/>
         <input type="hidden" name="card_type" class="card_type" value=""/>
         <input type="text" id="card_number123" name="card_number" class="">
         <input type="text" placeholder="MM" maxlength="5" id="expiry_month123" name="expiry_month">
@@ -1223,7 +1227,7 @@ if ($slug == 'reservation') {
         <input type="text" placeholder="Name on card" id="name_on_card123" name="name_on_card">
         <input  type="submit" name="card_submit" id="cardSubmitBtn" value="Continue..." class="payment-btn" disabled="true" >
         <input type="button" name="card_submit" id="cardSubmitBtn123" value="Back" class="payment-btn" disabled="true" onclick="javascript:history.back();
-                return false;">
+                    return false;">
                <?php echo $this->Form->end(); ?>
     </div>
 
@@ -1521,6 +1525,7 @@ if ($slug == 'reservation') {
                         $('.apply_card').attr("disabled", 'disabled');
                         var expire = result.card_expire;
                         var chars = expire.split('-');
+                        $("#payment_card_details_id").val(getId);
                         $("#card_number").val(result.card_number);
                         $("#card_number123").val(result.card_number);
                         $("#expiry_month123").val(chars[1]);
@@ -3365,6 +3370,37 @@ if ($slug == 'style') {
                                     } elseif ($sections == '') {
                                         echo 'class="active"';
                                     }
+                                    ?>>
+                                        <a <?php if (@$kidname->is_progressbar >= 0) { ?> href="#Section1" aria-controls="home" role="tab" data-toggle="tab"<?php } ?> >Basic Information</a></li>
+                                    <li role="presentation" <?php
+                                    if ($sections == 'fit') {
+                                        echo 'class="active"';
+                                    }
+                                    ?>><a <?php if (@$kidname->is_progressbar >= 25) { ?> href="#Section2" aria-controls="home" role="tab" data-toggle="tab"<?php } else { ?> style="opacity:0.5" <?php } ?>>Style Fit</a></li>
+                                    <li role="presentation"
+                                    <?php
+                                    if ($sections == 'styles') {
+                                        echo 'class="active"';
+                                    }
+                                    ?>
+                                        ><a <?php if (@$kidname->is_progressbar >= 50) { ?> href="#Section3" aria-controls="home" role="tab" data-toggle="tab"<?php } else { ?> style="opacity:0.5" <?php } ?>>Price Range</a></li>
+                                    <li role="presentation" <?php
+                                    if ($sections == 'custom') {
+                                        echo 'class="active"';
+                                    }
+                                    ?>><a <?php if (@$kidname->is_progressbar >= 75) { ?> href="#Section4" aria-controls="home" role="tab" data-toggle="tab"<?php } else { ?> style="opacity:0.5" <?php } ?>>Custom Design & Brands</a></li>
+                                </ul>
+                                
+                                
+                                
+                                <?php /* ?><ul class="nav nav-tabs fixed" role="tablist" id="button-tablist">
+                                    <li role="presentation"
+                                    <?php
+                                    if ($sections == 'stats') {
+                                        echo 'class="active"';
+                                    } elseif ($sections == '') {
+                                        echo 'class="active"';
+                                    }
                                     ?>
 
                                         ><a <?php if (@$kidname->is_progressbar >= 0) { ?>href="#Section1" aria-controls="home" role="tab" data-toggle="tab" <?php } ?>>Basic Information</a></li>
@@ -3374,14 +3410,14 @@ if ($slug == 'style') {
                                         echo 'class="active"';
                                     }
                                     ?> 
-                                        ><a <?php if (@$kidname->is_progressbar >= 25) { ?>href="#Section2" aria-controls="home" role="tab" data-toggle="tab"  <?php } else { ?> style="opacity:0.6" <?php } ?>>Style Fit</a></li>
+                                        ><a <?php if (@$kidname->is_progressbar >= 25) { ?> href="#Section2" aria-controls="home" role="tab" data-toggle="tab"  <?php } else { ?> style="opacity:0.6" <?php } ?>>Style Fit</a></li>
                                     <li role="presentation"
                                     <?php
                                     if ($sections == 'styles') {
                                         echo 'class="active"';
                                     }
                                     ?>
-                                        ><a <?php if (@$kidname->is_progressbar >= 50) { ?>href="#Section3" aria-controls="home" role="tab" data-toggle="tab"  <?php } else { ?> style="opacity:0.6" <?php } ?>>Price Range</a></li>
+                                        ><a <?php if (@$kidname->is_progressbar >= 50) { ?> href="#Section3" aria-controls="home" role="tab" data-toggle="tab"  <?php } else { ?> style="opacity:0.6" <?php } ?>>Price Range</a></li>
                                     <li role="presentation"
                                     <?php
                                     if ($sections == 'custom') {
@@ -3389,7 +3425,7 @@ if ($slug == 'style') {
                                     }
                                     ?>
                                         ><a <?php if (@$kidname->is_progressbar >= 75) { ?>href="#Section4" aria-controls="home" role="tab" data-toggle="tab" <?php } else { ?> style="opacity:0.6" <?php } ?>>Custom Design & Brands</a></li>
-                                </ul>
+                                </ul><?php */ ?>
                             </div>
                             <!-- Tab panes -->
                             <div class="tab-content tabs data-filup ">
@@ -3742,7 +3778,7 @@ if ($slug == 'style') {
                                                                         <option value='6' <?php if (@$KidsSizeFit->top_size == '6') { ?> selected <?php } ?>>6</option>
                                                                         <option value='7' <?php if (@$KidsSizeFit->top_size == '7') { ?> selected <?php } ?>>7</option>
                                                                         <option value='8' <?php if (@$KidsSizeFit->top_size == '8') { ?> selected <?php } ?>>8</option>
-                                                                        <option value='10' <?php if (@$KidsSizeFit->top_size == '9') { ?> selected <?php } ?>>10</option>
+                                                                        <option value='10' <?php if (@$KidsSizeFit->top_size == '10') { ?> selected <?php } ?>>10</option>
                                                                         <option value='12' <?php if (@$KidsSizeFit->top_size == '12') { ?> selected <?php } ?>>12</option>
                                                                         <option value='14' <?php if (@$KidsSizeFit->top_size == '14') { ?> selected <?php } ?>>14</option>
                                                                     </optgroup>
@@ -4292,7 +4328,7 @@ if ($slug == 'style') {
                                                                         <option value='6' <?php if (@$KidsSizeFit->top_size == '6') { ?> selected <?php } ?>>6</option>
                                                                         <option value='7' <?php if (@$KidsSizeFit->top_size == '7') { ?> selected <?php } ?>>7</option>
                                                                         <option value='8' <?php if (@$KidsSizeFit->top_size == '8') { ?> selected <?php } ?>>8</option>
-                                                                        <option value='10' <?php if (@$KidsSizeFit->top_size == '9') { ?> selected <?php } ?>>10</option>
+                                                                        <option value='10' <?php if (@$KidsSizeFit->top_size == '10') { ?> selected <?php } ?>>10</option>
                                                                         <option value='12' <?php if (@$KidsSizeFit->top_size == '12') { ?> selected <?php } ?>>12</option>
                                                                         <option value='14' <?php if (@$KidsSizeFit->top_size == '14') { ?> selected <?php } ?>>14</option>
                                                                     </optgroup>
@@ -6677,7 +6713,7 @@ if ($slug == 'style') {
                                                     <div class="date-box">
                                                         <input id="datepickerWeMen" type="text" placeholder="mm/dd/yyyy" name="duedate" value="<?php
                                                         if (@$SizeChart->expected_due_date != '') {
-                                                            echo date_format($SizeChart->expected_due_date,  'm/d/Y');
+                                                            echo date_format($SizeChart->expected_due_date, 'm/d/Y');
                                                         }
                                                         ?>" autocomplete="off" maxlength="10" >
                                                     </div>
@@ -6891,10 +6927,17 @@ if ($slug == 'style') {
                                                                 }
 
                                                             });
+
                                                             $('.radio-class').click(function () {
                                                                 var divId = $(this).attr('data-div');
-                                                                $('#' + divId).prop('checked', true);
 
+                                                                $('#' + divId).prop('checked', true);
+                                                                
+                                                                   //alert("hi");
+                                                                  // $('.error').hide();
+                                                                   $('label[for="style_sphere_selections_v3_3[]"]').remove();
+                                                                   alert(response);
+                                                               
                                                             });
 
 
@@ -6931,8 +6974,11 @@ if ($slug == 'style') {
                                                         });
                                                     </script>
                                                     <ul>
-                                                        <li>                          
+                                                        <li> 
+                                                            
+                                                            
                                                             <input class="radio-box" data-id="tellus" id="mens25a-1" name="style_sphere_selections_v3_3[]" value="1" type="checkbox" <?php if (isset($style_sphere_selections->style_sphere_selections_v3_3) && in_array('1', explode(',', $style_sphere_selections->style_sphere_selections_v3_3))) { ?> checked <?php } ?>>
+
                                                             <label for="mens25a-1" class="bad">
                                                                 <img src="<?php echo HTTP_ROOT ?>assets/women-img/women-outfit1.jpg" alt="">
                                                             </label>
@@ -8478,8 +8524,8 @@ if ($slug == 'style') {
             },
             'style_sphere_selections_v3_3[]': {
                 required: true,
-                //fieldsOptions:true
-                // minlength: 1
+                //fieldsOptions:true,
+                //minlength: 1
 
 
             },
@@ -8540,7 +8586,9 @@ if ($slug == 'style') {
         },
     });
 
-    $.validator.addMethod("fieldsOptions", function (value, element) {
+    $.validator.addMethod("fieldsOptions", function () {
+
+        alert("sds");
 
         var radios = document.getElementsByName("style_sphere_selections_v3");
         var formValid = false;
@@ -8552,11 +8600,7 @@ if ($slug == 'style') {
             i++;
         }
 
-        if (!formValid) {
-            $.validator.messages.fieldsOptions = "Please chose you atlest one options";
-            formValid = false;
-        }
-        ;
+        //alert(formValid);
         return formValid;
 
     }, $.validator.messages.fieldsOptions);
