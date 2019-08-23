@@ -2385,5 +2385,161 @@ class AppadminsController extends AppController {
         }
         return $this->redirect(HTTP_ROOT);
     }
+    
+    function customerList(){
+        $AllUserList = $this->Users->find('all')->where(['Users.type' => 2]);
+        $this->set(compact('AllUserList'));
+        
+    }
+    function customerPaymentdetails($id){
+        $tablename = TableRegistry::get('PaymentGetways');
+        $getpgDetails = $tablename->find('all')->where(['user_id'=>$id]);
+        $this->set(compact('getpgDetails'));
+    }
+    public function listCustomerDetails($userid = null) {
+        if ($userid) {
+            $this->UserDetails->deleteAll(['user_id' => $userid]);
+            $this->FitCut->deleteAll(['user_id' => $userid]);
+            $this->PaymentGetways->deleteAll(['PaymentGetways.id' => $userid]);
+            $this->Products->deleteAll(['Products.payment_id' => $userid]);
+            $this->MenStats->deleteAll(['user_id' => $userid]);
+            $this->MensBrands->deleteAll(['user_id' => $userid]);
+            $this->MenFit->deleteAll(['user_id' => $userid]);
+            $this->MenStats->deleteAll(['user_id' => $userid]);
+            $this->MenStyle->deleteAll(['user_id' => $userid]);
+            $this->MenStyleSphereSelections->deleteAll(['user_id' => $userid]);
+            $this->KidsDetails->deleteAll(['user_id' => $userid]);
+            $this->TypicallyWearMen->deleteAll(['user_id' => $userid]);
+            $this->ShippingAddress->deleteAll(['user_id' => $userid]);
+            $this->YourProportions->deleteAll(['user_id' => $userid]);
+            $this->CustomerProductReview->deleteAll(['user_id' => $userid]);
+            $this->WomenJeansRise->deleteAll(['user_id' => $userid]);
+            $this->WomenJeansStyle->deleteAll(['user_id' => $userid]);
+            $this->WemenJeansLength->deleteAll(['user_id' => $userid]);
+            $this->WomenPrintsAvoid->deleteAll(['user_id' => $userid]);
+            $this->WomenTypicalPurchaseCloth->deleteAll(['user_id' => $userid]);
+            $this->WomenIncorporateWardrobe->deleteAll(['user_id' => $userid]);
+            $this->WomenFabricsAvoid->deleteAll(['user_id' => $userid]);
+            $this->WomenColorAvoid->deleteAll(['user_id' => $userid]);
+            $this->WomenPrice->deleteAll(['user_id' => $userid]);
+            $this->WomenStyle->deleteAll(['user_id' => $userid]);
+            $this->WomenInformation->deleteAll(['user_id' => $userid]);
+            $this->WomenRatherDownplay->deleteAll(['user_id' => $userid]);
+            $this->PersonalizedFix->deleteAll(['user_id' => $userid]);
+            $this->LetsPlanYourFirstFix->deleteAll(['user_id' => $userid]);
+            $this->KidsDetails->deleteAll(['user_id' => $userid]);
+            $this->KidsPersonality->deleteAll(['user_id' => $userid]);
+            $this->KidsPrimary->deleteAll(['user_id' => $userid]);
+            $this->KidsSizeFit->deleteAll(['user_id' => $userid]);
+            $this->KidClothingType->deleteAll(['user_id' => $userid]);
+            $this->KidStyles->deleteAll(['user_id' => $userid]);
+            $this->KidsPricingShoping->deleteAll(['user_id' => $userid]);
+            $this->KidPurchaseClothing->deleteAll(['user_id' => $userid]);
+            $this->Users->deleteAll(['id' => $userid]);
+        }
+        $this->Flash->success(__('Data has been deleted successfully.'));
+        $this->redirect(HTTP_ROOT . 'appadmins/customer_list');
+    }
+    
+    function blockCustomerList(){
+        $AllUserList = $this->Users->find('all')->where(['Users.type' => 2,'Users.is_active' => 0]);
+        $this->set(compact('AllUserList'));
+    }
+    public function blockCustomerDetails($userid = null) {
+        if ($userid) {
+            $this->UserDetails->deleteAll(['user_id' => $userid]);
+            $this->FitCut->deleteAll(['user_id' => $userid]);
+            $this->PaymentGetways->deleteAll(['PaymentGetways.id' => $userid]);
+            $this->Products->deleteAll(['Products.payment_id' => $userid]);
+            $this->MenStats->deleteAll(['user_id' => $userid]);
+            $this->MensBrands->deleteAll(['user_id' => $userid]);
+            $this->MenFit->deleteAll(['user_id' => $userid]);
+            $this->MenStats->deleteAll(['user_id' => $userid]);
+            $this->MenStyle->deleteAll(['user_id' => $userid]);
+            $this->MenStyleSphereSelections->deleteAll(['user_id' => $userid]);
+            $this->KidsDetails->deleteAll(['user_id' => $userid]);
+            $this->TypicallyWearMen->deleteAll(['user_id' => $userid]);
+            $this->ShippingAddress->deleteAll(['user_id' => $userid]);
+            $this->YourProportions->deleteAll(['user_id' => $userid]);
+            $this->CustomerProductReview->deleteAll(['user_id' => $userid]);
+            $this->WomenJeansRise->deleteAll(['user_id' => $userid]);
+            $this->WomenJeansStyle->deleteAll(['user_id' => $userid]);
+            $this->WemenJeansLength->deleteAll(['user_id' => $userid]);
+            $this->WomenPrintsAvoid->deleteAll(['user_id' => $userid]);
+            $this->WomenTypicalPurchaseCloth->deleteAll(['user_id' => $userid]);
+            $this->WomenIncorporateWardrobe->deleteAll(['user_id' => $userid]);
+            $this->WomenFabricsAvoid->deleteAll(['user_id' => $userid]);
+            $this->WomenColorAvoid->deleteAll(['user_id' => $userid]);
+            $this->WomenPrice->deleteAll(['user_id' => $userid]);
+            $this->WomenStyle->deleteAll(['user_id' => $userid]);
+            $this->WomenInformation->deleteAll(['user_id' => $userid]);
+            $this->WomenRatherDownplay->deleteAll(['user_id' => $userid]);
+            $this->PersonalizedFix->deleteAll(['user_id' => $userid]);
+            $this->LetsPlanYourFirstFix->deleteAll(['user_id' => $userid]);
+            $this->KidsDetails->deleteAll(['user_id' => $userid]);
+            $this->KidsPersonality->deleteAll(['user_id' => $userid]);
+            $this->KidsPrimary->deleteAll(['user_id' => $userid]);
+            $this->KidsSizeFit->deleteAll(['user_id' => $userid]);
+            $this->KidClothingType->deleteAll(['user_id' => $userid]);
+            $this->KidStyles->deleteAll(['user_id' => $userid]);
+            $this->KidsPricingShoping->deleteAll(['user_id' => $userid]);
+            $this->KidPurchaseClothing->deleteAll(['user_id' => $userid]);
+            $this->Users->deleteAll(['id' => $userid]);
+        }
+        $this->Flash->success(__('Data has been deleted successfully.'));
+        $this->redirect(HTTP_ROOT . 'appadmins/block_customer_list');
+    }
+    function junkCustomerList(){
+        $AllUserList = $this->Users->find('all')->where(['Users.type' => 2,'Users.is_active' => 0]);
+        $this->set(compact('AllUserList'));
+    }
+    public function junkCustomerDetails($userid = null) {
+        if ($userid) {
+            $this->UserDetails->deleteAll(['user_id' => $userid]);
+            $this->FitCut->deleteAll(['user_id' => $userid]);
+            $this->PaymentGetways->deleteAll(['PaymentGetways.id' => $userid]);
+            $this->Products->deleteAll(['Products.payment_id' => $userid]);
+            $this->MenStats->deleteAll(['user_id' => $userid]);
+            $this->MensBrands->deleteAll(['user_id' => $userid]);
+            $this->MenFit->deleteAll(['user_id' => $userid]);
+            $this->MenStats->deleteAll(['user_id' => $userid]);
+            $this->MenStyle->deleteAll(['user_id' => $userid]);
+            $this->MenStyleSphereSelections->deleteAll(['user_id' => $userid]);
+            $this->KidsDetails->deleteAll(['user_id' => $userid]);
+            $this->TypicallyWearMen->deleteAll(['user_id' => $userid]);
+            $this->ShippingAddress->deleteAll(['user_id' => $userid]);
+            $this->YourProportions->deleteAll(['user_id' => $userid]);
+            $this->CustomerProductReview->deleteAll(['user_id' => $userid]);
+            $this->WomenJeansRise->deleteAll(['user_id' => $userid]);
+            $this->WomenJeansStyle->deleteAll(['user_id' => $userid]);
+            $this->WemenJeansLength->deleteAll(['user_id' => $userid]);
+            $this->WomenPrintsAvoid->deleteAll(['user_id' => $userid]);
+            $this->WomenTypicalPurchaseCloth->deleteAll(['user_id' => $userid]);
+            $this->WomenIncorporateWardrobe->deleteAll(['user_id' => $userid]);
+            $this->WomenFabricsAvoid->deleteAll(['user_id' => $userid]);
+            $this->WomenColorAvoid->deleteAll(['user_id' => $userid]);
+            $this->WomenPrice->deleteAll(['user_id' => $userid]);
+            $this->WomenStyle->deleteAll(['user_id' => $userid]);
+            $this->WomenInformation->deleteAll(['user_id' => $userid]);
+            $this->WomenRatherDownplay->deleteAll(['user_id' => $userid]);
+            $this->PersonalizedFix->deleteAll(['user_id' => $userid]);
+            $this->LetsPlanYourFirstFix->deleteAll(['user_id' => $userid]);
+            $this->KidsDetails->deleteAll(['user_id' => $userid]);
+            $this->KidsPersonality->deleteAll(['user_id' => $userid]);
+            $this->KidsPrimary->deleteAll(['user_id' => $userid]);
+            $this->KidsSizeFit->deleteAll(['user_id' => $userid]);
+            $this->KidClothingType->deleteAll(['user_id' => $userid]);
+            $this->KidStyles->deleteAll(['user_id' => $userid]);
+            $this->KidsPricingShoping->deleteAll(['user_id' => $userid]);
+            $this->KidPurchaseClothing->deleteAll(['user_id' => $userid]);
+            $this->Users->deleteAll(['id' => $userid]);
+        }
+        $this->Flash->success(__('Data has been deleted successfully.'));
+        $this->redirect(HTTP_ROOT . 'appadmins/junk_customer_list');
+    }
+    function fundrefund(){
+        $AllUserList = $this->PaymentGetways->find('all')->where(['work_status IN' =>[0,1],'status'=>1])->order(['id'=>'desc']);
+        $this->set(compact('AllUserList'));
+    }
 
 }
