@@ -415,18 +415,60 @@ class CustomHelper extends Helper {
          return $name;    
         }else{
             return "No yet";     
-        }
-      
-    }
-    function requestDate($userId=null,$kid_id=null){
-        $table = TableRegistry::get('DeliverDate');
-       if($kid_id==0){
-        $query = $table->find('all')->where(['user_id' => $userId,'kid_id'=>0])->first()->date_in_time; 
-       }else{
-           $query = $table->find('all')->where(['user_id' => $userId,'kid_id'=>$kid_id])->first()->date_in_time;   
-       }
-       
+        }       
        return $query;
+    }
+    function getPaymentGetwayStatus($id) {
+        $tablename = TableRegistry::get('PaymentGetways');
+        $getstatus = $tablename->find('all')->where(['user_id'=>$id])->extract('status')->toArray();                
+        return $getstatus;
+    }
+    function junkPaymentGetwayStatus($id) {
+        $tablename = TableRegistry::get('PaymentGetways');
+        $getstatus = $tablename->find('all')->where(['user_id'=>$id])->extract('status')->toArray();                
+        return $getstatus;
+       }
+        function kidName($id) {
+        $table = TableRegistry::get('KidsDetails');
+        $query = $table->find('all')->where(['id' => $id])->first();
+        $name = '';
+        if (!empty($query->kids_first_name)) {
+            $name = $query->kids_first_name;
+        }
+        
+        return $name;
+    }
+    
+    function customerName($id) {
+        $table = TableRegistry::get('Users');
+        $query = $table->find('all')->where(['id' => $id])->first();
+        $name = '';
+        if (!empty($query->name)) {
+            $name = $query->name;
+        }
+        
+        return $name;
+    }
+    function customerEmail($id) {
+        $table = TableRegistry::get('Users');
+        $query = $table->find('all')->where(['id' => $id])->first();
+        $email = '';
+        if (!empty($query->email)) {
+            $email = $query->email;
+        }
+        
+        return $email;
+    }
+    function CardDetails($id) {
+        $table = TableRegistry::get('PaymentCardDetails');
+        $query = $table->find('all')->where(['id' => $id])->first();
+        //pj($query); exit;
+        $card_number = '';
+        if (!empty($query->card_number)) {
+            $card_number = $query->card_number;
+        }
+        
+        return $card_number;
     }
 
 }
