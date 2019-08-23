@@ -366,12 +366,12 @@ page[size="A4"] {
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Tell us your skin Tone?</h3>
                 <ul style="float: left; width: 100%; list-style-type: none; margin: 0; padding:0;">
-                    <li style="float: left; width: 100px;height: 100px; <?php if(@$TypicallyWearMen->skin_tone == 1) {?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #fdc8b9; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg1.jpg" alt=""></li>
-                    <li style="float: left; width: 100px;height: 100px; <?php if(@$TypicallyWearMen->skin_tone == 2){ ?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #f0b4a2; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg2.jpg" alt=""></li>
-                    <li style="float: left; width: 100px;height: 100px; <?php if(@$TypicallyWearMen->skin_tone == 3){ ?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #d0967e; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg3.jpg" alt=""></li>
-                    <li style="float: left; width: 100px;height: 100px; <?php if(@$TypicallyWearMen->skin_tone == 4) {?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #c57456; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg4.jpg" alt=""></li>
-                    <li style="float: left; width: 100px;height: 100px; <?php if(@$TypicallyWearMen->skin_tone == 5) {?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #78412a; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg5.jpg" alt=""></li>
-                    <li style="float: left; width: 100px; height: 100px; <?php if(@$TypicallyWearMen->skin_tone == 6){ ?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #e6e6e6; border-radius: 100%; text-align: center; text-transform: uppercase; font-weight: bold; font-size: 12px; padding-top: 35px; box-sizing: border-box; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg6.jpg" alt=""><span style=" position: relative; z-index: 111;">Other</span></li>
+                    <li style="float: left; width: 80px;height: 80px; <?php if(@$TypicallyWearMen->skin_tone == 1) {?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #fdc8b9; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg1.jpg" alt=""></li>
+                    <li style="float: left; width: 80px;height: 80px; <?php if(@$TypicallyWearMen->skin_tone == 2){ ?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #f0b4a2; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg2.jpg" alt=""></li>
+                    <li style="float: left; width: 80px;height: 80px; <?php if(@$TypicallyWearMen->skin_tone == 3){ ?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #d0967e; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg3.jpg" alt=""></li>
+                    <li style="float: left; width: 80px;height: 80px; <?php if(@$TypicallyWearMen->skin_tone == 4) {?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #c57456; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg4.jpg" alt=""></li>
+                    <li style="float: left; width: 80px;height: 80px; <?php if(@$TypicallyWearMen->skin_tone == 5) {?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #78412a; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg5.jpg" alt=""></li>
+                    <li style="float: left; width: 80px; height: 80px; <?php if(@$TypicallyWearMen->skin_tone == 6){ ?> border:4px solid #ff6c00; <?php } else{ ?> border:4px solid #fff; <?php } ?> background: #e6e6e6; border-radius: 100%; text-align: center; text-transform: uppercase; font-weight: bold; font-size: 12px; padding-top: 35px; box-sizing: border-box; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg6.jpg" alt=""><span style=" position: relative; z-index: 111;">Other</span></li>
                 </ul>
             </div>
             <div style="float: left; width: 96%; margin: 50px 0 5%;">Page 2</div>
@@ -1128,11 +1128,11 @@ text-align: center;"><?php echo $this->Custom->removeDoller(@$menSccessories->me
                     <div style="display: inline-block;width: 27%;margin-right: 20px; text-align: center;">
                         <?php if (@$menDesigne->img_1 == '') { ?>
                         <div style="width: 100%; overflow: hidden;">
-                            <img src="<?php echo HTTP_ROOT ?>assets/men-img/mencustomdesign1.jpg" alt="">
+                            <img style=" width: 100%;" src="<?php echo HTTP_ROOT ?>assets/men-img/mencustomdesign1.jpg" alt="">
                         </div>                        
                         <?php } else { ?> 
                             <div style="width: 100%; overflow: hidden;">
-                                <img src="<?php echo HTTP_ROOT . USER_CUSTOM . @$menDesigne->img_1; ?>" alt="">
+                                <img style=" width: 100%;" src="<?php echo HTTP_ROOT . USER_CUSTOM . @$menDesigne->img_1; ?>" alt="">
                             </div>
                         <?php } ?>
                         <h4 style="font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 5px; text-align: center;">First Design</h4>
@@ -1140,11 +1140,11 @@ text-align: center;"><?php echo $this->Custom->removeDoller(@$menSccessories->me
                     <div style="display: inline-block;width: 27%;margin-right: 20px; text-align: center;">
                         <?php if (@$menDesigne->img_2 == '') { ?>
                         <div style="width: 100%; overflow: hidden;">
-                            <img src="<?php echo HTTP_ROOT ?>assets/men-img/mencustomdesign2.jpg" alt="">
+                            <img style=" width: 100%;" src="<?php echo HTTP_ROOT ?>assets/men-img/mencustomdesign2.jpg" alt="">
                         </div>                        
                         <?php } else{ ?>
                             <div style="width: 100%; overflow: hidden;">
-                                <img src="<?php echo HTTP_ROOT . USER_CUSTOM . @$menDesigne->img_2; ?>" alt="">
+                                <img style=" width: 100%;" src="<?php echo HTTP_ROOT . USER_CUSTOM . @$menDesigne->img_2; ?>" alt="">
                             </div>
                         <?php } ?>
                         <h4 style=" font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 5px; text-align: center;">Second Design</h4>
@@ -1152,11 +1152,11 @@ text-align: center;"><?php echo $this->Custom->removeDoller(@$menSccessories->me
                     <div style="display: inline-block;width: 27%;margin-right: 20px; text-align: center;">
                         <?php if (@$menDesigne->img_3 == '') { ?>        
                         <div style="width: 100%; overflow: hidden;">
-                            <img src="<?php echo HTTP_ROOT ?>assets/men-img/mencustomdesign3.jpg" alt="">
+                            <img style=" width: 100%;" src="<?php echo HTTP_ROOT ?>assets/men-img/mencustomdesign3.jpg" alt="">
                         </div>                        
                         <?php } else{ ?>
                             <div style="width: 100%; overflow: hidden;">
-                                <img src="<?php echo HTTP_ROOT . USER_CUSTOM . @$menDesigne->img_3; ?>" alt="">
+                                <img style=" width: 100%;" src="<?php echo HTTP_ROOT . USER_CUSTOM . @$menDesigne->img_3; ?>" alt="">
                             </div>
                         <?php } ?>
                         <h4 style="font-size: 14px; color: #232f3e; margin-bottom: 8px; margin-top: 5px; text-align: center;">Third Design</h4>

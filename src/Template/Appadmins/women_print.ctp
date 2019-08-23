@@ -21,7 +21,7 @@
             display: inline-block;
             margin: 0 auto;
             margin-bottom: 0.5cm;
-            box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+            /*box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);*/
         }
         page[size="A4"]{  
             width: 21cm;
@@ -154,6 +154,7 @@
                     </li>
                 </ul>
             </div>
+            <div style="float: left; width: 96%; margin: 50px 0 20%;">Page 1</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0; margin-bottom: 0;">What size you prefer? </h3>
                 <div style="float: left; width:100%;">
@@ -269,7 +270,7 @@
             </div>
 
 
-
+<div style="float: left; width: 96%; margin: 50px 0 50%;">Page 2</div>
 
 
 
@@ -577,15 +578,16 @@
                         Other</li>
                 </ul>
             </div>
+
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Tell us your skin Tone?</h3>
                 <ul style="float: left; width: 100%; list-style-type: none; margin: 0; padding:0;">
-                    <li style="float: left; width: 100px;height: 100px;  <?php if (@$Womeninfo->skin_tone == 1) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?> background: #fdc8b9; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg1.jpg" alt=""></li>
-                    <li style="float: left; width: 100px;height: 100px;<?php if (@$Womeninfo->skin_tone == 2) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?>; background: #f0b4a2; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg2.jpg" alt=""></li>
-                    <li style="float: left; width: 100px;height: 100px;<?php if (@$Womeninfo->skin_tone == 3) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?> background: #d0967e; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg3.jpg" alt=""></li>
-                    <li style="float: left; width: 100px;height: 100px; <?php if (@$Womeninfo->skin_tone == 4) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?>; background: #c57456; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg4.jpg" alt=""></li>
-                    <li style="float: left; width: 100px;height: 100px; <?php if (@$Womeninfo->skin_tone == 5) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?> background: #78412a; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg5.jpg" alt=""></li>
-                    <li style="float: left; width: 100px; height: 100px;<?php if (@$Womeninfo->skin_tone == 6) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?> background: #e6e6e6; border-radius: 100%; text-align: center; text-transform: uppercase; font-weight: bold; font-size: 12px; padding-top: 35px; box-sizing: border-box; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg6.jpg" alt=""><span style=" position: relative; z-index: 111;">Other</span></li>
+                    <li style="float: left; width: 80px;height: 80px;  <?php if (@$Womeninfo->skin_tone == 1) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?> background: #fdc8b9; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg1.jpg" alt=""></li>
+                    <li style="float: left; width: 80px;height: 80px;<?php if (@$Womeninfo->skin_tone == 2) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?>; background: #f0b4a2; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg2.jpg" alt=""></li>
+                    <li style="float: left; width: 80px;height: 80px;<?php if (@$Womeninfo->skin_tone == 3) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?> background: #d0967e; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg3.jpg" alt=""></li>
+                    <li style="float: left; width: 80px;height: 80px; <?php if (@$Womeninfo->skin_tone == 4) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?>; background: #c57456; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg4.jpg" alt=""></li>
+                    <li style="float: left; width: 80px;height: 80px; <?php if (@$Womeninfo->skin_tone == 5) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?> background: #78412a; border-radius: 100%; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg5.jpg" alt=""></li>
+                    <li style="float: left; width: 80px; height: 80px;<?php if (@$Womeninfo->skin_tone == 6) { ?> border:4px solid #ff6c00; <?php } else { ?> border:4px solid #fff;   <?php } ?> background: #e6e6e6; border-radius: 100%; text-align: center; text-transform: uppercase; font-weight: bold; font-size: 12px; padding-top: 35px; box-sizing: border-box; position: relative; overflow: hidden;"><img style="width: 100px;position: absolute;left: 0;top: 0;z-index: 1;" src="<?php echo HTTP_ROOT ?>assets/images/tone-bg6.jpg" alt=""><span style=" position: relative; z-index: 111;">Other</span></li>
                 </ul>
             </div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
@@ -690,6 +692,7 @@
                     </div>
                 </div>
             </div>
+            <div style="float: left; width: 100%; margin: 0px 0 0;">Page 3</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <div style="float: left;width: 45%;">
                     <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Are you a pregnant?</h3>
@@ -803,6 +806,7 @@
                     </div>
                 </div>
             </div>
+            <div style="float: left; width: 100%; margin: 50px 0 5%;">Page 4</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Style Inspiration</h3>
                 <p style="margin-top: 0;color: #8c8c8c;font-size: 15px;">Are you looking to incorporate more of the styles below into your wardrobe? Select the styles below that you inspire to look like or would like to explore.</p>
@@ -1081,7 +1085,7 @@
                             </ul> 
                         </div>
                     </li>
-                    
+                    <div style="float: left; width: 100%; margin: 30px 0 5%; text-align: center;">Page 5</div>
                     <li style=" float: left; width: 32%;margin-right: 7px;margin-top: 10px;margin-bottom: 10px;">
                         <div style=" float: left; width: 140px; <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('7', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?> border: 1px solid #ff6c00; <?php } else {?> border: 1px solid #ccc;<?php } ?> text-align: center; position: relative; padding: 3px 3px 0; box-sizing: border-box;">
                           <?php if (isset($style_sphere_selectionsWemen->style_sphere_selections_v3_3) && in_array('7', explode(',', $style_sphere_selectionsWemen->style_sphere_selections_v3_3))) { ?>
@@ -1204,6 +1208,7 @@
                     </li>
                 </ul>
             </div>
+             <div style="float: left; width: 100%; margin: 50px 0 10%;">Page 6</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;margin-bottom: 0;">Tell Us Which Color do you want to prefer?      </h3>
                 <ul style="float: left; width: 100%; margin: 0; padding: 0; list-style-type: none;">
@@ -1382,6 +1387,7 @@
 
                 </ul>
             </div>
+            <div style="float: left; width: 100%; margin: 50px 0 30%;">Page 7</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Would you wear any of these denim styles?</h3>
                 <ul style="float: left; width: 100%; margin: 0; padding:0;">
@@ -1628,6 +1634,7 @@
                     </ul>
                 </div>
             </div>
+            <div style="float: left; width: 100%; margin: 50px 0 12%;">Page 8</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0; margin-bottom: 0;">Help Us to Know your Budget </h3>
                 <div style="float: left; width: 100%;">
@@ -1983,9 +1990,9 @@
                         <div style="width: 100%; overflow: hidden;">
 
                             <?php if (@$wemenDesigne->img_1 == '') { ?>
-                                <img src="<?php echo HTTP_ROOT ?>assets/women-img/Women-costum1.jpg" alt="">
+                                <img style="width: 100%;"> src="<?php echo HTTP_ROOT ?>assets/women-img/Women-costum1.jpg" alt="">
                             <?php } else { ?>
-                                <img   src="<?php echo HTTP_ROOT . USER_CUSTOM . @$wemenDesigne->img_1; ?>" alt="">
+                                <img style="width: 100%;" src="<?php echo HTTP_ROOT . USER_CUSTOM . @$wemenDesigne->img_1; ?>" alt="">
                             <?php } ?>
 
                         </div>
@@ -1996,9 +2003,9 @@
 
 
                             <?php if (@$wemenDesigne->img_2 == '') { ?>
-                                <img src="<?php echo HTTP_ROOT ?>assets/women-img/Women-costum2.jpg" alt="">
+                                <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/women-img/Women-costum2.jpg" alt="">
                             <?php } else { ?>
-                                <img   src="<?php echo HTTP_ROOT . USER_CUSTOM . @$wemenDesigne->img_2; ?>" alt="">
+                                <img style="width: 100%;" src="<?php echo HTTP_ROOT . USER_CUSTOM . @$wemenDesigne->img_2; ?>" alt="">
                             <?php } ?>
 
                         </div>
@@ -2007,9 +2014,9 @@
                     <div style="display: inline-block;width: 27%;margin-right: 20px;text-align: center;">
                         <div style="width: 100%; overflow: hidden;">
                             <?php if (@$wemenDesigne->img_3 == '') { ?>
-                                <img src="<?php echo HTTP_ROOT ?>assets/women-img/Women-costum3.jpg" alt="">
+                                <img style="width: 100%;" src="<?php echo HTTP_ROOT ?>assets/women-img/Women-costum3.jpg" alt="">
                             <?php } else { ?>
-                                <img   src="<?php echo HTTP_ROOT . USER_CUSTOM . @$wemenDesigne->img_3; ?>" alt="">
+                                <img style="width: 100%;" src="<?php echo HTTP_ROOT . USER_CUSTOM . @$wemenDesigne->img_3; ?>" alt="">
                             <?php } ?>
 
                         </div>
@@ -2017,6 +2024,7 @@
                     </div>
                 </div>
             </div>
+            <div style="float: left; width: 100%; margin: 40px 0 20px;">Page 9</div>
             <div style="float: left; width: 95%; margin-bottom: 0; padding: 25px 0 30px; border-bottom: 1px solid #d2d6de; text-align: left;">
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Brand or store you prefer to shop ? </h3>
                 <ul style=" float: left; width:100%; margin: 0; padding: 0; list-style-type:  none;">
@@ -2248,6 +2256,7 @@
                 <h3 style="color: #232f3e;font-size: 17px; margin-top: 0;">Add additional comments</h3>
                 <p style="margin-top: 0;color: #8c8c8c;font-size: 13px; margin-bottom: 0;"><?php echo @$Womenstyle->profile_note; ?></p>
             </div>
+            <div style="float: left; width: 100%; margin: 40px 0 20px;">Page 10</div>
             <div class="pagebreak"> </div>
         </div>
     </page>
