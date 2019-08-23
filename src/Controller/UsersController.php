@@ -291,14 +291,32 @@ class UsersController extends AppController {
     }
 
     public function men() {
+        $title_for_layout = "Stylish Men’s Clothing|Men’s Fashion wear at Best prices | Drape fit";
+        $metaKeyword = "Men's Clothing, Men's Cloth, Mens Fashion, Monthly Subscription Boxes for Men, personal stylist for mens, men's subscription box, Online Shopping for Men, mens outfit subscription, Shop Men's Clothes, Online Shopping for Men, Mens Fashion clothing, Men's Style & Fashion, men clothing styles";
+        $metaDescription = "Browse the wide range of latest Men’s fashion clothing with top brands and find the perfect fit for you! Complete your Style FIT and get an expert personal stylist for you! No hidden cost and shipping is always free!";
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout'));
+        $this->viewBuilder()->layout('default');
         
     }
 
     public function women() {
+         $title_for_layout = "Women’s Fashion |Women’s Stylish Clothing for every Occasions| Drape fit";
+        $metaKeyword = "Women's Clothing, Women's Clothes, Personal Stylist For women, women's fashion, Online Shopping for Women, Subscription Boxes for Women, women's personal stylist clothing, womens fashion box, women's personal stylist box, women's fashion subscription box, womens fashion box, Women's Clothes Online, Best Clothing Boxes, Personal Stylist For women";
+        $metaDescription = "Get the trendiest women’s fashion collections here! Shop from the huge range of handpicked fashion clothing for women with pocket friendly deals! Complete your Style FIT and get the complete style fit box";
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout'));
+        
+        $this->viewBuilder()->layout('default');
         
     }
 
     public function kids() {
+         $title_for_layout = "Kid’s clothing| Kid’s Fashion at very cheapest price| Drape fit";
+         
+        $metaKeyword = "Kids Clothing, kid's cloth, Kids Clothing Box, Kids subscription box, baby clothes, Kids Wear, Kids Dresses, Kids' Fashion, Kids and Baby Clothing, Kids Wear Online, Kids clothing subscription box, subscription boxes for children, kids clothes online, kids dress collection, kids dress design";
+        
+        $metaDescription = "Now it’s time for upgrade your children’s wardrobe with these trendy and cute kids fashion clothing with top brands! Give your kids a new fashion look at great deals! Shop more and enjoy free shipping worldwide!";
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout'));
+        $this->viewBuilder()->layout('default');
         
     }
 
@@ -586,7 +604,19 @@ class UsersController extends AppController {
     }
 
     public function index($slug = null) {
+        $title_for_layout = "Get Men’s Cloth, Women’s Cloth, and Kids Cloth at Great Deals| Drape fit";
+        $metaKeyword = "Personal Style, Women's Fashion,Men's Clothing, Women's Clothing,Kids Clothing,men's Clothing Boxes, women's lothes,men's subscription box, men's cloths,mens outfit subscription, Personal Stylist For women, womens fashion box, Kids Clothing Box, Kids clothing subscription box, kid's clothes sale, Kids Clothing Box,Shop Men's Clothes";
+        $metaDescription = "Now upgrade your Personal style with the best fashion site in the world! Get the latest fashion clothing for men, women and kids that fit with your age, size, and budget. Enjoy free shipping worldwide";
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout'));
+        
         $this->viewBuilder()->layout('default');
+        
+        
+        
+        
+        
+        
+        
         if ($this->request->session()->read('Auth.User.id') != '') {
             return $this->redirect(HTTP_ROOT . 'calendar-sechedule');
         }
@@ -2580,31 +2610,33 @@ class UsersController extends AppController {
         extract($arr_data);
 
         /* Create a merchantAuthenticationType object with authentication details
-          retrieved from the constants file */
-        $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-        $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
-        $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
+       retrieved from the constants file */
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
+    $refId = 'ref' . time();
 
-// Set the transaction's refId
-        $refId = 'ref' . time();
-
-// Create the payment data for a credit card
-        $creditCard = new AnetAPI\CreditCardType();
-        $creditCard->setCardNumber($card_number);
+    // Create the payment data for a credit card
+    $creditCard = new AnetAPI\CreditCardType();
+    $creditCard->setCardNumber($card_number);
         $creditCard->setExpirationDate($exp_date);
         $creditCard->setCardCode($card_code);
 
-// Add the payment data to a paymentType object
-        $paymentOne = new AnetAPI\PaymentType();
-        $paymentOne->setCreditCard($creditCard);
+    // Add the payment data to a paymentType object
+    $paymentOne = new AnetAPI\PaymentType();
+    $paymentOne->setCreditCard($creditCard);
 
-// Create order information
-        $order = new AnetAPI\OrderType();
-        $order->setInvoiceNumber($invice);
-        $order->setDescription($product);
+    // Create order information
+    $order = new AnetAPI\OrderType();
+    $order->setInvoiceNumber($invice);
+    $order->setDescription($product);
+    // $order->setInvoiceNumber("10101");
+    // $order->setDescription("Golf Shirts");
 
-// Set the customer's Bill To address
-        $customerAddress = new AnetAPI\CustomerAddressType();
+    // Set the customer's Bill To address
+    $customerAddress = new AnetAPI\CustomerAddressType();
         $customerAddress->setFirstName($first_name);
         $customerAddress->setLastName($last_name);
         $customerAddress->setCompany($companyName);
@@ -2614,49 +2646,51 @@ class UsersController extends AppController {
         $customerAddress->setZip($zip);
         $customerAddress->setCountry($country);
 
-// Set the customer's identifying information
-        $customerData = new AnetAPI\CustomerDataType();
-        $customerData->setType("individual");
-        $customerData->setId('5434343');
-        $customerData->setEmail($email);
+    // Set the customer's identifying information
+    $customerData = new AnetAPI\CustomerDataType();
+    $customerData->setType("individual");
+    $customerData->setId("99999456654");
+    $customerData->setEmail($email);
+    //$customerData->setEmail("EllenJohnson@example.com");
 
-// Add values for transaction settings
-        $duplicateWindowSetting = new AnetAPI\SettingType();
-        $duplicateWindowSetting->setSettingName("duplicateWindow");
-        $duplicateWindowSetting->setSettingValue("60");
+    // Add values for transaction settings
+    $duplicateWindowSetting = new AnetAPI\SettingType();
+    $duplicateWindowSetting->setSettingName("duplicateWindow");
+    $duplicateWindowSetting->setSettingValue("60");
 
-// Add some merchant defined fields. These fields won't be stored with the transaction,
-// but will be echoed back in the response.
-        $merchantDefinedField1 = new AnetAPI\UserFieldType();
-        $merchantDefinedField1->setName("customerLoyaltyNum");
-        $merchantDefinedField1->setValue("1128836273");
+    // Add some merchant defined fields. These fields won't be stored with the transaction,
+    // but will be echoed back in the response.
+    $merchantDefinedField1 = new AnetAPI\UserFieldType();
+    $merchantDefinedField1->setName("Drapefit Inc");
+    $merchantDefinedField1->setValue("2093065");
 
-        $merchantDefinedField2 = new AnetAPI\UserFieldType();
-        $merchantDefinedField2->setName("favoriteColor");
-        $merchantDefinedField2->setValue("blue");
+    $merchantDefinedField2 = new AnetAPI\UserFieldType();
+    $merchantDefinedField2->setName("favoriteColor");
+    $merchantDefinedField2->setValue("blue");
 
-// Create a TransactionRequestType object and add the previous objects to it
-        $transactionRequestType = new AnetAPI\TransactionRequestType();
-        $transactionRequestType->setTransactionType("authOnlyTransaction");
-        $transactionRequestType->setAmount($amount);
-        $transactionRequestType->setOrder($order);
-        $transactionRequestType->setPayment($paymentOne);
-        $transactionRequestType->setBillTo($customerAddress);
-        $transactionRequestType->setCustomer($customerData);
-        $transactionRequestType->addToTransactionSettings($duplicateWindowSetting);
-        $transactionRequestType->addToUserFields($merchantDefinedField1);
-        $transactionRequestType->addToUserFields($merchantDefinedField2);
+    // Create a TransactionRequestType object and add the previous objects to it
+    $transactionRequestType = new AnetAPI\TransactionRequestType();
+    $transactionRequestType->setTransactionType("authOnlyTransaction"); 
+    $transactionRequestType->setAmount($amount);
+    $transactionRequestType->setOrder($order);
+    $transactionRequestType->setPayment($paymentOne);
+    $transactionRequestType->setBillTo($customerAddress);
+    $transactionRequestType->setCustomer($customerData);
+    $transactionRequestType->addToTransactionSettings($duplicateWindowSetting);
+    $transactionRequestType->addToUserFields($merchantDefinedField1);
+    $transactionRequestType->addToUserFields($merchantDefinedField2);
 
-// Assemble the complete transaction request
-        $request = new AnetAPI\CreateTransactionRequest();
-        $request->setMerchantAuthentication($merchantAuthentication);
-        $request->setRefId($refId);
-        $request->setTransactionRequest($transactionRequestType);
+    // Assemble the complete transaction request
+    $request = new AnetAPI\CreateTransactionRequest();
+    $request->setMerchantAuthentication($merchantAuthentication);
+    $request->setRefId($refId);
+    $request->setTransactionRequest($transactionRequestType);
 
-// Create the controller and get the response
-        $controller = new AnetController\CreateTransactionController($request);
-        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
-//pr($response->getMessages()->getResultCode());
+    // Create the controller and get the response
+    $controller = new AnetController\CreateTransactionController($request);
+    //$response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
+    $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+
 
         $msg = array();
 
@@ -2732,55 +2766,38 @@ class UsersController extends AppController {
         $data['price'] = $data['payableAmount'];
         $data['profile_type'] = $profile_type;
         $data['status'] = 0;
-
+        $data['payment_card_details_id'] = $data['payment_card_details_id'];
         $data['created_dt'] = date('Y-m-d H:i:s');
         $data['count'] = $paymentCount + 1;
         $newEntity = $this->PaymentGetways->patchEntity($newEntity, $data);
-//pj($data); exit;
+        //pj($data); exit;
         $PaymentIdlast = $this->PaymentGetways->save($newEntity);
-
-
-        $newEntityCard = $this->PaymentCardDetails->newEntity();
-//        if ($data['isSaveCard'] == 1) {
-//            $isSaveCard = 1;
-//        } else {
-//            $isSaveCard = 0;
-//        }
-//pj($data);exit();
-        $isSaveCard = 1;
-        $data1['is_save'] = $isSaveCard;
-        $data1['user_id'] = $this->Auth->user('id');
-        $data1['card_name'] = $data['name_on_card'];
-        $data1['card_number'] = $data['card_number'];
-        $data1['card_expire'] = $data['expiry_year'] . '-' . $data['expiry_month'];
-        $data1['card_type'] = $data['card_type'];
-        $data1['cvv'] = $data['cvv'];
-
-//        $newEntityCard = $this->PaymentCardDetails->patchEntity($newEntityCard, $data1);
-//        $cardDetails = $this->PaymentCardDetails->save($newEntityCard);
-
         $paymentId = $PaymentIdlast->id;
         $this->request->session()->write('PYMID', $paymentId);
         $userData = $this->UserDetails->find('all')->where(['UserDetails.user_id' => $this->Auth->user('id')])->first();
         $exitdata = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $this->Auth->user('id')])->first();
+        $billingAddress = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $this->Auth->user('id'),'is_billing'=>1])->first();
+        
+        
+        
 
         $arr_user_info = [
             'card_number' => $data['card_number'],
             'exp_date' => $data['expiry_year'] . '-' . $data['expiry_month'],
             'card_code' => $data['cvv'],
             'product' => 'Test Plugin',
-            'first_name' => $userData->first_name,
-            'last_name' => $userData->last_name,
-            'address' => '101 main street',
-            'city' => 'Pecan Springs',
-            'state' => 'TX',
-            'zip' => '44628',
-            'country' => 'USA',
+            'first_name' => $billingAddress->full_name,
+            'last_name' => $billingAddress->full_name,
+            'address' => $billingAddress->address,
+            'city' => $billingAddress->city,
+            'state' => $billingAddress->state,
+            'zip' => $billingAddress->zipcode,
+            'country' => $billingAddress->country,
             'email' => $this->Auth->user('email'),
             'amount' => $data['payableAmount'],
-            'invice' => '22222',
+            'invice' =>$paymentId,
             'refId' => $paymentId,
-            'companyName' => 'microfinet',
+            'companyName' => 'Drapefit',
         ];
 
 
@@ -2791,33 +2808,33 @@ class UsersController extends AppController {
         } else if (@$message['status'] == '1') {
 //check for any invite request has been created 
             $getId = $this->Auth->user('id');
-            $count = $this->ReferFriends->find('all')->where(['ReferFriends.my_link_with_uniq_no' => $this->request->getCookie('refer_time'), 'ReferFriends.reffer_id' => $getId, 'ReferFriends.paid_status' => 0])->count();
+           // $count = $this->ReferFriends->find('all')->where(['ReferFriends.my_link_with_uniq_no' => $this->request->getCookie('refer_time'), 'ReferFriends.reffer_id' => $getId, 'ReferFriends.paid_status' => 0])->count();
 
 
 
 
-            if ($count >= 1) {
-
-                $getFriends = $this->Settings->find('all')->where(['Settings.name' => 'inviteFrinds'])->first();
-                $walletsEn = $this->Wallets->newEntity();
-                $walletsEn->user_id = $this->Auth->user('id');
-                $walletsEn->type = 2;
-                $walletsEn->balance = $getFriends->value;
-                $walletsEn->created = date('Y-m-d h:i:s');
-                $walletsEn->applay_status = 0;
-
-                if ($this->Wallets->save($walletsEn)) {
-                    $getDetails = $this->ReferFriends->find('all')->where(['ReferFriends.my_link_with_uniq_no' => $this->request->getCookie('refer_time'), 'ReferFriends.reffer_id' => $getId, 'ReferFriends.paid_status' => 0])->first();
-                    $walletsEnRE = $this->Wallets->newEntity();
-                    $walletsEnRE->user_id = $getDetails->user_id;
-                    $walletsEnRE->type = 2;
-                    $walletsEnRE->balance = $getFriends->value;
-                    $walletsEnRE->created = date('Y-m-d h:i:s');
-                    $walletsEn->applay_status = 0;
-                    $this->Wallets->save($walletsEnRE);
-                    $this->ReferFriends->updateAll(['paid_status' => 1], ['my_link_with_uniq_no' => $this->request->getCookie('refer_time')]);
-                }
-            }
+//            if ($count >= 1) {
+//
+//                $getFriends = $this->Settings->find('all')->where(['Settings.name' => 'inviteFrinds'])->first();
+//                $walletsEn = $this->Wallets->newEntity();
+//                $walletsEn->user_id = $this->Auth->user('id');
+//                $walletsEn->type = 2;
+//                $walletsEn->balance = $getFriends->value;
+//                $walletsEn->created = date('Y-m-d h:i:s');
+//                $walletsEn->applay_status = 0;
+//
+//                if ($this->Wallets->save($walletsEn)) {
+//                    $getDetails = $this->ReferFriends->find('all')->where(['ReferFriends.my_link_with_uniq_no' => $this->request->getCookie('refer_time'), 'ReferFriends.reffer_id' => $getId, 'ReferFriends.paid_status' => 0])->first();
+//                    $walletsEnRE = $this->Wallets->newEntity();
+//                    $walletsEnRE->user_id = $getDetails->user_id;
+//                    $walletsEnRE->type = 2;
+//                    $walletsEnRE->balance = $getFriends->value;
+//                    $walletsEnRE->created = date('Y-m-d h:i:s');
+//                    $walletsEn->applay_status = 0;
+//                    $this->Wallets->save($walletsEnRE);
+//                    $this->ReferFriends->updateAll(['paid_status' => 1], ['my_link_with_uniq_no' => $this->request->getCookie('refer_time')]);
+//                }
+//            }
 
             echo json_encode($message);
             $this->paymentMailSending($message);
@@ -2831,7 +2848,11 @@ class UsersController extends AppController {
 
     public function paymentMailSending($message = null) {
         $updateId = $this->request->session()->read('PYMID');
-        $this->PaymentGetways->updateAll(['status' => 1, 'payment_type' => 1], ['id' => $updateId]);
+        
+        
+        
+        
+        $this->PaymentGetways->updateAll(['status' => 1, 'transactions_id ' =>$message['TransId']], ['id' => $updateId]);
         $paymentDetails = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $updateId])->first();
         $checkUser = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $updateId, 'PaymentGetways.payment_type' => 1])->first();
         if ($checkUser->payment_type == 1) {
@@ -3488,7 +3509,8 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $data = $this->request->data;
             if (@$this->request->session()->read('PROFILE') == 'KIDS') {
-
+                $kid=$this->request->session()->read('KID_ID');
+                $profileType=3;
                 $this->Notifications->updateAll(['is_read' => 1], ['kid_id' => @$this->request->session()->read('KID_ID')]);
                 $getUsersDetails = $this->KidsDetails->find('all')->where(['id' => @$this->request->session()->read('KID_ID')])->first();
                 $paymentId = $this->PaymentGetways->find('all')->where(['kid_id' => @$this->request->session()->read('KID_ID'), 'payment_type' => 1, 'mail_status' => 1, 'work_status' => '1'])->order(['id' => 'DESC'])->first()->id;
@@ -3496,7 +3518,16 @@ class UsersController extends AppController {
                 $this->Products->belongsTo('KidsDetails', ['className' => 'KidsDetails', 'foreignKey' => 'kid_id']);
                 $prData = $this->Products->find('all')->contain(['KidsDetails'])->where(['Products.kid_id' => @$this->request->session()->read('KID_ID'), 'Products.kid_id !=' => 0, 'Products.checkedout' => 'N', 'Products.payment_id' => $paymentId]);
                 $kidcount = $prData->count();
-            } else {
+            } 
+            else  {
+                $kid=0;
+                
+                if($this->request->session()->read('PROFILE')=='WOMEN'){
+                     $profileType=2;
+                }else{
+                    $profileType=1; 
+                }
+                
                 $this->Notifications->updateAll(['is_read' => 1], ['user_id' => $this->Auth->user('id'), 'kid_id' => 0]);
                 $this->Users->hasOne('UserDetails', ['className' => 'UserDetails', 'foreignKey' => 'user_id']);
                 $getUsersDetails = $this->Users->find('all')->contain(['UserDetails'])->where(['Users.id' => $this->Auth->user('id')])->first();
@@ -3526,19 +3557,34 @@ class UsersController extends AppController {
                     $paymentGetwayAmount = $data['stotal'] + $data['promoprice'];
                 }
 
+                $billingAddress = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $this->Auth->user('id'),'is_billing'=>1])->first();
 
-
+                
+                
+                 $paymentG = $this->PaymentGetways->newEntity();
+                $table1['user_id'] = $this->Auth->user('id');
+                $table1['kid_id'] = $kid;
+                $table1['emp_id'] = 0;
+                $table1['status'] = 0;
+                $table1['price'] = $paymentGetwayAmount;
+                $table1['profile_type'] = $profileType;
+                $table1['payment_type'] = 2;
+                $table1['created_dt'] = date('Y-m-d H:i:s');
+                $paymentG = $this->PaymentGetways->patchEntity($paymentG, $table1);
+                $lastPymentg = $this->PaymentGetways->save($paymentG); 
+                
+                
                 $arr_user_info = [
                     'card_number' => $payment_data->card_number,
                     'exp_date' => $payment_data->card_expire,
                     'card_code' => "" . $payment_data->cvv,
-                    'product' => 'Payment data',
-                    'first_name' => $userData->first_name,
-                    'last_name' => $userData->last_name,
-                    'address' => $payment_address->address,
-                    'city' => $payment_address->city,
-                    'state' => $payment_address->state,
-                    'zip' => $payment_address->zipcode,
+                    'product' => 'Check out order',
+                    'first_name' => $billingAddress->full_name,
+                    'last_name' => $billingAddress->full_name,
+                    'address' => $billingAddress->address,
+                    'city' => $billingAddress->city,
+                    'state' => $billingAddress->state,
+                    'zip' => $billingAddress->zipcode,
                     'country' => 'USA',
                     'email' => $this->Auth->user('email'),
                     'amount' => $paymentGetwayAmount,
@@ -3554,7 +3600,7 @@ class UsersController extends AppController {
 
             if ($message['status'] == '1') {
 
-
+                $this->PaymentGetways->updateAll(['status' => 1, 'transactions_id ' =>$message['TransId']], ['id' => $lastPymentg->id]);
                 if (@$data['promoprice'] != '') {
                     $walletsEnRE = $this->Wallets->newEntity();
                     $walletsEnRE->user_id = $this->request->session()->read('Auth.User.id');
@@ -3765,16 +3811,7 @@ class UsersController extends AppController {
 
 
 
-                $paymentG = $this->PaymentGetways->newEntity();
-                $table1['user_id'] = $this->Auth->user('id');
-                $table1['emp_id'] = 0;
-                $table1['status'] = 1;
-                $table1['price'] = $price;
-                $table1['profile_type'] = 0;
-                $table1['payment_type'] = 2;
-                $table1['created_dt'] = date('Y-m-d H:i:s');
-                $paymentG = $this->PaymentGetways->patchEntity($paymentG, $table1);
-                $lastPymentg = $this->PaymentGetways->save($paymentG);
+                
 
                 $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
                 $to = $this->Auth->user('email');
@@ -3793,7 +3830,10 @@ class UsersController extends AppController {
 
                 return $this->redirect(HTTP_ROOT . 'payment-success');
             } else {
-                $this->Flash->error(__($message['ErrorCode']));
+                
+                $getErrorMeg = $this->Custom->getAllMeg($message['ErrorCode']);
+                $this->Flash->error(__($getErrorMeg));
+                
                 return $this->redirect(HTTP_ROOT . 'customer-order-review');
             }
         }
@@ -5703,7 +5743,7 @@ class UsersController extends AppController {
 
                         $newEntity1 = $this->KidsSizeFit->patchEntity($newEntity1, $data1);
                         $this->KidsSizeFit->save($newEntity1);
-                        $this->KidsDetails->updateAll(['is_progressbar' => 75], ['id' => $kidId]);
+                        $this->KidsDetails->updateAll(['is_progressbar' => 50], ['id' => $kidId]);
                     } else {
                         $this->KidsSizeFit->updateAll([
                             'top_size' => $data['top_size'],
@@ -5740,6 +5780,7 @@ class UsersController extends AppController {
                         $data2['user_id'] = $userId;
                         $data2['kid_id'] = $kidId;
                         $data2['stripes'] = $data['stripes'];
+                        $data2['floral'] = $data['floral'];
                         $data2['plaid'] = $data['plaid'];
                         $data2['polkadots'] = $data['polkadots'];
                         $data2['camo'] = $data['camo'];
@@ -5748,7 +5789,7 @@ class UsersController extends AppController {
 
                         $newEntity = $this->KidClothingType->patchEntity($newEntity, $data2);
                         $this->KidClothingType->save($newEntity);
-                        $this->KidsDetails->updateAll(['is_progressbar' => 100], ['id' => $kidId]);
+                        //$this->KidsDetails->updateAll(['is_progressbar' => 100], ['id' => $kidId]);
                     } else {
                         $this->KidClothingType->updateAll([
                             'stripes' => $data['stripes'],
