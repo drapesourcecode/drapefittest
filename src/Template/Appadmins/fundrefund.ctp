@@ -20,6 +20,7 @@
                                     <th>Email</th>
                                     <th>Profile Gender</th>
                                     <th>Profile Count</th>
+                                    <th>Transactions id</th>
                                     <th>Amount</th>
                                     <th>Order Type</th>
                                     <th style="text-align: center;">Action</th>
@@ -39,6 +40,7 @@
                                         <td><?php echo $this->Custom->customerEmail($aduserlist->user_id) ?></td>
                                         <td><?php if ($aduserlist->profile_type == 1) { ?> Men <?php } else if ($aduserlist->profile_type == 2) { ?> Wemen <?php } else if ($aduserlist->profile_type == 3) { ?> Kid<?php } ?></td>
                                         <td><?php echo $aduserlist->count; ?></td>
+                                        <td><?php echo $aduserlist->transactions_id; ?></td>
                                         <td>$ <?php echo $aduserlist->price; ?></td>
                                         <td style="text-align: center;"><?php if ($aduserlist->payment_type == 1) { ?> Box order <?php } else { ?> Checkout order <?php } ?></td>                                   
                                         <td style="text-align: center;">
@@ -57,6 +59,7 @@
                                 <div class="modal fade" id="myModalNorm-<?php echo $aduserlist->id; ?>" tabindex="-1" role="dialog" 
                                      aria-labelledby="myModalLabel-<?php echo $list->id; ?>" aria-hidden="true">
                                     <div class="modal-dialog" style='width: 100%;'>
+                                         <?= $this->Form->create('profile_data', array('id' => 'profile_data', 'data-toggle' => "validator")) ?>
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -78,7 +81,7 @@
                                                 <p>Payment date:-<strong><?php echo $aduserlist->created_dt; ?></strong></p>
                                                 <p>Message-<strong><?php echo $aduserlist->refund_msg; ?></strong> </p>
                                                 <?php if ($aduserlist->refound_status != 1) { ?>
-                                                    <p><textarea style='width: 650px; height: 114px;'></textarea></p>
+                                                <p><textarea style='width: 650px; height: 114px;' name="refund_msg" required=""></textarea></p>
                                                 <?php } ?>
 
 
@@ -87,10 +90,13 @@
 
                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                                 <?php if ($aduserlist->refound_status != 1) { ?>
-                                                    <button type="button" class="btn btn-primary">Refund</button>
+                                                    <input type="hidden" name="cardId" value="<?php echo $aduserlist->payment_card_details_id?>"/>
+                                                    <input type="hidden" name="paymentId" value="<?php echo $aduserlist->id; ?>"/>
+                                                    <button type="submit" class="btn btn-primary">Refund</button>
                                                 <?php } ?>
                                             </div>
-                                        </div><!-- /.modal-content -->
+                                        </div>
+                                       <?= $this->Form->end() ?>
                                     </div><!-- /.modal-dialog -->
                                 </div><!-- /.modal -->
 

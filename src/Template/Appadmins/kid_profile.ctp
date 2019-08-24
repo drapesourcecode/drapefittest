@@ -1427,7 +1427,7 @@
                                                 </div>
                                                  <a class="btn btn-primary btn-xs blue">
                                                     <span class="<?php if (@$KidClothingType->floral == 'Yes') { ?> active <?php } ?>">Yes</span>
-                                                    <span  class="<?php if (@$KidClothingType->floral == 'Maybe') { ?> active <?php } ?>" >Maybe</span>
+                                                    <span class="<?php if (@$KidClothingType->floral == 'Maybe') { ?> active <?php } else if(@$KidClothingType->floral == ''){ ?> active <?php } ?>" >Maybe</span>
                                                     <span  class="<?php if (@$KidClothingType->floral == 'Never') { ?> active <?php } ?>">Never</span>
                                                 </a>
                                             </li>
