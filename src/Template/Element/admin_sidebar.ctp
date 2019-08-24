@@ -54,6 +54,16 @@ $paramAction = $this->request->params['action'];
                 <li class="treeview <?php if ($paramController == 'Appadmins' && $paramAction == 'promocode') { ?> active <?php } ?>">
                     <a href="<?php echo HTTP_ROOT ?>appadmins/empty_all_tables" ><i class="fa fa-archive"></i> <span>Empty all tables</span></a>
                 </li>
+                <li class="treeview <?php if ($paramController == 'Appadmins' && ($paramAction == 'customerList' || $paramAction == 'blockCustomerList' || $paramAction == 'junkCustomerList' || $paramAction == 'fundrefund')) { ?> active <?php } ?>">
+                    <a href="javascript:;"><i class="fa  fa-user"></i><span>Customer Report</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'customerList') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/customer_list"><i class="fa  fa-eye"></i> Customer List</a></li>
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'blockCustomerList') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/block_customer_list"><i class="fa  fa-eye"></i> Block Customer List</a></li>
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'junkCustomerList') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/junk_customer_list"><i class="fa  fa-eye"></i> Junk User List</a></li>
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'fundrefund') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/fundrefund"><i class="fa  fa-eye"></i> Refund report</a></li>
+                        <li class="<?php if ($paramController == 'Appadmins' && $paramAction == 'cancellationList') { ?> active <?php } ?>"><a href="<?= h(HTTP_ROOT) ?>appadmins/cancellation_list"><i class="fa  fa-eye"></i> Cancellation List</a></li>
+                    </ul>
+                </li>
             <?php } ?>
 
             <li><a style="color: red;" href="<?= h(HTTP_ROOT) ?>appadmins/logout"><i class="fa fa-key"></i> <span>Logout</span></a></li>
