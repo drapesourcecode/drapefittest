@@ -12,7 +12,10 @@ use Cake\Datasource\ConnectionManager;
 
 //require_once(ROOT . '/vendor/' . DS . '/phpoffice/vendor/autoload.php');
 require_once(ROOT . '/vendor/' . DS . '/barcode/vendor/autoload.php');
+require_once(ROOT . '/vendor' . DS . 'PaymentTransactions' . DS . 'authorize-credit-card.php');
 
+use net\authorize\api\contract\v1 as AnetAPI;
+use net\authorize\api\controller as AnetController;
 use \PHPExcel_IOFactory;
 
 class AppadminsController extends AppController {
@@ -2537,9 +2540,181 @@ class AppadminsController extends AppController {
         $this->Flash->success(__('Data has been deleted successfully.'));
         $this->redirect(HTTP_ROOT . 'appadmins/junk_customer_list');
     }
-    function fundrefund(){
-        $AllUserList = $this->PaymentGetways->find('all')->where(['work_status IN' =>[0,1],'status'=>1])->order(['id'=>'desc']);
+       function fundrefund() {
+        $AllUserList = $this->PaymentGetways->find('all')->where(['work_status IN' => [0, 1], 'status' => 1])->order(['id' => 'desc']);
         $this->set(compact('AllUserList'));
+        if ($this->request->is('post')) {
+            $data = $this->request->data;
+            if ($data) {
+
+                $getPaymentDetails = $this->PaymentGetways->find('all')->where(['id' => $data['paymentId']])->first();
+                $getCardDetails = $this->PaymentCardDetails->find('all')->where(['id' => $data['cardId']])->first();
+
+                $billingAddress = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $getPaymentDetails->user_id, 'is_billing' => 1])->first();
+                $userDetails = $this->Users->find('all')->where(['id' => $getPaymentDetails->user_id])->first();
+
+                $arr_user_info = [
+                    'card_number' => $getCardDetails->card_number,
+                    'exp_date' => $getCardDetails->card_expire,
+                    'card_code' => $getCardDetails->cvv,
+                    'product' => 'Refunded details',
+                    'first_name' => $billingAddress->full_name,
+                    'last_name' => $billingAddress->full_name,
+                    'address' => $billingAddress->address,
+                    'city' => $billingAddress->city,
+                    'state' => $billingAddress->state,
+                    'zip' => $billingAddress->zipcode,
+                    'country' => $billingAddress->country,
+                    'email' => $userDetails->email,
+                    'amount' => $getPaymentDetails->price,
+                    'invice' => $getPaymentDetails->id,
+                    'refId' => $getPaymentDetails->id,
+                    'refTransId' => $getPaymentDetails->transactions_id,
+                    'companyName' => 'Drapefit',
+                ];
+
+                // PJ($arr_user_info); 
+                $message = $this->authorizeCreditCard($arr_user_info);
+                //pj($message); exit;
+                if (@$message['error'] == 'error') {
+                    $this->Flash->error(__(@$message['ErrorMessage']));
+                } else if (@$message['status'] == '1') {
+                    $this->PaymentGetways->updateAll(['refound_status' => 1, 'refund_transactions_id ' => $message['TransId'], 'refound_date' => date('Y-m-d H:i:s'), 'refund_msg' => $data['refund_msg']], ['id' => $getPaymentDetails->id]);
+
+                    $useremail = $userDetails->email;
+                    $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'Refunded'])->first();
+                    $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
+                    $to = $useremail;
+                    $from = $fromMail->value;
+                    $subject = $emailMessage->display;
+                    $sitename = SITE_NAME;
+                    $price = $getPaymentDetails->price;
+                    $transctionsId = $data[''];
+                    $name = $userDetails->name;
+                    $email = $useremail;
+                    $sitename = HTTP_ROOT;
+                    $rdate=date('Y-m-d  H:i:s');
+                    $email_message = $this->Custom->Refunded($emailMessage->value, $price, $transctionsId, $name, $email,$rdate, $sitename);
+                    //echo $email_message; exit;
+                    $this->Custom->sendEmail($to, $from, $subject, $email_message);
+                    $toSupport = $this->Settings->find('all')->where(['name' => 'TO_HELP'])->first()->value;
+                    $this->Custom->sendEmail($toSupport, $from, $subject, $email_message);
+                    $this->Flash->success(__('Refunded  successfully.'));
+                } else {
+                    $message['error'] = 'error';
+                    $getErrorMeg = $this->Custom->getAllMeg($message['ErrorCode']);
+                    $this->Flash->error(__($getErrorMeg));
+                }
+            }
+        }
+    }
+
+    public function authorizeCreditCard($arr_data = []) {
+        extract($arr_data);
+//        $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+//        $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+//        $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
+//
+//        // Set the transaction's refId
+//       $refId = 'ref' . time();
+//
+//        // Create the payment data for a credit card
+//        
+//        $creditCard = new AnetAPI\CreditCardType();
+//        $creditCard->setCardNumber($card_number);
+//        $creditCard->setExpirationDate($exp_date);
+//        $paymentOne = new AnetAPI\PaymentType();
+//        $paymentOne->setCreditCard($creditCard);
+//        //create a transaction
+//        $transactionRequest = new AnetAPI\TransactionRequestType();
+//        $transactionRequest->setTransactionType("refundTransaction");
+//        $transactionRequest->setAmount($amount);
+//        $transactionRequest->setPayment($paymentOne);
+//        $transactionRequest->setRefTransId($refTransId);
+//
+//
+//        $request = new AnetAPI\CreateTransactionRequest();
+//        $request->setMerchantAuthentication($merchantAuthentication);
+//        $request->setRefId($refId);
+//        $request->setTransactionRequest($transactionRequest);
+//        $controller = new AnetController\CreateTransactionController($request);
+//        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+
+###################
+$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
+    
+    // Set the transaction's refId
+    $refId = 'ref' . time();
+
+    //create a transaction
+    $transactionRequestType = new AnetAPI\TransactionRequestType();
+    $transactionRequestType->setTransactionType("voidTransaction"); 
+    $transactionRequestType->setRefTransId($refTransId);
+
+    $request = new AnetAPI\CreateTransactionRequest();
+    $request->setMerchantAuthentication($merchantAuthentication);
+	  $request->setRefId($refId);
+    $request->setTransactionRequest( $transactionRequestType);
+    $controller = new AnetController\CreateTransactionController($request);
+    
+    if($getName=='drapefittest'){
+         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+     }else if($getName=='drapefit'){
+         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
+     }
+  
+    
+ ########################
+        $msg = array();
+        if ($response != null) {
+            if ($response->getMessages()->getResultCode() == 'Ok') {
+                $tresponse = $response->getTransactionResponse();
+                if ($tresponse != null && $tresponse->getMessages() != null) {
+                    $msg['status'] = 1;
+                    $msg['TransId'] = $tresponse->getTransId();
+                    $msg['Success'] = " Successfully created transaction with Transaction ID: " . $tresponse->getTransId() . "\n";
+                    $msg['ResponseCode'] = " Transaction Response Code: " . $tresponse->getResponseCode() . "\n";
+                    $msg['MessageCode'] = " Message Code: " . $tresponse->getMessages()[0]->getCode() . "\n";
+                    $msg['AuthCode'] = " Auth Code: " . $tresponse->getAuthCode() . "\n";
+                    $msg['Description'] = " Description: " . $tresponse->getMessages()[0]->getDescription() . "\n";
+                    @$msg['msg'] = " Description: " . @$tresponse . "\n";
+                } else {
+                    if (@$tresponse->getErrors() != null) {
+                        $msg['ErrorCode'] = " Error Code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
+                        $msg['ErrorMessage'] = "Error Message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";
+                    }
+                }
+            } else {
+                $msg['error'] = 'error';
+                $tresponse = $response->getTransactionResponse();
+                if ($tresponse != null && $tresponse->getErrors() != null) {
+                    $msg['ErrorCode'] = " Error Code  : " . $tresponse->getErrors()[0]->getErrorCode() . "\n";
+                    $msg['ErrorCode'] = " Error Message : " . $tresponse->getErrors()[0]->getErrorText() . "\n";
+                } else {
+                    $msg['ErrorCode'] = " Error Code  : " . $response->getMessages()->getMessage()[0]->getCode() . "\n";
+                    $msg['ErrorMessage'] = " Error Message : " . $response->getMessages()->getMessage()[0]->getText() . "\n";
+                }
+            }
+        } else {
+            echo "No response returned \n";
+        }
+
+        return $msg;
+    }
+    function cancellationList(){
+        $AllUserList = $this->LetsPlanYourFirstFix->find('all')->order(['id'=>'desc']);
+        $this->set(compact('AllUserList'));        
+        if ($this->request->is('post')) {
+            $data = $this->request->data;
+            if ($data) {                
+                $tablename = TableRegistry::get("LetsPlanYourFirstFix");
+                 $query = $tablename->query();
+                $result = $query->update()->set(['try_new_items_with_scheduled_fixes' => $data['try_new_items_with_scheduled_fixes'],'how_often_would_you_lik_fixes' => $data['how_often_would_you_lik_fixes']])->where(['id' => $data['dataid']])->execute();              
+            }
+        }
+        $this->set(compact('AllUserList'));        
     }
 
 }

@@ -147,7 +147,7 @@ class PagesController extends AppController {
         
         $this->viewBuilder()->setlayout('default');
         $pageDetails = $this->Pages->find('all')->where(['Pages.id' => 14])->first();
-        $this->set(compact('pageDetails'));
+        $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout', 'pageDetails'));
 
         $this->viewBuilder()->setlayout('default');
     }

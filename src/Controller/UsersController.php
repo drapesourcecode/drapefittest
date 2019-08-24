@@ -291,8 +291,8 @@ class UsersController extends AppController {
     }
 
     public function men() {
-        $title_for_layout = "Stylish Men’s Clothing|Men’s Fashion wear at Best prices | Drape fit";
-        $metaKeyword = "Men's Clothing, Men's Cloth, Mens Fashion, Monthly Subscription Boxes for Men, personal stylist for mens, men's subscription box, Online Shopping for Men, mens outfit subscription, Shop Men's Clothes, Online Shopping for Men, Mens Fashion clothing, Men's Style & Fashion, men clothing styles";
+        $title_for_layout = "Stylish Men’s Clothing | Men’s Fashion wear at Best prices | Drape fit";
+        $metaKeyword = "Men’s Clothing, men’s Cloth, Mens Fashion, Monthly Subscription Boxes for Men, personal stylist for mens, Men’s subscription box, Online Shopping for Men, mens outfit subscription, Shop Men’s Clothes, Online Shopping for Men, Mens Fashion clothing, Men’s Style & Fashion, men clothing styles";
         $metaDescription = "Browse the wide range of latest Men’s fashion clothing with top brands and find the perfect fit for you! Complete your Style FIT and get an expert personal stylist for you! No hidden cost and shipping is always free!";
         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout'));
         $this->viewBuilder()->layout('default');
@@ -301,7 +301,7 @@ class UsersController extends AppController {
 
     public function women() {
          $title_for_layout = "Women’s Fashion |Women’s Stylish Clothing for every Occasions| Drape fit";
-        $metaKeyword = "Women's Clothing, Women's Clothes, Personal Stylist For women, women's fashion, Online Shopping for Women, Subscription Boxes for Women, women's personal stylist clothing, womens fashion box, women's personal stylist box, women's fashion subscription box, womens fashion box, Women's Clothes Online, Best Clothing Boxes, Personal Stylist For women";
+        $metaKeyword = "Women’s Clothing, Women’s Clothes, Personal Stylist For women, women’s fashion, Online Shopping for Women, Subscription Boxes for Women, women’s personal stylist clothing, womens fashion box, women’s personal stylist box, women’s fashion subscription box, womens fashion box, Women’s Clothes Online, Best Clothing Boxes, Personal Stylist For women";
         $metaDescription = "Get the trendiest women’s fashion collections here! Shop from the huge range of handpicked fashion clothing for women with pocket friendly deals! Complete your Style FIT and get the complete style fit box";
         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout'));
         
@@ -312,7 +312,7 @@ class UsersController extends AppController {
     public function kids() {
          $title_for_layout = "Kid’s clothing| Kid’s Fashion at very cheapest price| Drape fit";
          
-        $metaKeyword = "Kids Clothing, kid's cloth, Kids Clothing Box, Kids subscription box, baby clothes, Kids Wear, Kids Dresses, Kids' Fashion, Kids and Baby Clothing, Kids Wear Online, Kids clothing subscription box, subscription boxes for children, kids clothes online, kids dress collection, kids dress design";
+        $metaKeyword = "Kids Clothing, kid’s cloth, Kids Clothing Box, Kids subscription box, baby clothes, Kids Wear, Kids Dresses, Kid’s Fashion, Kids and Baby Clothing, Kids Wear Online, Kids clothing subscription box, subscription boxes for children, kids clothes online, kids dress collection, kids dress design";
         
         $metaDescription = "Now it’s time for upgrade your children’s wardrobe with these trendy and cute kids fashion clothing with top brands! Give your kids a new fashion look at great deals! Shop more and enjoy free shipping worldwide!";
         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout'));
@@ -2688,8 +2688,14 @@ class UsersController extends AppController {
 
     // Create the controller and get the response
     $controller = new AnetController\CreateTransactionController($request);
-    //$response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
-    $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+     $getName=parse_url(HTTP_ROOT)['host'];
+     if($getName=='drapefittest'){
+         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+     }else if($getName=='drapefit'){
+         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
+     }
+    
+    
 
 
         $msg = array();
@@ -2806,7 +2812,6 @@ class UsersController extends AppController {
         if (@$message['error'] == 'error') {
             echo json_encode($message);
         } else if (@$message['status'] == '1') {
-//check for any invite request has been created 
             $getId = $this->Auth->user('id');
            // $count = $this->ReferFriends->find('all')->where(['ReferFriends.my_link_with_uniq_no' => $this->request->getCookie('refer_time'), 'ReferFriends.reffer_id' => $getId, 'ReferFriends.paid_status' => 0])->count();
 
