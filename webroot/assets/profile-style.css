@@ -156,6 +156,12 @@ float: left;
 .form-box-data .switch-field label{
   padding: 10px 14px;
 }
+.form-box-data .switch-field label.error{
+  outline: none !important;
+}
+.form-box-data .switch-field label.error:focus{
+  outline: none !important;
+}
 .form-box-data .occupation ul{
   padding: 0;
   margin-bottom: 0;
@@ -668,6 +674,10 @@ float: left;
     left: 0;
     top: -23px;
     padding: 0;
+    outline: none !important;
+}
+.switch-field .btn-group label.error:focus{
+  outline: none !important;
 }
 /******************End Kids Profile page*******************/
 #dueDatePragent,#maternity_we,#Loose_we,#fig_pregnant{
