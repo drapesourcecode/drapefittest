@@ -82,9 +82,7 @@ if ($paramAction == '/login') {
         background: #1b2431;
         color: #f76c02;
     }
-
     .sign-up-form .alert-danger{ top: 0 !important; }
-
 </style>
 <script src='https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js'></script>
 <script src='https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js'></script> 
@@ -476,7 +474,7 @@ if ($paramAction == '/login') {
                     $('#email').val('');
                 }
                 if (response.status == 'success') {
-                    $('#email-error').attr('style', 'color:green;');
+                    $('#email-error').attr('style', 'color:green !important;');
                     $('#email-error').html(response.msg).show();
 
                 }
@@ -518,7 +516,7 @@ if ($paramAction == '/login') {
                 }
                 if (response.status == 'success') {
 
-                    $('#email-error1').attr('style', 'color:green;');
+                    $('#email-error1').attr('style', 'color:green !important;');
                     $('#email-error1').html(response.msg).show();
 
                 }
