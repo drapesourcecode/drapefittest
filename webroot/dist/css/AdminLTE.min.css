@@ -4658,6 +4658,7 @@ h3.username {
     display: inline-block;
     padding: 11px 20px;
     border-left: 1px solid #ccc;
+    margin: 0 -3px;
 }
 .parent-box a.btn.btn-primary.btn-xs.blue span:first-child{
   border-left: none;
