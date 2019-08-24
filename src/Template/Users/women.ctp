@@ -382,7 +382,7 @@
                     }
                     if (response.status == 'success') {
 
-                        $('#email-error_women').attr('style', 'color:green;');
+                        $('#email-error_women').attr('style', 'color:green !important;');
                         $('#email-error_women').html(response.msg).show();
 
                     }

@@ -1198,7 +1198,7 @@ if ($slug == 'reservation') {
                         } else if (data.status == 'error') {
 
                             $('#loaderPyament').hide();
-                            $('#msg').html('<p class="alert alert-danger">Your payment is failer.You will try to again</p>');
+                            $('#msg').html('<p class="alert alert-danger">'+data['ErrorMessage']+'</p>');
                             $('.apply_card').removeAttr("disabled");
                         } 
                         
