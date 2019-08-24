@@ -2332,5 +2332,28 @@ class CustomComponent extends Component {
         }
         return $msg;
     }
+     function Refunded($msg,  $price, $transctionsId, $name, $email,$rdate, $sitename) {
+        if (strstr($msg, "[NAME]")) {
+            $msg = str_replace("[NAME]", $name, $msg);
+        }
+
+        if (strstr($msg, "[PRICE]")) {
+            $msg = str_replace("[PRICE]", $price, $msg);
+        }
+        if (strstr($msg, "[TRANS]")) {
+            $msg = str_replace("[TRANS]", $transctionsId, $msg);
+        }
+        if (strstr($msg, "[RDATE]")) {
+            $msg = str_replace("[RDATE]", $rdate, $msg);
+        }
+        if (strstr($msg, "[PRICE]")) {
+            $msg = str_replace("[PRICE]", $price, $msg);
+        }
+
+        if (strstr($msg, "[SITE_NAME]")) {
+            $msg = str_replace("[SITE_NAME]", "<a href='" . HTTP_ROOT . "'>" . SITE_NAME . "</a>", $msg);
+        }
+        return $msg;
+    }
 
 }
