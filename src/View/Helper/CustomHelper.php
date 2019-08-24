@@ -428,16 +428,7 @@ class CustomHelper extends Helper {
         $getstatus = $tablename->find('all')->where(['user_id'=>$id])->extract('status')->toArray();                
         return $getstatus;
        }
-        function kidName($id) {
-        $table = TableRegistry::get('KidsDetails');
-        $query = $table->find('all')->where(['id' => $id])->first();
-        $name = '';
-        if (!empty($query->kids_first_name)) {
-            $name = $query->kids_first_name;
-        }
-        
-        return $name;
-    }
+      
     
     function customerName($id) {
         $table = TableRegistry::get('Users');
