@@ -136,9 +136,15 @@
         </div>
     </div>
 </div>
+
 <section class="order-review">
     <p><?= $this->Flash->render(); ?></p>
     <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12">
+                <div class="back-box"><a href="<?php echo HTTP_ROOT . 'order_review' ?>">Back</a></div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-12 col-lg-12 col-md-12">
                 <h1>Order Review</h1>
@@ -183,9 +189,7 @@
 
                                 <br>
                             </div>
-                            <div class="back-box">
-                                <a href="<?php echo HTTP_ROOT . 'order_review' ?>">Back</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -306,7 +310,7 @@
                        $currentBlance = 0;
                        }
                         ?>
-                        <li id="walletBlace2"> Current Wallet balance <span id="currentBlnce">$<?php echo number_format($walletBalace+$currentBlance, 2, '.', ',') ?></span></li>
+                        
 
                         
 
@@ -329,6 +333,9 @@
 
                     </h4>    
                 </div>
+                <ul class="current-bal">
+                    <li id="walletBlace2"> Current Wallet balance <span id="currentBlnce">$<?php echo number_format($walletBalace+$currentBlance, 2, '.', ',') ?></span></li>
+                </ul>
             </div>
         </div>
         
