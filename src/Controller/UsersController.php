@@ -2688,12 +2688,8 @@ class UsersController extends AppController {
 
     // Create the controller and get the response
     $controller = new AnetController\CreateTransactionController($request);
-     $getName=parse_url(HTTP_ROOT)['host'];
-     if($getName=='drapefittest'){
-         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
-     }else if($getName=='drapefit'){
-         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
-     }
+   $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+     
     
     
 
