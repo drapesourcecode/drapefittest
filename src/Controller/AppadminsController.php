@@ -2546,7 +2546,7 @@ class AppadminsController extends AppController {
         if ($this->request->is('post')) {
             $data = $this->request->data;
             if ($data) {
-
+              
                 $getPaymentDetails = $this->PaymentGetways->find('all')->where(['id' => $data['paymentId']])->first();
                 $getCardDetails = $this->PaymentCardDetails->find('all')->where(['id' => $data['cardId']])->first();
 
@@ -2580,7 +2580,12 @@ class AppadminsController extends AppController {
                     $this->Flash->error(__(@$message['ErrorMessage']));
                 } else if (@$message['status'] == '1') {
                     $this->PaymentGetways->updateAll(['refound_status' => 1, 'refund_transactions_id ' => $message['TransId'], 'refound_date' => date('Y-m-d H:i:s'), 'refund_msg' => $data['refund_msg']], ['id' => $getPaymentDetails->id]);
-
+                     if (($getPaymentDetails->user_id != '') && ($getPaymentDetails->kid_id == 0)) {
+                        $this->Users->updateAll(['is_redirect' => 5,], ['id' => $getPaymentDetails->user_id]);
+                    } else if (($getPaymentDetails->user_id != '') && ($getPaymentDetails->kid_id != '')) {
+                        $this->KidsDetails->updateAll(['is_redirect' => 5,], ['id' => $getPaymentDetails->kid_id]);
+                    }
+                    
                     $useremail = $userDetails->email;
                     $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'Refunded'])->first();
                     $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
@@ -2611,56 +2616,59 @@ class AppadminsController extends AppController {
 
     public function authorizeCreditCard($arr_data = []) {
         extract($arr_data);
-//        $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-//        $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
-//        $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
-//
-//        // Set the transaction's refId
-//       $refId = 'ref' . time();
-//
-//        // Create the payment data for a credit card
-//        
-//        $creditCard = new AnetAPI\CreditCardType();
-//        $creditCard->setCardNumber($card_number);
-//        $creditCard->setExpirationDate($exp_date);
-//        $paymentOne = new AnetAPI\PaymentType();
-//        $paymentOne->setCreditCard($creditCard);
-//        //create a transaction
-//        $transactionRequest = new AnetAPI\TransactionRequestType();
-//        $transactionRequest->setTransactionType("refundTransaction");
-//        $transactionRequest->setAmount($amount);
-//        $transactionRequest->setPayment($paymentOne);
-//        $transactionRequest->setRefTransId($refTransId);
-//
-//
-//        $request = new AnetAPI\CreateTransactionRequest();
-//        $request->setMerchantAuthentication($merchantAuthentication);
-//        $request->setRefId($refId);
-//        $request->setTransactionRequest($transactionRequest);
-//        $controller = new AnetController\CreateTransactionController($request);
-//        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+        $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+        $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+        $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
+
+        // Set the transaction's refId
+       $refId = 'ref' . time();
+
+        // Create the payment data for a credit card
+        
+        $creditCard = new AnetAPI\CreditCardType();
+        $creditCard->setCardNumber($card_number);
+        $creditCard->setExpirationDate($exp_date);
+        $paymentOne = new AnetAPI\PaymentType();
+        $paymentOne->setCreditCard($creditCard);
+        //create a transaction
+        $transactionRequest = new AnetAPI\TransactionRequestType();
+        $transactionRequest->setTransactionType("refundTransaction");
+        $transactionRequest->setAmount($amount);
+        $transactionRequest->setPayment($paymentOne);
+        $transactionRequest->setRefTransId($refTransId);
+
+
+        $request = new AnetAPI\CreateTransactionRequest();
+        $request->setMerchantAuthentication($merchantAuthentication);
+        $request->setRefId($refId);
+        $request->setTransactionRequest($transactionRequest);
+        $controller = new AnetController\CreateTransactionController($request);
+        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
 ###################
-$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
-    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
-    
-    // Set the transaction's refId
-    $refId = 'ref' . time();
-
-    //create a transaction
-    $transactionRequestType = new AnetAPI\TransactionRequestType();
-    $transactionRequestType->setTransactionType("voidTransaction"); 
-    $transactionRequestType->setRefTransId($refTransId);
-
-    $request = new AnetAPI\CreateTransactionRequest();
-    $request->setMerchantAuthentication($merchantAuthentication);
-	  $request->setRefId($refId);
-    $request->setTransactionRequest( $transactionRequestType);
-    $controller = new AnetController\CreateTransactionController($request);
-    $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
-     
+//$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+//    $merchantAuthentication->setName(\SampleCodeConstants::MERCHANT_LOGIN_ID);
+//    $merchantAuthentication->setTransactionKey(\SampleCodeConstants::MERCHANT_TRANSACTION_KEY);
+//    
+//    // Set the transaction's refId
+//    $refId = 'ref' . time();
+//
+//    //create a transaction
+//
+//    $transactionRequestType = new AnetAPI\TransactionRequestType();
+//    $transactionRequestType->setTransactionType("voidTransaction"); 
+//    $transactionRequestType->setRefTransId($refTransId);
+//
+//    $request = new AnetAPI\CreateTransactionRequest();
+//    $request->setMerchantAuthentication($merchantAuthentication);
+//	  $request->setRefId($refId);
+//    $request->setTransactionRequest( $transactionRequestType);
+//    $controller = new AnetController\CreateTransactionController($request);
+//    
+//    
+//         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
   
+
     
  ########################
         $msg = array();
@@ -2697,6 +2705,7 @@ $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
             echo "No response returned \n";
         }
 
+         //pj($msg);exit;
         return $msg;
     }
     function cancellationList(){
