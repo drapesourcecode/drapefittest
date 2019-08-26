@@ -870,7 +870,7 @@ if ($slug == 'reservation') {
 
                             </li>
                             <li>
-                                <label>Phone number:</label>
+                                <label>Phone number *:</label>
                                 <input type="text" name="phone" placeholder="Phone number" id="phone" value='<?php echo @$ShippingAddress->phone; ?>' maxlength="20" onkeyup="validation()">
                             </li>
                         </ul>
@@ -945,7 +945,7 @@ if ($slug == 'reservation') {
 
                             </li>
                             <li>
-                                <label>Phone number:</label>
+                                <label>Phone number *:</label>
                                 <input type="text" name="phone" placeholder="Phone number" id="phone" value='<?php echo @$ShippingAddress->phone; ?>' maxlength="20" onkeyup="validation()">
                             </li>
                         </ul>
