@@ -292,6 +292,7 @@
                         
                         $orderAmount = $subTotal - $styleist1;
                       
+                           if(@$walletBalace>=1){
                             ?>
                             <h6>
                                 <span style="color:green">
@@ -301,7 +302,9 @@
 
 
                             </h6>
+                        
                         <?php
+                      }
                        if($p_g_price==0 ){
                          $currentBlance = 0; 
                        }else if ($p_g_price > $final_sub_tot){

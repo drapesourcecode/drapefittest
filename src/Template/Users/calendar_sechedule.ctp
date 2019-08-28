@@ -1,32 +1,16 @@
-
 <link href="<?php echo HTTP_ROOT ?>css/responsive-calendar.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>css/jquery-ui.css">
 <script src="<?php echo HTTP_ROOT ?>js/jquery-1.12.4.js"></script>
 <script src="<?php echo HTTP_ROOT ?>js/jquery-ui.js"></script>
-
 <script>
-    
     $(function () {
+       // var newDate = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
         
-        
-        $("#datepicker").datepicker({minDate: 10, maxDate: "+1M +10D", onSelect: function (dateText, inst) {
-                var date = $(this).val();
-                $('#chose-date').val(date);
-                
-            }
-        }
-        );
-    });
+        ///alert(newDate+(10*86400000));
+        $("#datepicker").datepicker({minDate: 10, maxDate: "+1M +10D", onSelect: function (dateText, inst) {var date = $(this).val(); $('#chose-date').val(date);} } );});
 </script>
 <style type="text/css">
-    #datepicker {font-size:20px;}
-    .Calendar-text-center
-    {
-        width: 50%;
-        float: none;
-        text-align: center;
-        margin: 0 auto;
-    }
+    #datepicker {font-size:20px;}.Calendar-text-center {width: 50%;float: none; text-align: center;margin: 0 auto;}
 </style>
 <script type="text/javascript" src="<?= HTTP_ROOT; ?>js/setting.js"></script>
 <div class="style-bar">
@@ -44,7 +28,7 @@
             <div class="col-md-12">               
                 <?php echo $this->Form->create("User", array('data-toggle' => "validator", 'id' => 'sechdule')) ?>
                 <div id="datepicker"></div>
-                <input type="hidden" id="chose-date" name="datepick" value="<?php echo date('m/d/Y',strtotime('+10 days'));?>">
+                <input type="hidden" id="chose-date" name="datepick" value="<?php echo date('m/d/Y',strtotime('+11 days'));?>">
 
                 <div class="Calendar-text">
                     <div class="Calendar-text-center">

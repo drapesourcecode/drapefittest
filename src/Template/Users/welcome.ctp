@@ -1182,7 +1182,7 @@ if ($slug == 'reservation') {
                     },
                     success: function (data) {
 
-                        //console.log(data['ErrorCode']);
+                        //console.log(data);
                         if (data.status == 1) {
 
                             // $('#loaderPyament').hide();
@@ -1191,20 +1191,27 @@ if ($slug == 'reservation') {
                             // $('#orderInfo').slideDown('slow');
                             $('#msg').html('<p class="alert alert-success">You have payment successfully.You will redirecting  page automatically after 5 seconds.Your transaction id is <span>#' + data.TransId + '</span></p>');
                             window.setTimeout(function () {
-
                                 window.location.href = '<?= HTTP_ROOT; ?>payment-success';
                             }, 10000);
 
-                        } else if (data.status == 'error') {
-
+                        } else if (data.error == 'error') {
+                          
                             $('#loaderPyament').hide();
-                            $('#msg').html('<p class="alert alert-danger">'+data['ErrorMessage']+'</p>');
+                            $('#msg').html('<p class="alert alert-danger" id="e" >'+data.ErrorMessage +'</p>');
                             $('.apply_card').removeAttr("disabled");
+                            
+                            window.setTimeout(function () {
+
+                    $('#msg').html('');
+                }, 5000);
+                            
+                            
+                            
                         } 
                         
-                        else if(data['ErrorCode']!='') {
+                        else if(data.ErrorCode!='') {
                             $('#loaderPyament').hide();
-                            var errorMessg = getErrorMessgeDetils(data['ErrorCode']);
+                            var errorMessg = getErrorMessgeDetils(data.ErrorCode);
                             $('#msg').html('<p class="alert alert-danger">' + errorMessg + '</p>');
                             $('.apply_card').removeAttr("disabled");
                         }
@@ -1316,7 +1323,7 @@ if ($slug == 'reservation') {
                                                     <div class="card-cvv">
                                                         <ul>
                                                             <li>
-                                                                <span>Enter CVV &nbsp (<i class="fa fa-question"></i>) : <input type="text" id="cvvr<?php echo $card->id; ?>" name="finance"></span>
+                                                                <span>Enter CVV &nbsp (<i class="fa fa-question"></i>) : <input type="password" maxlength="3" id="cvvr<?php echo $card->id; ?>" name="finance"></span>
                                                                 <span class="text-danger" id="cvv-error<?php echo $card->id; ?>" style="padding-left:10px;"></span>
                                                             </li>
                                                         </ul>
@@ -1530,7 +1537,7 @@ if ($slug == 'reservation') {
                         $("#card_number123").val(result.card_number);
                         $("#expiry_month123").val(chars[1]);
                         $("#expiry_year123").val(chars[0]);
-                        $("#cvv").val(result.cvv);
+                        $("#cvv").val(cvv);
                         $("#name_on_card123").val(result.card_name);
                         //($"#card_number123").keyup();
                         $('#cardSubmitBtn').click();
