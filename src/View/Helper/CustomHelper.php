@@ -406,10 +406,20 @@ class CustomHelper extends Helper {
         
         return "";
     }
-    function previousStyleistName($userId=null,$paymenId){
+    function previousStyleistName($userId=null,$paymenId,$count){
         $table = TableRegistry::get('PaymentGetways');
         $user = TableRegistry::get('Users');
-        $query = $table->find('all')->where(['user_id' => $userId])->order(['id'=>'desc'])->first()->emp_id; 
+        $query1 = $table->find('all')->where(['user_id' => $userId,'id'=>$paymenId,'count'=>$count])->first(); 
+        
+        if($query1->kid!=''){
+            $query = $table->find('all')->where(['user_id' => $userId,'count'=>$count-1,'kid_id'=>$query1->kid_id])->first()->emp_id;  
+        }else{
+            $query = $table->find('all')->where(['user_id' => $userId,'count'=>$count-1,'kid_id'=>'0'])->first()->emp_id;  
+        }
+        
+        
+        //$query1 = $table->find('all')->where(['id'=>$paymenId,'count'=>$count])->first()->emp_id; 
+       // var_dump($query); exit;
         $name = $user->find('all')->where(['id' =>$query])->first()->name; 
         if($name!=''){
          return $name;    
@@ -423,6 +433,7 @@ class CustomHelper extends Helper {
         $getstatus = $tablename->find('all')->where(['user_id'=>$id])->extract('status')->toArray();                
         return $getstatus;
     }
+    
     function junkPaymentGetwayStatus($id) {
         $tablename = TableRegistry::get('PaymentGetways');
         $getstatus = $tablename->find('all')->where(['user_id'=>$id])->extract('status')->toArray();                
@@ -460,6 +471,23 @@ class CustomHelper extends Helper {
         }
         
         return $card_number;
+    }
+      function requestDate($userId=null,$kid_id=null){
+        $table = TableRegistry::get('DeliverDate');
+       if($kid_id==0){
+        $query = $table->find('all')->where(['user_id' => $userId,'kid_id'=>0])->first()->date_in_time; 
+       }else{
+           $query = $table->find('all')->where(['user_id' => $userId,'kid_id'=>$kid_id])->first()->date_in_time;   
+       }
+       
+       return $query;
+    }
+    function payment_count_status($id) {
+        $tablename = TableRegistry::get('PaymentGetways');
+        $paidCount = $tablename->find('all')->where(['user_id'=>$id, 'status'=>1])->count(); 
+        $unpaidCount = $tablename->find('all')->where(['user_id'=>$id, 'status'=>0])->count(); 
+        $getstatus="Paid:-".$paidCount.' Unpaid:-'.$unpaidCount;
+        return $getstatus;
     }
 
 }
