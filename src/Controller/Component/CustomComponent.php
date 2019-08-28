@@ -2355,5 +2355,17 @@ class CustomComponent extends Component {
         }
         return $msg;
     }
+     function SubscriptionCancelationEmail($msg,$name,$email,$sitename) {
+        if (strstr($msg, "[NAME]")) {
+            $msg = str_replace("[NAME]", $name, $msg);
+        }
+        if (strstr($msg, "[EMAIL]")) {
+            $msg = str_replace("[EMAIL]", $email, $msg);
+        }
+        if (strstr($msg, "[SITE_NAME]")) {
+            $msg = str_replace("[SITE_NAME]", "<a href='" . HTTP_ROOT . "'>" . SITE_NAME . "</a>", $msg);
+        }
+        return $msg;
+    }
 
 }
