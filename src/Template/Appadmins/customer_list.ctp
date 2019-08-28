@@ -25,7 +25,7 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($AllUserList as $aduserlist): ?>
-                                    <tr id="<?php echo $aduserlist->id; ?>" class="message_box">
+                                    <tr >
                                     <td><?= h($aduserlist->name) ?></td>
                                     <td style="text-align: center;"><?php echo $aduserlist->created_dt; ?></td>
                                     <td><?= h($aduserlist->email) ?></td>
@@ -34,12 +34,14 @@
                                             $getpgstatus=$this->Custom->getPaymentGetwayStatus($aduserlist->id);
                                             if(in_array('1', $getpgstatus)){
                                                 ?>
-                                                <span style="color:green;">Paid</span>
+                                                <span style="color:green;">Paid  </span>
+                                                
                                             <?php 
                                             } else{?>
                                                 <span style="color:red;">Not Paid</span>
                                             <?php } 
                                         ?>
+                                        <span>(<?php echo $this->Custom->payment_count_status($aduserlist->id);?>)</span>
                                     </td>
                                     <td style="text-align: center;"><?php echo $this->Custom->dateDisplayTime($aduserlist->last_login_date); ?></td>                                   
                                     <td style="text-align: center;">

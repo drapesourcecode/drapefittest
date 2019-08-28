@@ -17,6 +17,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Date</th>
                                     <th>Status</th>
                                     <th style="text-align: center;">Action</th>
                                 </tr>
@@ -25,7 +26,9 @@
                                 <?php foreach ($AllUserList as $aduserlist): ?>
                                     <tr>
                                         <td><?php echo $this->Custom->customerName($aduserlist->user_id) ?></td>
+                                       
                                         <td><?php echo $this->Custom->customerEmail($aduserlist->user_id) ?></td>
+                                         <td><?php echo $aduserlist->applay_dt; ?></td>
                                         <td><?php 
                                             if($aduserlist->try_new_items_with_scheduled_fixes == 1){ ?>
                                                 <span style="color:green">Subscription</span>
