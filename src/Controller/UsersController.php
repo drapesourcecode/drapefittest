@@ -6077,6 +6077,8 @@ class UsersController extends AppController {
             } else if (@$message['status'] == '1') {
                 $updateId = $paymentId;
                 $this->PaymentGetways->updateAll(['status' => 1, 'transactions_id ' => $message['TransId']], ['id' => $updateId]);
+                $this->LetsPlanYourFirstFix->updateAll(['applay_dt' =>date('Y-m-d H:i:s')], ['id' => $planId]);
+                
                 $paymentDetails = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $updateId])->first();
                 $checkUser = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $updateId, 'PaymentGetways.payment_type' => 1])->first();
 
