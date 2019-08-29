@@ -1195,7 +1195,7 @@ if ($slug == 'reservation') {
                             }, 10000);
 
                         } else if (data.error == 'error') {
-                          
+                         
                             $('#loaderPyament').hide();
                             $('#msg').html('<p class="alert alert-danger" id="e" >'+data.ErrorMessage +'</p>');
                             $('.apply_card').removeAttr("disabled");
@@ -1203,7 +1203,7 @@ if ($slug == 'reservation') {
                             window.setTimeout(function () {
 
                     $('#msg').html('');
-                }, 5000);
+                }, 10000);
                             
                             
                             
@@ -8076,14 +8076,6 @@ if ($slug == 'style') {
             </div>
         </section>
     <?php } ?>
-
-
-
-
-
-
-
-
 <?php } ?> 
 <div id="loaderPyament" style="display: none; position: fixed; height: 100%; width: 100%; z-index: 11111111; padding-top: 20%; background: rgba(255, 255, 255, 0.7); top: 0; text-align: center;">
     <img src="<?php echo HTTP_ROOT . 'img/' ?>widget_loader.gif"/>
