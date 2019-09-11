@@ -1,7 +1,5 @@
-<style>
-    .dialog-ovelay {
-        position: fixed;
-        top: 0;
+<style typ>
+    .dialog-ovelay {position: fixed;top: 0;
         left: 0;
         right: 0;
         bottom: 0;
@@ -512,15 +510,15 @@
                                 <?php echo $this->Form->create("User", array('data-toggle' => "validator", 'id' => 'sechdule_fix')) ?>
                                 <h5>MANAGE YOUR FIT SETTINGS</h5>
                                 <h6>Please select your schedule</h6>
-                                <div class="checkbox-sitting">
-                                    <input  onclick="getCheckBox()"  id="try_new_items_with_scheduled_fixes12" value="1" name="try_new_items_with_scheduled_fixes" type="checkbox" <?php if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 1) { ?> checked <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 0) { ?>  <?php }  else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?> checked <?php } ?>>
+                                <div class="checkbox-sitting" >
+                                    <input  onclick="getCheckBox()"  id="try_new_items_with_scheduled_fixes12" value="1" name="try_new_items_with_scheduled_fixes" type="checkbox" <?php if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 1) { ?> checked <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '0') { ?>  <?php }  else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?> checked <?php } ?>>
                                     <label for="try_new_items_with_scheduled_fixes12">I want new product with FIT sechdule</label>
                                 </div>
                                 
                                 <div id="optionsDIV"
                                 <?php if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 1) { ?>
                                          style='display: block;'
-                                        <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 0) { ?>
+                                        <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '0') { ?>
                                            style='display: none;'
                                      <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?>
                                          style='display: block;'
@@ -601,7 +599,7 @@
                                                                         <p><a href="<?php echo HTTP_ROOT . 'clients/referrals' ?>">Redeem a gift code »</a></p>-->
 
                                 </div>
-                                <!--                                <div class="credit-right">
+                                                             <div class="credit-right">
                                                                     <h2>You'll get $25,<br> they'll get $25.</h2>
                                                                     <form method="post" id="invitefrm" name="infrm">
                                                                         <p>who are you inviting ?</p>
@@ -615,7 +613,7 @@
                                                                         <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
                                                                         <li><a href="https://www.messenger.com/"><i class="fab fa-facebook-messenger"></i></a></li>
                                                                     </ul>
-                                                                </div>-->
+                                                                </div>
                                 <div class="tab-button">
                                     <button class="btn-boxes" type="button" onClick="location.href = location.href">Cancel</button>
                                 </div>	
