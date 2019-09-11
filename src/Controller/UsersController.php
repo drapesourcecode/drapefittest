@@ -1901,6 +1901,34 @@ class UsersController extends AppController {
             echo json_encode($message);
         } else if (@$message['status'] == '1') {
             $getId = $this->Auth->user('id');
+            $count = $this->ReferFriends->find('all')->where(['ReferFriends.my_link_with_uniq_no' => $this->request->getCookie('refer_time'), 'ReferFriends.reffer_id' => $getId, 'ReferFriends.paid_status' => 0])->count();
+            if ($count >= 1) {
+                $getFriends = $this->Settings->find('all')->where(['Settings.name' => 'inviteFrinds'])->first();
+                $walletsEn = $this->Wallets->newEntity();
+                $walletsEn->user_id = $this->Auth->user('id');
+                $walletsEn->type = 2;
+                $walletsEn->balance = $getFriends->value;
+                $walletsEn->created = date('Y-m-d h:i:s');
+                $walletsEn->applay_status = 0;
+                if ($this->Wallets->save($walletsEn)) {
+                    $getDetails = $this->ReferFriends->find('all')->where(['ReferFriends.my_link_with_uniq_no' => $this->request->getCookie('refer_time'), 'ReferFriends.reffer_id' => $getId, 'ReferFriends.paid_status' => 0])->first();
+                    $walletsEnRE = $this->Wallets->newEntity();
+                    $walletsEnRE->user_id = $getDetails->user_id;
+                    $walletsEnRE->type = 2;
+                    $walletsEnRE->balance = $getFriends->value;
+                    $walletsEnRE->created = date('Y-m-d h:i:s');
+                    $walletsEn->applay_status = 0;
+                    $this->Wallets->save($walletsEnRE);
+                    $this->ReferFriends->updateAll(['paid_status' => 1], ['my_link_with_uniq_no' => $this->request->getCookie('refer_time')]);
+                }
+            }
+            
+            
+            
+            
+            
+            
+            
             echo json_encode($message);
             $this->paymentMailSending($message);
         } else {
