@@ -1511,8 +1511,23 @@ function getCheckBox() {
         $('#optionsDIV').fadeIn('slow');
         $('#unitl-p').fadeIn('slow');
     } else {
+        
         $('#optionsDIV').fadeOut('slow');
         $('#unitl-p').fadeOut('slow');
+        var url = $('#pageurl').val();
+        $.ajax({
+            type: 'POST',
+            url: url + 'users/subscriptionEmail/',
+            success: function (response) {
+                if (response) {
+                    
+                } else {
+                    
+                }
+            },
+            dataType: 'json'
+        });
+        
     }
 }
 function getCheckBox2(id, count) {
