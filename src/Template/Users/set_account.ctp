@@ -1,10 +1,10 @@
-<style typ>
+<style>
     .dialog-ovelay {position: fixed;top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.50);
-        z-index: 999999
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: rgba(0, 0, 0, 0.50);
+                    z-index: 999999
     }
     .dialog-ovelay .dialog {
         width: 400px;
@@ -511,15 +511,15 @@
                                 <h5>MANAGE YOUR FIT SETTINGS</h5>
                                 <h6>Please select your schedule</h6>
                                 <div class="checkbox-sitting" >
-                                    <input  onclick="getCheckBox()"  id="try_new_items_with_scheduled_fixes12" value="1" name="try_new_items_with_scheduled_fixes" type="checkbox" <?php if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 1) { ?> checked <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '0') { ?>  <?php }  else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?> checked <?php } ?>>
+                                    <input  onclick="getCheckBox()"  id="try_new_items_with_scheduled_fixes12" value="1" name="try_new_items_with_scheduled_fixes" type="checkbox" <?php if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 1) { ?> checked <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '0') { ?>  <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?> checked <?php } ?>>
                                     <label for="try_new_items_with_scheduled_fixes12">I want new product with FIT sechdule</label>
                                 </div>
-                                
+
                                 <div id="optionsDIV"
                                 <?php if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == 1) { ?>
                                          style='display: block;'
-                                        <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '0') { ?>
-                                           style='display: none;'
+                                     <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '0') { ?>
+                                         style='display: none;'
                                      <?php } else if (@$LetsPlanYourFirstFixData->try_new_items_with_scheduled_fixes == '') { ?>
                                          style='display: block;'
                                      <?php } else { ?>
@@ -557,7 +557,7 @@
                                              </label>
                                          </li> -->
                                     </ul>
-                                    <p>Until you cancel your fit schedule we will charge a styling fee $ <?php echo $this->User->styleFitFee();?> and that will be credit towards any product you buy.</p>
+                                    <p>Until you cancel your fit schedule we will charge a styling fee $ <?php echo $this->User->styleFitFee(); ?> and that will be credit towards any product you buy.</p>
                                 </div>
                                 <div class="tab-button">
                                     <button class="btn-boxes" type="button" onClick="location.href = location.href">Cancel</button>
@@ -593,27 +593,46 @@
 
                                     <?php echo $this->Form->end(); ?>
 
-                                    <!--                                    <label class="acclab"><a href="#">or,Redeem a gift code</a></label>
-                                                                        <p>You can also</p>
-                                                                        <p><a href="<?php echo HTTP_ROOT . 'clients/referrals' ?>">See My Referrals »</a></p>
-                                                                        <p><a href="<?php echo HTTP_ROOT . 'clients/referrals' ?>">Redeem a gift code »</a></p>-->
+                                    <!-- <label class="acclab"><a href="#">or,Redeem a gift code</a></label>
+                                     <p>You can also</p>
+                                     <p><a href="<?php echo HTTP_ROOT . 'clients/referrals' ?>">See My Referrals »</a></p>
+                                     <p><a href="<?php echo HTTP_ROOT . 'clients/referrals' ?>">Redeem a gift code »</a></p> -->
 
                                 </div>
-                                                             <div class="credit-right">
-                                                                    <h2>You'll get $25,<br> they'll get $25.</h2>
-                                                                    <form method="post" id="invitefrm" name="infrm">
-                                                                        <p>who are you inviting ?</p>
-                                                                        <input type="text" name="email_send" id="email_send">
-                                                                        <p>choose a way to share</p>
-                                                                        <button type="submit" class="save">Invite friend</button>
-                                                                    </form>
-                                                                    <ul>
-                                                                        <li>Or share via :</li>
-                                                                        <li><a href="https://mail.google.com"><i class="fa fa-envelope"></i></a></li>
-                                                                        <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
-                                                                        <li><a href="https://www.messenger.com/"><i class="fab fa-facebook-messenger"></i></a></li>
-                                                                    </ul>
-                                                                </div>
+                                <div class="credit-right-main">
+                                    <div class="credit-right">
+                                        <h2>Invite Friends.<br>Get $25.</h2>
+                                        <form method="post" id="invitefrm" name="infrm">
+                                            <p>who are you inviting ?</p>
+                                            <div class="switch-field">
+                                                <input type="radio" id="Women" name="gender" value="w" checked="">
+                                                <label for="Women">Women</label>
+                                                <input type="radio" id="Men" name="gender" value="m">
+                                                <label for="Men">Men</label>
+                                                <input type="radio" id="Kids" name="gender" value="k">
+                                                <label for="Kids">Kids</label>
+                                            </div>
+                                            <p>choose a way to share</p>
+                                            <div class="copy-text">
+                                                <p id="p1">https://drapefittest.com/invite/rfgvds-1388</p>
+                                                <a class="copy-first" href="javascript:void(0)" onclick="copyToClipboard('#p1')">copy-link<span class="copied">Copied !</span></a>
+                                            </div>
+                                        </form>
+                                        <ul>
+                                            <li>Or share via :</li>
+                                            <li><a href="<?= HTTP_ROOT . 'clients/referrals'; ?>"><i class="fa fa-envelope"></i></a></li>
+                                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook-official"></i></a></li>
+                                            <li><a href="https://www.messenger.com/"><i class="fab fa-facebook-messenger"></i></a></li>
+                                        </ul>
+                                        <div class="referral-work">
+                                            <h4>How Referrals Work</h4>
+                                            <p><span>1</span>Share your referral link with friends via email or social media.</p>
+                                            <p><span>2</span>Get $25 credit when they checkout from their first Fix.</p>
+                                            <p><span>3</span>Enjoy! Credits automatically apply to your future Fixes.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="tab-button">
                                     <button class="btn-boxes" type="button" onClick="location.href = location.href">Cancel</button>
                                 </div>	
@@ -721,7 +740,7 @@
                                     <h5>MANAGE YOUR FIT SETTINGS</h5>
                                     <h6>Please select your schedule</h6>
                                     <div class="checkbox-sitting">
-                                        <input onclick="getCheckBox2(<?php echo @$kid->id; ?>,<?php echo $countkid; ?>)" id="try_new_items_with_scheduled_fixesk1<?php echo $countkid; ?>" value="1" name="try_new_items_with_scheduled_fixes" type="checkbox"  <?php if (@$kid->lets_plan_your_first_fix->try_new_items_with_scheduled_fixes == 1) { ?> checked <?php }  else if (@$kid->lets_plan_your_first_fix->try_new_items_with_scheduled_fixes == '0') { ?>  <?php }  else if (@$kid->lets_plan_your_first_fix->try_new_items_with_scheduled_fixes == '') { ?> checked <?php }?>>
+                                        <input onclick="getCheckBox2(<?php echo @$kid->id; ?>,<?php echo $countkid; ?>)" id="try_new_items_with_scheduled_fixesk1<?php echo $countkid; ?>" value="1" name="try_new_items_with_scheduled_fixes" type="checkbox"  <?php if (@$kid->lets_plan_your_first_fix->try_new_items_with_scheduled_fixes == 1) { ?> checked <?php } else if (@$kid->lets_plan_your_first_fix->try_new_items_with_scheduled_fixes == '0') { ?>  <?php } else if (@$kid->lets_plan_your_first_fix->try_new_items_with_scheduled_fixes == '') { ?> checked <?php } ?>>
                                         <label for="try_new_items_with_scheduled_fixesk1<?php echo $countkid; ?>">I want new product with FIT sechdule</label>
                                     </div>
                                     <div id="optionsDIV-<?php echo @$kid->id; ?>"
@@ -729,7 +748,7 @@
                                              style='display: block;'
                                          <?php } else if (@$kid->lets_plan_your_first_fix->try_new_items_with_scheduled_fixes == '0') { ?> style='display: none;'
                                          <?php } else if (@$kid->lets_plan_your_first_fix->try_new_items_with_scheduled_fixes == '') { ?>
-                                              style='display: block;'
+                                             style='display: block;'
                                          <?php } else { ?>
                                              style='display: none;'
                                          <?php } ?>
@@ -766,7 +785,7 @@
                                                 </label>
                                             </li> -->
                                         </ul>
-                                        <p>Until you cancel your fit schedule we will charge a styling fee $ <?php echo $this->User->styleFitFee();?> and that will be credit towards any product you buy.</p>
+                                        <p>Until you cancel your fit schedule we will charge a styling fee $ <?php echo $this->User->styleFitFee(); ?> and that will be credit towards any product you buy.</p>
                                     </div>
                                     <div class="tab-button">
                                         <button class="btn-boxes" type="button" onClick="location.href = location.href">Cancel</button>
@@ -1023,30 +1042,30 @@
 // });
 
 
-    $(".cli").click(function() {
-   $('html,body').animate({
-       scrollTop: $(".tab-content").offset().top},
-       'slow');
-});
+        $(".cli").click(function () {
+            $('html,body').animate({
+                scrollTop: $(".tab-content").offset().top},
+                    'slow');
+        });
 </script>
 <script>
-        var modal = document.getElementById('pop-up-box');
-        window.onclick = function (event)
+    var modal = document.getElementById('pop-up-box');
+    window.onclick = function (event)
+    {
+        if (event.target == modal)
         {
-            if (event.target == modal)
-            {
-                modal.style.display = "none";
-            }
+            modal.style.display = "none";
         }
+    }
 
-        var modal = document.getElementById('pop-up-box-address');
+    var modal = document.getElementById('pop-up-box-address');
 
-        window.onclick = function (event) {
-            if (event.target == modal)
-            {
-                modal.style.display = "none";
-            }
+    window.onclick = function (event) {
+        if (event.target == modal)
+        {
+            modal.style.display = "none";
         }
+    }
 
 </script>
 <script type="text/javascript" >
@@ -1084,6 +1103,16 @@
 
     });
 
+</script>
+<script type="text/javascript">
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        $(".copied").css("opacity", "1");
+    }
 </script>
 
 

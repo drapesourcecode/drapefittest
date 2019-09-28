@@ -1,9 +1,542 @@
 <?= $this->Flash->render(); ?>
 <link rel="stylesheet" href="<?php echo HTTP_ROOT . 'assets/' ?>profile-style.css" type="text/css">
 <script type="text/javascript" src="<?= HTTP_ROOT; ?>js/setting.js"></script>
-<script  type="text/javascript" src="<?= HTTP_ROOT; ?>js/jquery.twbs-toggle-buttons.min.js"></script>
+<script src="<?= HTTP_ROOT; ?>js/jquery.twbs-toggle-buttons.min.js"></script>
+<script>
+//$('#tall_feet-error').focus();
+</script>
 <style type="text/css">
-    .setting-box{padding-top:0px;}.btn-success.disabled, .btn-success[disabled]{background-color: #e9aed7; border-color: #f0cae4;}.address{width: 100%;float: left;text-align: center;display: inline-block; }.address-box{ width: 50%;text-align: left;display: inline-block;}.address-box, .add-address h2{margin: 15px 0px; padding: 0; text-align: left;font-size: 20px;font-weight: 700;}.address-box h3{margin: 15px 0px;padding: 0;font-size: 17px;font-weight: 700;display: inline-block;}.address-box p{ width: 95%;font-size: 14px;font-weight: bold; } .address-box label {width: 100%;font-size: 14px;margin-top: 5px;font-weight: 600; display: inline-block;}.address-box select{ width: 100%;float: left;background: #ececec;padding: 5px 10px;margin-bottom: 10px; border-radius: 3px;border: 1px solid #9a9a9a;}.address-box input { width: 100%;float: left; margin-bottom: 5px; padding: 5px 10px;border-radius: 3px; border: 1px solid #9a9a9a; } .address-box button {display: inline-block; background: #d64ade; text-transform: uppercase;font-weight: bold;letter-spacing: 2px;color: #fff;font-size: 17px; padding: 11px 43px;border-radius: 25px;margin-top: 10px;transition: 500ms all ease-in-out 0s; }.address-box button:hover { border: 1px solid #333; background: #333;color: #fff;}.address-box, .add-address span{ font-size: 14px; color: #4c4c4c;font-weight: normal; } .address-box span a,.add-address span a {  font-size: 14px; color: #4c4c4c;text-decoration: none;}.add-address { width: 100%;float: left;text-align: left;margin: 15px 0px;} .add-address ul{  margin: 0;padding: 0; display: inline-block;}.add-address ul li  { width: 300px; height: 240px;display: inline-block;float: left;padding: 15px 20px;margin-left: 30px; text-align: left; border-radius: 3px; border: 2px solid #ccc;}.add-address ul li h4{ padding: 0; margin: 0;margin-bottom: 5px;text-align: left;color: #000; font-size: 15px;font-weight: 700;display: inline-block; }.add-address ul li i{ width: 100%; font-size: 50px;color: #ccc;}.add-address ul li h3{  margin: 15px 0px;padding: 0;color: #ccc;font-size: 20px;font-weight: 700;display: inline-block; }.add-address ul li p {margin: 3px 0px;  padding: 0; font-size: 13px;line-height: 19px; font-weight: 600;}.add-address ul li span {font-size: 12px; margin-top: 50px; display: inline-block;} .add-address ul li span a{color: #0089ff;font-size: 13px;}.add-address ul li:first-child{ width: 300px; height: 240px;display: inline-block;float: left;padding: 65px; margin-left: 0px;text-align: center; border-radius: 3px; border: 2px dashed #ccc;}.add-address ul li:nth-child(3n+1) {width: 300px; height: 240px;display: inline-block; float: left;padding: 15px 20px !IMPORTANT;margin-left: 0px; text-align: center;border-radius: 3px;border: 2px solid #ccc;margin-top: 20px;} .hide{  display: none;}.active{display: block; }.tooltip{  position:relative;float:right;}.tooltip > .tooltip-inner {background-color: #eebf3f; padding:5px 15px; color:rgb(23,44,66); font-weight:bold; font-size:13px;}.popOver + .tooltip > .tooltip-arrow {border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f;} .progress{border-radius:0; overflow:visible; height: 5px;}.progress-bar{ background:rgb(23,44,60); -webkit-transition: width 1.5s ease-in-out; transition: width 1.5s ease-in-out;}.tooltip.top { margin-top: 45px;}.tooltip.top .tooltip-arrow {top: 0px; left: 50%; margin-left: -5px; border-width: 5px 5px 0; border-bottom-color: #000 !important;}.popOver + .tooltip > .tooltip-arrow { border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 5px solid #efc556 !important; border-top:none !important; }.payment-btn1:disabled{  opacity: 0.2;} .save-card h3 { font-size: 17px;color: #000; text-align: left;font-weight: bold; margin-bottom: 0px; } .save-card h3 span{font-size: 15px; display: inline-block; width: 31%;float: right;}.content_accordion{ float: left; width: 100%; text-align: left;}.content_accordion .panel-heading h4{ position: relative;border: 1px solid #d6d6d6;box-shadow: none; background: none;} .content_accordion .panel-heading h4 .expair {float: right;width: 30%;font-size: 13px; padding-top: 5px;}.content_accordion .panel-heading h4 span { display: inline-block; margin-left: 19px; position: relative; top: 1px; font-size: 13px;} .content_accordion .panel-heading h4 img{ width: 38px;}.content_accordion .panel-heading h4 .fas{ position:absolute;     right: 20px;top: 15px; float: right;font-size: 25px; transition: 500ms all ease-in-out 0s;}.content_accordion .panel-heading h4 a.collapsed .fas{ transition: 500ms all ease-in-out 0s; transform: rotate(180deg);}.panel-body h4{ font-weight: bold; font-size: 17px; color: #000;}.panel-body-left{ float: left; width:70%;} .panel-body-right{ float: left; width:30%;}.panel-body-button{ float: left; width: 100%; text-align: right;}.panel-body-button a {display: inline-block; background: #d64ade; border: 1px solid #d64ade; padding: 5px 26px; color: #fff;border-radius: 15px; }.panel-body-button a:hover{background: none;color: #d64ade; }.panel-body-button span { display: inline-block; background: #d64ade;border: 1px solid #d64ade; padding: 5px 26px;color: #fff; border-radius: 15px; } .panel-body-button span:hover{background: none;color: #d64ade; border-color: #c948d0; }.payment-method{ float: left;width: 100%;text-align: left; }.payment-method-box{float: left;width: 100%;  }.payment-method-box h4{ color: #000; float: left;}.payment-method-box h4 span{ display: block; color: #000; font-weight: normal;font-size: 15px;color: #616161; margin-top: 10px; } .payment-method-box img{ float: right;}.panel-default > .panel-heading + .panel-collapse > .panel-body { border-top-color: #EEEEEE; border: 1px solid #c8c8c8;}.payment-method h3{border-bottom:1px solid #ccc;margin-bottom:15px;padding-bottom:6px;font-size:21px}#demo ul{display:inline-block;width:100%}#demo ul li{display:inline-block;width:24%}#demo ul li label{width:100%;margin-bottom:7px;font-size:15px}#demo ul li:nth-child(3){width:135px}#demo ul li input[type=submit]{background:#d64ade;color:#fff;border:1px solid #a616ae;border-radius:4px;padding:3px 17px 4px}#demo{padding-top:14px}.add-new{cursor:pointer}.form-box-data .date-box input::placeholder{text-transform:lowercase!important}.address{width:100%;float:left;text-align:center;display:inline-block}.address-box{width:50%;text-align:left;display:inline-block}.add-address h2,.address-box{margin:15px 0;padding:0;text-align:left;font-size:20px;font-weight:700}.address-box h3{margin:15px 0;padding:0;font-size:17px;font-weight:700;display:inline-block}.address-box p{width:95%;font-size:14px;font-weight:700}.address-box label{width:100%;font-size:14px;margin-top:5px;font-weight:600;display:inline-block}.address-box select{width:100%;float:left;background:#ececec;padding:5px 10px;margin-bottom:10px;border-radius:3px;border:1px solid #9a9a9a}.address-box input{width:100%;float:left;margin-bottom:5px;padding:5px 10px;border-radius:3px;border:1px solid #9a9a9a}.address-box button{background:#d64ade;cursor:pointer;padding:7px 35px;font-size:14px;border:1px solid #d64ade;font-weight:600;border-radius:3px;color:#333;margin-top:30px;margin-bottom:30px;letter-spacing:1px}.address-box button:hover{border:1px solid #333;background:#333;color:#fff}.add-address span,.address-box{font-size:14px;color:#4c4c4c;font-weight:400}.add-address span a,.address-box span a{font-size:14px;color:#4c4c4c;text-decoration:none}.add-address{width:100%;float:left;text-align:left;margin:15px 0}.add-address ul{margin:0;padding:0;display:inline-block}.add-address ul li{width:300px;height:240px;display:inline-block;float:left;padding:15px 20px;margin-left:30px;text-align:left;border-radius:3px;border:2px solid #ccc;margin-top:20px}.add-address ul li h4{padding:0;margin:0;margin-bottom:5px;text-align:left;color:#000;font-size:15px;font-weight:700;display:inline-block}.add-address ul li i{width:100%;font-size:50px;color:#ccc}.add-address ul li h3{margin:15px 0;padding:0;color:#ccc;font-size:20px;font-weight:700;display:inline-block}.add-address ul li p{margin:3px 0;padding:0;font-size:13px;line-height:19px;font-weight:600}.add-address ul li span{font-size:12px;margin-top:50px;display:inline-block}.add-address ul li span a{color:#0089ff;font-size:13px}.add-address ul li:first-child{width:300px!important;height:240px!important;display:inline-block!important;float:left!important;padding:65px!important;margin-left:0!important;text-align:center!important;border-radius:3px!important;border:2px dashed #ccc!important;margin-top:20px!important}.add-address ul li:nth-child(3n+1){width:300px;height:240px;display:inline-block;float:left;padding:15px 20px;margin-left:0;text-align:center;border-radius:3px;border:2px solid #ccc;margin-top:20px}
+    /*new code*/
+    .setting-box{padding-top:0px;}
+    .btn-success.disabled, .btn-success[disabled]{
+        background-color: #e9aed7;
+        border-color: #f0cae4;
+    }
+    .address
+    {
+        width: 100%;
+        float: left;
+        text-align: center;
+        display: inline-block;
+    }
+    .address-box 
+    {
+        width: 50%;
+        text-align: left;
+        display: inline-block;
+    }
+    .address-box, .add-address h2
+    {
+        margin: 15px 0px;
+        padding: 0;
+        text-align: left;
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .address-box h3
+    {
+        margin: 15px 0px;
+        padding: 0;
+        font-size: 17px;
+        font-weight: 700;
+        display: inline-block;
+    }
+    .address-box p
+    {
+        width: 95%;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .address-box label
+    {
+        width: 100%;
+        font-size: 14px;
+        margin-top: 5px;
+        font-weight: 600;
+        display: inline-block;
+    }
+    .address-box select
+    {
+        width: 100%;
+        float: left;
+        background: #ececec;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        border-radius: 3px;
+        border: 1px solid #9a9a9a;
+    }
+    .address-box input
+    {
+        width: 100%;
+        float: left;
+        margin-bottom: 5px;
+        padding: 5px 10px;
+        border-radius: 3px;
+        border: 1px solid #9a9a9a;
+    }
+    .address-box button 
+    {
+        display: inline-block;
+        background: #d64ade;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: #fff;
+        font-size: 17px;
+        padding: 11px 43px;
+        border-radius: 25px;
+        margin-top: 10px;
+        transition: 500ms all ease-in-out 0s;
+    }
+    .address-box button:hover
+    {
+        border: 1px solid #333;
+        background: #333;
+        color: #fff;
+    }
+    .address-box, .add-address span
+    {
+        font-size: 14px;
+        color: #4c4c4c;
+        font-weight: normal;
+    }
+    .address-box span a, 
+    .add-address span a
+    {
+        font-size: 14px;
+        color: #4c4c4c;
+        text-decoration: none;
+    }
+    .add-address
+    {
+        width: 100%;
+        float: left;
+        text-align: left;
+        margin: 15px 0px;
+    }
+    .add-address ul
+    {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+    .add-address ul li 
+    {
+        width: 300px;
+        height: 240px;
+        display: inline-block;
+        float: left;
+        padding: 15px 20px;
+        margin-left: 30px;
+        text-align: left;
+        border-radius: 3px;
+        border: 2px solid #ccc;
+    }
+    .add-address ul li h4
+    {
+        padding: 0;
+        margin: 0;
+        margin-bottom: 5px;
+        text-align: left;
+        color: #000;
+        font-size: 15px;
+        font-weight: 700;
+        display: inline-block;
+    }
+    .add-address ul li i
+    {
+        width: 100%;
+        font-size: 50px;
+        color: #ccc;
+    }
+    .add-address ul li h3
+    {
+        margin: 15px 0px;
+        padding: 0;
+        color: #ccc;
+        font-size: 20px;
+        font-weight: 700;
+        display: inline-block;
+    }
+    .add-address ul li p
+    {
+        margin: 3px 0px;
+        padding: 0;
+        font-size: 13px;
+        line-height: 19px;
+        font-weight: 600;
+    }
+    .add-address ul li span
+    {
+        font-size: 12px;
+        margin-top: 50px;
+        display: inline-block;
+    }
+    .add-address ul li span a
+    {
+        color: #0089ff;
+        font-size: 13px;
+    }
+    .add-address ul li:first-child
+    {
+        width: 300px;
+        height: 240px;
+        display: inline-block;
+        float: left;
+        padding: 65px;
+        margin-left: 0px;
+        text-align: center;
+        border-radius: 3px;
+        border: 2px dashed #ccc;
+    }
+    .add-address ul li:nth-child(3n+1) {
+        width: 300px;
+        height: 240px;
+        display: inline-block;
+        float: left;
+        padding: 15px 20px !IMPORTANT;
+        margin-left: 0px;
+        text-align: center;
+        border-radius: 3px;
+        border: 2px solid #ccc;
+        margin-top: 20px;
+    }
+    /*new code*/
+    .hide{
+        display: none;
+    }
+    .active{
+        display: block;
+    }
+
+    .tooltip{  position:relative;float:right;}
+    .tooltip > .tooltip-inner {background-color: #eebf3f; padding:5px 15px; color:rgb(23,44,66); font-weight:bold; font-size:13px;}
+    .popOver + .tooltip > .tooltip-arrow {border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #eebf3f;}
+
+    .progress{border-radius:0; overflow:visible; height: 5px;}
+    .progress-bar{
+        background:rgb(23,44,60); 
+        -webkit-transition: width 1.5s ease-in-out;
+        transition: width 1.5s ease-in-out;
+    }
+    .tooltip.top {
+        margin-top: 45px;
+    }
+
+    .tooltip.top .tooltip-arrow {
+        top: 0px;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px 5px 0;
+        border-bottom-color: #000 !important;
+    }
+    .popOver + .tooltip > .tooltip-arrow {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #efc556 !important;
+        border-top:none !important;
+    }
+    .payment-btn1:disabled{
+        opacity: 0.2;
+    }
+    .save-card h3 {
+        font-size: 17px;
+        color: #000;
+        text-align: left;
+        font-weight: bold;
+        margin-bottom: 0px;
+    }
+    .save-card h3 span{font-size: 15px; display: inline-block; width: 31%;float: right;}
+    .content_accordion{ float: left; width: 100%; text-align: left;}
+    .content_accordion .panel-heading h4{ position: relative;border: 1px solid #d6d6d6;box-shadow: none; background: none;}
+    .content_accordion .panel-heading h4 .expair {
+        float: right;
+        width: 30%;
+        font-size: 13px;
+        padding-top: 5px;
+    }
+    .content_accordion .panel-heading h4 span { display: inline-block; margin-left: 19px; position: relative; top: 1px; font-size: 13px;}
+    .content_accordion .panel-heading h4 img{ width: 38px;}
+    .content_accordion .panel-heading h4 .fas{ position:absolute;     right: 20px;
+                                               top: 15px; float: right;font-size: 25px; transition: 500ms all ease-in-out 0s;}
+    .content_accordion .panel-heading h4 a.collapsed .fas{ transition: 500ms all ease-in-out 0s; transform: rotate(180deg);}
+    .panel-body h4{ font-weight: bold; font-size: 17px; color: #000;}
+    .panel-body-left{ float: left; width:70%;}
+    .panel-body-right{ float: left; width:30%;}
+    .panel-body-button{ float: left; width: 100%; text-align: right;}
+
+    .panel-body-button a {
+        display: inline-block;
+        background: #d64ade;
+        border: 1px solid #d64ade;
+        padding: 5px 26px;
+        color: #fff;
+        border-radius: 15px;
+    }
+    .panel-body-button a:hover{
+        background: none;
+        color: #d64ade;
+    }
+    .panel-body-button span {
+        display: inline-block;
+        background: #d64ade;
+        border: 1px solid #d64ade;
+        padding: 5px 26px;
+        color: #fff;
+        border-radius: 15px;
+    }
+    .panel-body-button span:hover{
+        background: none;
+        color: #d64ade;
+        border-color: #c948d0;
+    }
+    .payment-method{
+        float: left;
+        width: 100%;
+        text-align: left;
+    }
+    .payment-method-box{
+        float: left;
+        width: 100%;
+    }
+    .payment-method-box h4{ color: #000; float: left;}
+    .payment-method-box h4 span{
+        display: block;
+        color: #000;
+        font-weight: normal;
+        font-size: 15px;
+        color: #616161;
+        margin-top: 10px;
+    }
+    .payment-method-box img{ float: right;}
+    .panel-default > .panel-heading + .panel-collapse > .panel-body {
+
+        border-top-color: #EEEEEE;
+        border: 1px solid #c8c8c8;
+
+    }
+    .payment-method h3{
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 15px;
+        padding-bottom: 6px;
+        font-size: 21px;
+    }
+    #demo ul{ display: inline-block; width: 100%;}
+    #demo ul li{ display: inline-block; width: 24%;}
+    #demo ul li label {
+
+        width: 100%;
+        margin-bottom: 7px;
+        font-size: 15px;
+
+    }
+    #demo ul li:nth-child(3){ width:135px;}
+    #demo ul li input[type="submit"]{
+        background: #d64ade;
+        color: #fff;
+        border: 1px solid #a616ae;
+        border-radius: 4px;
+        padding: 3px 17px 4px;
+    }
+    #demo{ padding-top: 14px;}
+    .add-new{ cursor: pointer;}
+    .form-box-data .date-box input::placeholder {
+        text-transform: lowercase !important;
+    }
+</style>
+<style>
+    .address
+    {
+        width: 100%;
+        float: left;
+        text-align: center;
+        display: inline-block;
+    }
+    .address-box 
+    {
+        width: 50%;
+        text-align: left;
+        display: inline-block;
+    }
+    .address-box, .add-address h2
+    {
+        margin: 15px 0px;
+        padding: 0;
+        text-align: left;
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .address-box h3
+    {
+        margin: 15px 0px;
+        padding: 0;
+        font-size: 17px;
+        font-weight: 700;
+        display: inline-block;
+    }
+    .address-box p
+    {
+        width: 95%;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .address-box label
+    {
+        width: 100%;
+        font-size: 14px;
+        margin-top: 5px;
+        font-weight: 600;
+        display: inline-block;
+    }
+    .address-box select
+    {
+        width: 100%;
+        float: left;
+        background: #ececec;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        border-radius: 3px;
+        border: 1px solid #9a9a9a;
+    }
+    .address-box input
+    {
+        width: 100%;
+        float: left;
+        margin-bottom: 5px;
+        padding: 5px 10px;
+        border-radius: 3px;
+        border: 1px solid #9a9a9a;
+    }
+    .address-box button 
+    {
+        background: #d64ade;
+        cursor: pointer;
+        padding: 7px 35px;
+        font-size: 14px;
+        border: 1px solid #d64ade;
+        font-weight: 600;
+        border-radius: 3px;
+        color: #333;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+    }
+    .address-box button:hover
+    {
+        border: 1px solid #333;
+        background: #333;
+        color: #fff;
+    }
+    .address-box, .add-address span
+    {
+        font-size: 14px;
+        color: #4c4c4c;
+        font-weight: normal;
+    }
+    .address-box span a, 
+    .add-address span a
+    {
+        font-size: 14px;
+        color: #4c4c4c;
+        text-decoration: none;
+    }
+    .add-address
+    {
+        width: 100%;
+        float: left;
+        text-align: left;
+        margin: 15px 0px;
+    }
+    .add-address ul
+    {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+    .add-address ul li 
+    {
+        width: 300px;
+        height: 240px;
+        display: inline-block;
+        float: left;
+        padding: 15px 20px;
+        margin-left: 30px;
+        text-align: left;
+        border-radius: 3px;
+        border: 2px solid #ccc;
+        margin-top: 20px;
+    }
+    .add-address ul li h4
+    {
+        padding: 0;
+        margin: 0;
+        margin-bottom: 5px;
+        text-align: left;
+        color: #000;
+        font-size: 15px;
+        font-weight: 700;
+        display: inline-block;
+    }
+    .add-address ul li i
+    {
+        width: 100%;
+        font-size: 50px;
+        color: #ccc;
+    }
+    .add-address ul li h3
+    {
+        margin: 15px 0px;
+        padding: 0;
+        color: #ccc;
+        font-size: 20px;
+        font-weight: 700;
+        display: inline-block;
+    }
+    .add-address ul li p
+    {
+        margin: 3px 0px;
+        padding: 0;
+        font-size: 13px;
+        line-height: 19px;
+        font-weight: 600;
+    }
+    .add-address ul li span
+    {
+        font-size: 12px;
+        margin-top: 50px;
+        display: inline-block;
+    }
+    .add-address ul li span a
+    {
+        color: #0089ff;
+        font-size: 13px;
+    }
+    .add-address ul li:first-child
+    {
+        width: 300px !important;
+        height: 240px !important;
+        display: inline-block !important;
+        float: left !important;
+        padding: 65px !important;
+        margin-left: 0px !important;
+        text-align: center!important;
+        border-radius: 3px!important;
+        border: 2px dashed #ccc !important;
+        margin-top: 20px !important;
+    }
+    .add-address ul li:nth-child(3n+1) {
+        width: 300px;
+        height: 240px;
+        display: inline-block;
+        float: left;
+        padding: 15px 20px;
+        margin-left: 0px;
+        text-align: center;
+        border-radius: 3px;
+        border: 2px solid #ccc;
+        margin-top: 20px;
+    }
+
 </style>
 <div class="style-bar">
     <div class="container">
@@ -110,7 +643,150 @@ if ($slug == 'schedule') {
             </div>
         </div>
     <?php }  else if($this->request->session()->read('PROFILE')==''){?>
-<style type="text/css"> .select-service-main{width:100%;margin-top:130px;float:left;text-align:center;margin-bottom:23px}.select-service{width:42%;float:none;padding:15px;border:2px solid #ccc;text-align:center;margin:0 auto}.select-service-images{width:100%;float:left;border-top:2px solid #ff6c00;margin-top:20px;padding-top:20px!important;margin-bottom:20px}.select-service-images img{width:49%}.select-service-text{width:90%;float:none;padding:10px;text-align:center;margin:0 auto}.select-service-text h2{font-size:25px;font-weight:600;margin:0;margin-bottom:15px;margin-top:15px;display:inline-block;font-family:"Amazon Ember",Arial,sans-serif}.select-service-text p{margin:0;font-size:14px;font-weight:400;margin-bottom:15px;font-family:"Amazon Ember",Arial,sans-serif}.select-service-button{width:100%;float:none;padding:10px 0 30px;text-align:center;background:#fff;margin:0 auto}.select-service-button h2{font-size:25px;font-weight:600;margin-top:15px;margin-bottom:0;font-family:"Amazon Ember",Arial,sans-serif}.select-service-button p{margin:0;font-size:14px;font-weight:400;margin-bottom:15px;font-family:"Amazon Ember",Arial,sans-serif}.select-service-button input[type=submit]{background:#232f3e;color:#ff6c00;padding:10px;font-size:15px;display:inline-block;font-weight:700;font-family:"Amazon Ember",Arial,sans-serif;border:1px solid #232f3e}.select-service-button input[type=submit]:focus,.select-service-button input[type=submit]:hover{color:#232f3e;background:#ff6c00;text-decoration:none;outline:0;border:1px solid #ff6c00}.select-service-button input[type=radio]{position:absolute!important;clip:rect(0,0,0,0);height:1px;width:1px;border:0;overflow:hidden;margin:4px 0 0;margin-top:1px;line-height:normal;display:inline-block}.select-service-button label{width:135px;font-size:14px;text-align:center;display:inline-block;float:none;padding:10px 0;border:1px solid #bbb;margin:20px -2px;font-size:15px;font-weight:700;font-family:"Amazon Ember",Arial,sans-serif}.select-service-button input[type=radio]:checked+label{background-color:#fe6c00;-webkit-box-shadow:none;box-shadow:none;color:#232e3e;padding:10px 0;border:1px solid #fe6c00}
+
+
+<style type="text/css">
+            .select-service-main
+            {
+                width: 100%;
+                margin-top:130px;
+                float:left;
+                text-align: center;
+                margin-bottom: 23px;
+            }
+            .select-service
+            {
+                width: 42%;
+                float:none;
+                padding:15px;
+                border: 2px solid #ccc;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .select-service-images
+            {
+                width: 100%;
+                float: left;
+                border-top: 2px solid #ff6c00;
+                margin-top: 20px;
+                padding-top: 20px !important;
+                margin-bottom: 20px;
+            }
+            .select-service-images img
+            {
+                width: 49%;
+            }
+            .select-service-text
+            {
+                width: 90%;
+                float: none;
+                padding: 10px;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .select-service-text h2
+            {
+                font-size: 25px;
+                font-weight: 600;
+                margin: 0px;
+                margin-bottom: 15px;
+                margin-top: 15px;
+                display: inline-block;
+                font-family: "Amazon Ember", Arial, sans-serif;
+            }
+            .select-service-text p
+            {
+                margin: 0px;
+                font-size: 14px;
+                font-weight: normal;
+                margin-bottom: 15px;
+                font-family: "Amazon Ember", Arial, sans-serif;
+            }      
+
+
+
+
+            .select-service-button
+            {
+                width: 100%;
+                float: none;
+                padding: 10px 0 30px;
+                text-align: center;
+                background: #fff;
+                margin: 0 auto;
+            }
+            .select-service-button h2
+            {
+                font-size: 25px;
+                font-weight: 600;
+                margin-top: 15px;
+                margin-bottom: 0px;
+                font-family: "Amazon Ember", Arial, sans-serif;
+            }
+            .select-service-button p
+            {
+                margin: 0px;
+                font-size: 14px;
+                font-weight: normal;
+                margin-bottom: 15px;
+                font-family: "Amazon Ember", Arial, sans-serif;
+            }
+            .select-service-button input[type='submit']
+            {
+                background: #232f3e;
+                color: #ff6c00;
+                padding: 10px;
+                font-size: 15px;
+                display: inline-block;
+                font-weight: bold;
+                font-family: "Amazon Ember", Arial, sans-serif;
+                border:1px solid #232f3e;
+            }
+            .select-service-button input[type='submit']:hover,
+            .select-service-button input[type='submit']:focus
+            {
+                color: #232f3e;
+                background: #ff6c00;
+                text-decoration: none;
+                outline: none;
+                border:1px solid #ff6c00;
+            }
+            .select-service-button input[type=radio] 
+            {
+                position: absolute !important;
+                clip: rect(0, 0, 0, 0);
+                height: 1px;
+                width: 1px;
+                border: 0;
+                overflow: hidden;
+                margin: 4px 0 0;
+                margin-top: 1px;
+                line-height: normal;
+                display: inline-block;
+            }
+            .select-service-button label
+            {
+                width: 135px;
+                font-size: 14px;
+                text-align: center;
+                display: inline-block;
+                float: none;
+                padding: 10px 0px;
+                border: 1px solid #bbb;
+                margin: 20px -2px;
+                font-size: 15px;
+                font-weight: bold;
+                font-family: "Amazon Ember", Arial, sans-serif;
+            }
+            .select-service-button input[type=radio]:checked + label
+            {
+                background-color: #fe6c00;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                color: #232e3e;
+                padding: 10px 0px;
+                border: 1px solid #fe6c00;
+            }
         </style>
         <?php echo $this->Form->create(null, array('url' => ['controller' => 'users', 'action' => 'gender_update'], 'data-toggle' => "validator", 'id' => 'style')) ?>
         <section class="select-service-main">
@@ -383,7 +1059,7 @@ if ($slug == 'reservation') {
                         <button type="submit" name='deliverAddress' value='deliverAddress'  class="btn deliver-address" id="payment">Next : Payment <i class="fas fa-arrow-right"></i></button>
                         <?= $this->Form->end(); ?>
                     </div>
-                    <script type="text/javascript">
+                    <script>
                         function delivery() {
                             var x = document.getElementById("delivery-day");
                             if (x.style.display === "block")
@@ -401,7 +1077,7 @@ if ($slug == 'reservation') {
         <?php
     } else if ($sections == 'edit') {
         ?>
-         <script type="text/javascript">
+        <script>
             $(document).ready(function () {
                 $('#full_name').focus();
 
@@ -458,7 +1134,7 @@ if ($slug == 'reservation') {
                         <button type="submit" name='deliverAddress' value='deliverAddress'  class="btn deliver-address" id="payment">Next : Payment <i class="fas fa-arrow-right"></i></button>
                         <?= $this->Form->end(); ?>
                     </div>
-                     <script type="text/javascript">
+                    <script>
                         function delivery() {
                             var x = document.getElementById("delivery-day");
                             if (x.style.display === "block")
@@ -475,7 +1151,7 @@ if ($slug == 'reservation') {
         </section>
     <?php } ?>
 
-    <script type="text/javascript">
+    <script>
         $("#shipaddress").validate({
 
             rules: {
@@ -548,11 +1224,16 @@ if ($slug == 'reservation') {
     <script type="text/javascript">
         function cardFormValidate() {
             var cardValid = 0;
+            //Card validation
+
             $('#card_number').validateCreditCard(function (result) {
                 var cardType = (result.card_type == null) ? '' : result.card_type.name;
+                //alert(cardType);
+                //alert(result.valid);
                 $("#card_type_input").val(cardType);
                 if (cardType == 'Visa') {
                     var backPosition = result.valid ? '1px -64px, 470px -82px' : '2px -22px, 470px -12px';
+
                 } else if (cardType == 'MasterCard') {
                     var backPosition = result.valid ? '2px -181px, 319px -84px' : '2px -22px, 471px 14px';
                 } else if (cardType == 'Maestro') {
@@ -566,6 +1247,10 @@ if ($slug == 'reservation') {
                 } else {
                     var backPosition = result.valid ? '2px -121px, 470px -87px' : '2px -22px, 471px 14px';
                 }
+
+
+
+                //alert(backPosition);
                 $('#card_number').css("background-position", backPosition);
                 if (result.valid) {
                     $("#card_type").val(cardType);
@@ -578,6 +1263,8 @@ if ($slug == 'reservation') {
                     cardValid = 0;
                 }
             });
+
+            //Form validation
             var cardName = $("#card_name").val();
             var expMonth = $("#expiry_month").val();
             var expYear = $("#expiry_year").val();
@@ -590,6 +1277,7 @@ if ($slug == 'reservation') {
                 $("#card_number").addClass('required');
                 $("#card_number").focus();
                 $('#cart-type-msg').html('<span style="color:red">Please enter your valid card number</span>');
+
                 return false;
             } else if (!regMonth.test(expMonth)) {
                 $("#card_number").removeClass('required');
@@ -602,7 +1290,9 @@ if ($slug == 'reservation') {
                 $("#expiry_month").removeClass('required');
                 $("#expiry_year").addClass('required');
                 $("#expiry_year").focus();
+
                 return false;
+
             } else if (!regName.test(cardName)) {
                 $("#card_number").removeClass('required');
                 $("#expiry_month").removeClass('required');
@@ -631,8 +1321,20 @@ if ($slug == 'reservation') {
             }
         }
 
+
+
+
+
+
+
+
+
         $(document).ready(function () {
+
+
             $('.apply_card').prop('disabled', true);
+
+            //Card form validation on input fields
             $('#paymentForm input[type=text]').on('keyup', function () {
                 $('#card_number').removeAttr('style');
                 $('#card_name').removeAttr('style');
@@ -641,9 +1343,13 @@ if ($slug == 'reservation') {
                 cardFormValidate();
             });
 
+            //Submit card form
             $('#cardSubmitBtn').on('click', function () {
+                // alert("j");
+                //if (cardFormValidateX()) {
                 $('#loaderPyament').show();
                 var formData = $('#paymentForm1').serialize();
+                //alert(formData);
                 var URL = '<?= HTTP_ROOT; ?>';
                 $("#loader").show();
                 $("#cardSubmitBtn").attr("disabled", true);
@@ -656,15 +1362,21 @@ if ($slug == 'reservation') {
                         $("#cardSubmitBtn").val('Processing....');
                     },
                     success: function (data) {
-                        if (data.status == 1) {                         
+
+                        //console.log(data);
+                        if (data.status == 1) {
+
+                            // $('#loaderPyament').hide();
                             $("#cardSubmitBtn").attr("disabled", true);
                             $('#paymentSection').slideUp('slow');
+                            // $('#orderInfo').slideDown('slow');
                             $('#msg').html('<p class="alert alert-success">You have payment successfully.You will redirecting  page automatically after 5 seconds.Your transaction id is <span>#' + data.TransId + '</span></p>');
                             window.setTimeout(function () {
                                 window.location.href = '<?= HTTP_ROOT; ?>payment-success';
                             }, 10000);
 
                         } else if (data.error == 'error') {
+                         
                             $('#loaderPyament').hide();
                             $('#msg').html('<p class="alert alert-danger" id="e" >'+data.ErrorMessage +'</p>');
                             $('.apply_card').removeAttr("disabled");
@@ -673,8 +1385,11 @@ if ($slug == 'reservation') {
 
                     $('#msg').html('');
                 }, 10000);
-   
+                            
+                            
+                            
                         } 
+                        
                         else if(data.ErrorCode!='') {
                             $('#loaderPyament').hide();
                             var errorMessg = getErrorMessgeDetils(data.ErrorCode);
@@ -699,9 +1414,14 @@ if ($slug == 'reservation') {
         <input type="text" placeholder="123" maxlength="3" id="cvv" name="cvv">
         <input type="text" placeholder="Name on card" id="name_on_card123" name="name_on_card">
         <input  type="submit" name="card_submit" id="cardSubmitBtn" value="Continue..." class="payment-btn" disabled="true" >
-        <input type="button" name="card_submit" id="cardSubmitBtn123" value="Back" class="payment-btn" disabled="true" onclick="javascript:history.back(); return false;">
-          <?php echo $this->Form->end(); ?>
+        <input type="button" name="card_submit" id="cardSubmitBtn123" value="Back" class="payment-btn" disabled="true" onclick="javascript:history.back();
+                    return false;">
+               <?php echo $this->Form->end(); ?>
     </div>
+
+
+
+
     <section class="payment">
         <div class="container">
             <div class="row">
@@ -710,9 +1430,11 @@ if ($slug == 'reservation') {
                 </div>
                 <div id="msg"></div>
             </div>
+
             <div class="row">
                 <div class="col-md-9">
                     <div class="card-border">
+
                         <div class=" faq-cat-content">
                             <div class="card-details-heading">
                                 <ul>
@@ -721,6 +1443,7 @@ if ($slug == 'reservation') {
                                     <li><p>Expires date</p></li>
                                 </ul> 
                             </div>
+
                             <div class="tab-pane active in fade" id="faq-cat-1">
                                 <div class="panel-group" id="accordion-cat-1w">
                                     <?php
@@ -743,17 +1466,27 @@ if ($slug == 'reservation') {
                                             $img = 'jcb.png';
                                         }
                                         ?>
-                                    <style type="text/css">
-                                            .panel-heading{ position: relative;}.panel-heading input[type="radio"]{ position: absolute;top: 14px;left: 10px; }
+
+                                        <style>
+                                            .panel-heading{ position: relative;}
+                                            .panel-heading input[type="radio"]{
+                                                position: absolute;top: 14px;left: 10px;
+                                            }
                                         </style>
-                                        <script type="text/javascript">
-                                            function getChecked(id) {$('.collapse').removeClass('in');$('#faq-cat-1-sub-' + id).addClass('in');  }
+                                        <script>
+                                            function getChecked(id) {
+                                                $('.collapse').removeClass('in');
+                                                $('#faq-cat-1-sub-' + id).addClass('in');
+                                            }
                                         </script>
                                         <div class="panel panel-default panel-faq">
                                             <div class="panel-heading">
+
+
                                                 <input  onclick='getChecked("<?php echo $i; ?>")' id="test<?php echo $i; ?>" type="radio" name="card-details" value="<?php echo $card->id; ?>">
                                                 <a for="test<?php echo $i; ?>">
                                                     <div class="card">
+
                                                         <ul>
                                                             <li></li>
                                                             <li><img src="<?php echo HTTP_ROOT . 'images/' . $img ?>"></li>
@@ -765,6 +1498,7 @@ if ($slug == 'reservation') {
                                                 </a>
 
                                             </div>
+
                                             <div id="faq-cat-1-sub-<?php echo $i; ?>" class="panel-collapse collapse ">
                                                 <div class="panel-body">
                                                     <div class="card-cvv">
@@ -786,12 +1520,13 @@ if ($slug == 'reservation') {
                             </div>                    
                         </div>                
                     </div>
-                    <script type="text/javascript">
+                    <script>
                         function getValidate() {
                             var cardNu = $('#card_number').val();
                             var card_name = $('#card_name').val();
                             var cvv = $('#paymentForm input[name=cvv]').val();
                             var ctype = $('#card_type_input').val();
+
                             if (cardNu == '') {
                                 $('#card_number').focus();
                                 $('#card_number').attr("style", "border:#FF0000 1px solid!important");
@@ -837,6 +1572,8 @@ if ($slug == 'reservation') {
 
                         });
                     </script>
+
+
                     <div class="card-payment-option">
                         <div class="container"> 
                             <div class="row">
@@ -845,6 +1582,7 @@ if ($slug == 'reservation') {
                                         <summary>Add a card</summary>
                                     </details>
                                     <div id="new-card">
+
                                         <?php echo $this->Form->create("User", array('class' => 'new-card-form', 'data-toggle' => "validator", 'id' => 'paymentForm', 'onsubmit' => 'return getValidate()')) ?>
                                         <p>Enter your card information</p>
                                         <p id="cart-type-msg" onclick="$('#cart-type-msg').fadeOut('slow');"></p>
@@ -887,14 +1625,16 @@ if ($slug == 'reservation') {
                                                 <label>CVV</label>
                                                 <input type="text" name="cvv" id="cvv">
                                             </li>
+
                                             <li>
                                                 <input type="hidden"  id="card_type_input" name="card_type">
                                                 <input type="submit" name="card_payment" id="card_payment" class="btn" value="Add your card">
                                             </li>
                                         </ul>
+
                                         <?php echo $this->Form->end(); ?>
                                     </div>
-                                    <script type="text/javascript">
+                                    <script>
                                         function newcard() {
                                             var x = document.getElementById("new-card");
                                             if (x.style.display === "block")
@@ -919,29 +1659,39 @@ if ($slug == 'reservation') {
             </div>
         </div>
     </section>
-    <script type="text/javascript">
+    <script>
         $('input[name=finance]').keyup(function (e) {
             var getId = $('input[name=card-details]:checked').val();
             var cvv = $('#cvvr' + getId).val();
             if (cvv != '') {
+                // alert(cvv.length);
                 if (cvv.length == 3) {
                     $('.apply_card').prop('disabled', false);
                 } else {
                     $('.apply_card').prop('disabled', true);
                 }
             }
+
+
+
         });
         $('input[name=finance]').keypress(function (e) {
             var getId = $('input[name=card-details]:checked').val();
             var cvv = $('#cvvr' + getId).val();
             var key = e.which;
             if ((key == 13) && (cvv.length == 3)) {
+
+
                 $('.apply_card').click();
             }
         });
 
         $('.apply_card').click(function () {
+
             var getId = $('input[name=card-details]:checked').val();
+            //alert(getId);
+            // var getId = $(this).attr("data-id");
+            //var getId = $(this).attr("data-id");
             var cvv = $('#cvvr' + getId).val();
             if (cvv == "") {
                 $('#cvvr' + getId).focus();
@@ -950,6 +1700,7 @@ if ($slug == 'reservation') {
             }
             $("#cvv-error" + getId).html("");
             if (getId) {
+
                 $('#loaderPyament').show();
                 $.ajax({
                     type: "POST",
@@ -957,6 +1708,7 @@ if ($slug == 'reservation') {
                     data: {id: getId},
                     dataType: "json",
                     success: function (result) {
+                        // console.log(result);
                         $('#loaderPyament').hide();
                         $('.apply_card').attr("disabled", 'disabled');
                         var expire = result.card_expire;
@@ -968,21 +1720,169 @@ if ($slug == 'reservation') {
                         $("#expiry_year123").val(chars[0]);
                         $("#cvv").val(cvv);
                         $("#name_on_card123").val(result.card_name);
+                        //($"#card_number123").keyup();
                         $('#cardSubmitBtn').click();
                     }
                 });
             }
         });
 
+
     </script>
+
+
+
+
 <?php } ?> 
+
 <?php
 if ($slug == 'style') {
+//echo $this->request->session()->read('PROFILE'); exit;
     ?>
     <?php if ($this->request->session()->read('PROFILE') == '') {
         ?>
         <style type="text/css">
-           .select-service-main{width:100%;margin-top:130px;float:left;text-align:center;margin-bottom:23px}.select-service{width:42%;float:none;padding:15px;border:2px solid #ccc;text-align:center;margin:0 auto}.select-service-images{width:100%;float:left;border-top:2px solid #ff6c00;margin-top:20px;padding-top:20px!important;margin-bottom:20px}.select-service-images img{width:49%}.select-service-text{width:90%;float:none;padding:10px;text-align:center;margin:0 auto}.select-service-text h2{font-size:25px;font-weight:600;margin:0;margin-bottom:15px;margin-top:15px;display:inline-block;font-family:"Amazon Ember",Arial,sans-serif}.select-service-text p{margin:0;font-size:14px;font-weight:400;margin-bottom:15px;font-family:"Amazon Ember",Arial,sans-serif}.select-service-button{width:100%;float:none;padding:10px 0 30px;text-align:center;background:#fff;margin:0 auto}.select-service-button h2{font-size:25px;font-weight:600;margin-top:15px;margin-bottom:0;font-family:"Amazon Ember",Arial,sans-serif}.select-service-button p{margin:0;font-size:14px;font-weight:400;margin-bottom:15px;font-family:"Amazon Ember",Arial,sans-serif}.select-service-button input[type=submit]{background:#232f3e;color:#ff6c00;padding:10px;font-size:15px;display:inline-block;font-weight:700;font-family:"Amazon Ember",Arial,sans-serif;border:1px solid #232f3e}.select-service-button input[type=submit]:focus,.select-service-button input[type=submit]:hover{color:#232f3e;background:#ff6c00;text-decoration:none;outline:0;border:1px solid #ff6c00}.select-service-button input[type=radio]{position:absolute!important;clip:rect(0,0,0,0);height:1px;width:1px;border:0;overflow:hidden;margin:4px 0 0;margin-top:1px;line-height:normal;display:inline-block}.select-service-button label{width:135px;font-size:14px;text-align:center;display:inline-block;float:none;padding:10px 0;border:1px solid #bbb;margin:20px -2px;font-size:15px;font-weight:700;font-family:"Amazon Ember",Arial,sans-serif}.select-service-button input[type=radio]:checked+label{background-color:#fe6c00;-webkit-box-shadow:none;box-shadow:none;color:#232e3e;padding:10px 0;border:1px solid #fe6c00}
+            .select-service-main
+            {
+                width: 100%;
+                margin-top:130px;
+                float:left;
+                text-align: center;
+                margin-bottom: 23px;
+            }
+            .select-service
+            {
+                width: 42%;
+                float:none;
+                padding:15px;
+                border: 2px solid #ccc;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .select-service-images
+            {
+                width: 100%;
+                float: left;
+                border-top: 2px solid #ff6c00;
+                margin-top: 20px;
+                padding-top: 20px !important;
+                margin-bottom: 20px;
+            }
+            .select-service-images img
+            {
+                width: 49%;
+            }
+            .select-service-text
+            {
+                width: 90%;
+                float: none;
+                padding: 10px;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .select-service-text h2
+            {
+                font-size: 25px;
+                font-weight: 600;
+                margin: 0px;
+                margin-bottom: 15px;
+                margin-top: 15px;
+                display: inline-block;
+                font-family: "Amazon Ember", Arial, sans-serif;
+            }
+            .select-service-text p
+            {
+                margin: 0px;
+                font-size: 14px;
+                font-weight: normal;
+                margin-bottom: 15px;
+                font-family: "Amazon Ember", Arial, sans-serif;
+            }      
+
+
+
+
+            .select-service-button
+            {
+                width: 100%;
+                float: none;
+                padding: 10px 0 30px;
+                text-align: center;
+                background: #fff;
+                margin: 0 auto;
+            }
+            .select-service-button h2
+            {
+                font-size: 25px;
+                font-weight: 600;
+                margin-top: 15px;
+                margin-bottom: 0px;
+                font-family: "Amazon Ember", Arial, sans-serif;
+            }
+            .select-service-button p
+            {
+                margin: 0px;
+                font-size: 14px;
+                font-weight: normal;
+                margin-bottom: 15px;
+                font-family: "Amazon Ember", Arial, sans-serif;
+            }
+            .select-service-button input[type='submit']
+            {
+                background: #232f3e;
+                color: #ff6c00;
+                padding: 10px;
+                font-size: 15px;
+                display: inline-block;
+                font-weight: bold;
+                font-family: "Amazon Ember", Arial, sans-serif;
+                border:1px solid #232f3e;
+            }
+            .select-service-button input[type='submit']:hover,
+            .select-service-button input[type='submit']:focus
+            {
+                color: #232f3e;
+                background: #ff6c00;
+                text-decoration: none;
+                outline: none;
+                border:1px solid #ff6c00;
+            }
+            .select-service-button input[type=radio] 
+            {
+                position: absolute !important;
+                clip: rect(0, 0, 0, 0);
+                height: 1px;
+                width: 1px;
+                border: 0;
+                overflow: hidden;
+                margin: 4px 0 0;
+                margin-top: 1px;
+                line-height: normal;
+                display: inline-block;
+            }
+            .select-service-button label
+            {
+                width: 135px;
+                font-size: 14px;
+                text-align: center;
+                display: inline-block;
+                float: none;
+                padding: 10px 0px;
+                border: 1px solid #bbb;
+                margin: 20px -2px;
+                font-size: 15px;
+                font-weight: bold;
+                font-family: "Amazon Ember", Arial, sans-serif;
+            }
+            .select-service-button input[type=radio]:checked + label
+            {
+                background-color: #fe6c00;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                color: #232e3e;
+                padding: 10px 0px;
+                border: 1px solid #fe6c00;
+            }
         </style>
         <?php echo $this->Form->create(null, array('url' => ['controller' => 'users', 'action' => 'gender_update'], 'data-toggle' => "validator", 'id' => 'style')) ?>
         <section class="select-service-main">
@@ -1026,6 +1926,7 @@ if ($slug == 'style') {
                 <div class="row">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="tab" role="tabpanel">
+                            <!-- Nav tabs -->
                             <div class="tab-button-list">
                                 <ul class="nav nav-tabs fixed" role="tablist" id="button-tablist">
                                     <li role="presentation"
@@ -1056,6 +1957,8 @@ if ($slug == 'style') {
                                     ?>><a <?php if (@$userDetails->user_detail->is_progressbar >= 75) { ?> href="#Section4" aria-controls="home" role="tab" data-toggle="tab"<?php } else { ?> style="opacity:0.5" <?php } ?>>Custom Design & Brands</a></li>
                                 </ul>
                             </div>
+                            <!-- Tab panes -->
+
                             <div class="tab-content tabs data-filup ">
                                 <div role="tabpanel" class="tab-pane fade   <?php if ($sections == 'section1') { ?> in active <?php } else if ($sections == '') { ?> in active <?php } ?>" id="Section1">
                                     <?php echo $this->Form->create(null, array('data-toggle' => "validator", 'id' => 'styleMen')) ?>
@@ -1245,7 +2148,8 @@ if ($slug == 'style') {
                                                                 <option value="16" <?= @$TypicallyWearMen->shoe == "16" ? "selected" : ""; ?>>16</option></select>
                                                         </div>
                                                         <div class="select-box select-box2">
-                                                            <select name="shoe_medium"> 
+                                                            <select name="shoe_medium">
+                                                                <?php /* ?><option value="Medium" <?= @$TypicallyWearMen->shoe_medium == "" ? "selected" : ""; ?>>Medium</option><?php */ ?>
                                                                 <option value="Narrow" <?= @$TypicallyWearMen->shoe_medium == "Narrow" ? "selected" : ""; ?>>Narrow</option>
                                                                 <option value="Medium" <?= @$TypicallyWearMen->shoe_medium == "Medium" ? "selected" : ""; ?>>Medium</option>
                                                                 <option value="Wide" <?= @$TypicallyWearMen->shoe_medium == "Wide" ? "selected" : ""; ?>>Wide</option>
@@ -2609,11 +3513,11 @@ if ($slug == 'style') {
 
     <?php } else if ($this->request->session()->read('PROFILE') == 'KIDS') {
         ?>
-        <style type="text/css">
+        <style>
             #girlsImg{display: none; }
 
         </style>
-        <script type="text/javascript">
+        <script>
             $(document).ready(function () {
                 $('#switch_left').click(function () {
                     $('#boysImg').hide();
@@ -2673,8 +3577,45 @@ if ($slug == 'style') {
                                         echo 'class="active"';
                                     }
                                     ?>><a <?php if (@$kidname->is_progressbar >= 75) { ?> href="#Section4" aria-controls="home" role="tab" data-toggle="tab"<?php } else { ?> style="opacity:0.5" <?php } ?>>Custom Design & Brands</a></li>
-                                </ul>  
+                                </ul>
+                                
+                                
+                                
+                                <?php /* ?><ul class="nav nav-tabs fixed" role="tablist" id="button-tablist">
+                                    <li role="presentation"
+                                    <?php
+                                    if ($sections == 'stats') {
+                                        echo 'class="active"';
+                                    } elseif ($sections == '') {
+                                        echo 'class="active"';
+                                    }
+                                    ?>
+
+                                        ><a <?php if (@$kidname->is_progressbar >= 0) { ?>href="#Section1" aria-controls="home" role="tab" data-toggle="tab" <?php } ?>>Basic Information</a></li>
+                                    <li role="presentation"
+                                    <?php
+                                    if ($sections == 'fit') {
+                                        echo 'class="active"';
+                                    }
+                                    ?> 
+                                        ><a <?php if (@$kidname->is_progressbar >= 25) { ?> href="#Section2" aria-controls="home" role="tab" data-toggle="tab"  <?php } else { ?> style="opacity:0.6" <?php } ?>>Style Fit</a></li>
+                                    <li role="presentation"
+                                    <?php
+                                    if ($sections == 'styles') {
+                                        echo 'class="active"';
+                                    }
+                                    ?>
+                                        ><a <?php if (@$kidname->is_progressbar >= 50) { ?> href="#Section3" aria-controls="home" role="tab" data-toggle="tab"  <?php } else { ?> style="opacity:0.6" <?php } ?>>Price Range</a></li>
+                                    <li role="presentation"
+                                    <?php
+                                    if ($sections == 'custom') {
+                                        echo 'class="active"';
+                                    }
+                                    ?>
+                                        ><a <?php if (@$kidname->is_progressbar >= 75) { ?>href="#Section4" aria-controls="home" role="tab" data-toggle="tab" <?php } else { ?> style="opacity:0.6" <?php } ?>>Custom Design & Brands</a></li>
+                                </ul><?php */ ?>
                             </div>
+                            <!-- Tab panes -->
                             <div class="tab-content tabs data-filup ">
                                 <div role="tabpanel" class="tab-pane fade <?php if ($sections == 'section1') { ?>  active in <?php } else if ($sections == '') { ?> active in <?php } ?>"  id="Section1">
                                     <?php echo $this->Form->create(null, array('data-toggle' => "validator", 'id' => 'styleKid')) ?>
@@ -2748,6 +3689,14 @@ if ($slug == 'style') {
                                                             </label>
                                                         </div>
                                                     </div>
+                                                    <!--  <div class="switch-field">
+                                                         <input type="radio" id="switch_left1" name="kids_relationship_to_child" value="father" <?php if (@$kidmenu->kids_relationship_to_child == 'father') { ?> checked="checked" <?php } ?>>
+                                                         <label for="switch_left1">Father</label>
+                                                         <input type="radio" id="switch_right1" name="kids_relationship_to_child" value="mother" <?php if (@$kidmenu->kids_relationship_to_child == 'mother') { ?> checked="checked" <?php } ?>>
+                                                         <label for="switch_right1">Mother</label>
+                                                         <input type="radio" id="switch_right2" name="kids_relationship_to_child" value="other" <?php if (@$kidmenu->kids_relationship_to_child == 'other') { ?> checked="checked" <?php } ?>>
+                                                         <label for="switch_right2">Other</label>
+                                                     </div> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -2874,6 +3823,7 @@ if ($slug == 'style') {
                                                         </ul>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                         <div class="form-box-data form-box-data2 form-box-data3">
@@ -2973,9 +3923,15 @@ if ($slug == 'style') {
 
                                     </div>
                                     <?= $this->Form->end(); ?>
+
                                 </div>
+
                                 <div role="tabpanel" class="tab-pane fade <?php if ($sections == 'fit') { ?> active in <?php } ?>" id="Section2">
+
                                     <?php if (@$kidmenu->kids_clothing_gender == 'boys') { ?> 
+
+
+
                                         <?php echo $this->Form->create(null, array('data-toggle' => "validator", 'id' => 'kidstyleboy')) ?>
                                         <div class="left-bar fixed" id="sidebar2">
                                             <div class="under-box">
@@ -3166,6 +4122,7 @@ if ($slug == 'style') {
                                                                         <label for="kids_fit_challenge_pant_leg_length3af">Too loose</label>
                                                                     </div>
                                                                 </li>
+
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -3730,6 +4687,10 @@ if ($slug == 'style') {
                                                             <ul>
                                                                 <li>
                                                                     <h4>T-SHIRTS</h4>
+
+
+
+
                                                                     <div class="switch-field">
                                                                         <input type="radio" id="kids_fit_challenge_shirt_sleeve_lengtha" name="t_shirts" value="Often"  <?php if (@$KidsSizeFit->t_shirts == 'Often') { ?> checked="checked" <?php } ?> >
                                                                         <label for="kids_fit_challenge_shirt_sleeve_lengtha">Often</label>
@@ -3737,6 +4698,7 @@ if ($slug == 'style') {
                                                                         <label for="kids_fit_challenge_shirt_sleeve_length2a">Sometimes</label>
                                                                         <input type="radio" id="kids_fit_challenge_shirt_sleeve_length2b" name="t_shirts" value="Rarely"  <?php if (@$KidsSizeFit->t_shirts == 'Rarely') { ?> checked="checked" <?php } ?> >
                                                                         <label for="kids_fit_challenge_shirt_sleeve_length2b">Rarely</label>
+
                                                                     </div>
                                                                 </li>
                                                                 <li>
@@ -3982,6 +4944,8 @@ if ($slug == 'style') {
                                                     </div>
                                                 </div>
                                             </div>
+
+
                                             <div class="form-box-data child-prefer">
                                                 <div class="row">
                                                     <div class="col-sm-12 col-lg-12 col-md-12">
@@ -4093,8 +5057,12 @@ if ($slug == 'style') {
                                                 </div>
                                             </div>
                                         </div>
+
+
                                         <?= $this->Form->end(); ?>    
                                     <?php } ?>
+
+
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade <?php if ($sections == 'styles') { ?> active in <?php } ?>" id="Section3">
                                     <?php if (@$kidmenu->kids_clothing_gender == 'boys') { ?> 
@@ -4121,7 +5089,7 @@ if ($slug == 'style') {
                                                             <div id="boy" class="switch-field">
                                                                 <div class="row">
                                                                     <div class="col-sm-12 col-lg-12 col-md-12 occupation">
-                                                                        <nav><b><font size="4">CASUAL SHIRTS</font></b></nav>         
+                                                                        <nav><b><font size="4">CASUAL SHIRTS</font></b></nav>                                                
                                                                         <ul>
                                                                             <li><label for="spendiness_button_up_shirts_mens" class="input-control radio">
                                                                                     <input type="radio" id="spendiness_button_up_shirts_mens" name="casual_shirts" value="1" <?php if (@$KidStyles->casual_shirts == '1') { ?> checked="checked" <?php } ?> >
@@ -4583,10 +5551,13 @@ if ($slug == 'style') {
                                 <div role="tabpanel" class="tab-pane fade <?php if ($sections == 'custom') { ?> active in <?php } ?>" id="Section4">
 
                                     <?php if (@$kidmenu->kids_clothing_gender == 'boys') { ?> 
+
+
                                         <?= $this->Form->create('img', array('id' => "imgfrm", 'type' => 'file')); ?>
                                         <input type="file"  name='file' id="imgupload1kid" style="display:none"/> 
                                         <?= $this->Form->end() ?>
                                         <?php echo $this->Form->create(null, array('data-toggle' => "validator", 'id' => 'styleBoySection4')) ?>
+
                                         <div class="left-bar fixed" id="sidebar4">
                                             <div class="under-box">
                                                 <h2>Hi <?php echo $kidName; ?></h2>
@@ -5048,6 +6019,7 @@ if ($slug == 'style') {
                                          ><a <?php if (@$userDetails->user_detail->is_progressbar >= 75) { ?> href="#Section4" aria-controls="home" role="tab" data-toggle="tab" <?php } else { ?> style="opacity:0.5" <?php } ?>>Custom Design & Brands</a></li>
                                 </ul>
                             </div>
+                            <!-- Tab panes -->
                             <div class="tab-content tabs data-filup ">
 
                                 <div role="tabpanel" class="tab-pane fade  <?php if ($sections == 'section1') { ?> in active <?php } else if ($sections == '') { ?> in active <?php } ?>" id="Section1">

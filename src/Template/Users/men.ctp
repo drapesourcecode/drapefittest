@@ -382,4 +382,5 @@
             });
             return email_invalid;
         }
+    
 </script>
