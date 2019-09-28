@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controller;
+
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Mailer\Email;
@@ -7,13 +9,16 @@ use Cake\Network\Request;
 use Cake\ORM\Query;
 use Cake\ORM\TableRegistry;
 use Cake\Datasource\ConnectionManager;
+
 require_once(ROOT . '/vendor/' . DS . '/barcode/vendor/autoload.php');
 require_once(ROOT . '/vendor' . DS . 'PaymentTransactions' . DS . 'authorize-credit-card.php');
 
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
 use \PHPExcel_IOFactory;
+
 class AppadminsController extends AppController {
+
     public function initialize() {
         parent::initialize();
         $this->loadComponent('Custom');
@@ -306,7 +311,7 @@ class AppadminsController extends AppController {
         $shipping_address = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $userid, 'default_set' => 1])->first();
         $this->KidsDetails->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
         $kid = $this->KidsDetails->find('all')->contain(['Users', 'KidsPersonality', 'KidsSizeFit', 'KidClothingType', 'KidsPrimary', 'KidsPricingShoping', 'KidPurchaseClothing', 'KidStyles'])->where(['KidsDetails.id' => $useridDetails->kid_id])->group(['KidsDetails.id'])->first();
-        
+
         $KidsSizeFit = $this->KidsSizeFit->find('all')->where(['KidsSizeFit.kid_id' => $useridDetails->kid_id])->first();
         $KidClothingType = $this->KidClothingType->find('all')->where(['KidClothingType.kid_id' => $useridDetails->kid_id])->first();
         $designe = $this->CustomDesine->find('all')->where(['kid_id' => $useridDetails->kid_id])->first();
@@ -575,7 +580,7 @@ class AppadminsController extends AppController {
     }
 
     public function cmsPage() {
-     $dataListings = $this->Pages->find('all')->order(['Pages.id' => 'DESC']);
+        $dataListings = $this->Pages->find('all')->order(['Pages.id' => 'DESC']);
         $this->set(compact('dataListings'));
     }
 
@@ -700,14 +705,16 @@ class AppadminsController extends AppController {
                 $employee = $this->Users->find('all')->where(['Users.id' => $data['emp_id']])->first();
                 $getUserId = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $data['id']])->first();
                 $getUserDetails = $this->Users->find('all')->where(['Users.id' => $getUserId->user_id])->first();
-                $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'EmployeeAssigned'])->first();
+                $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'EmployeeAssignedKid'])->first();
                 $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
                 $to = $employee->email;
                 $from = $fromMail->value;
                 $subject = $emailMessage->display;
                 $sitename = SITE_NAME;
-                $message = $this->Custom->EmployeeAssignedFormat($emailMessage->value, $getUserDetails->name, $employee->name, $sitename);
                 $kid_id = $getUserId->kid_id;
+                $kidname = $this->Custom->kidName($kid_id);
+                $message = $this->Custom->EmployeeAssignedKidFormat($emailMessage->value, $getUserDetails->name, $employee->name, $sitename, $kidname);
+                
                 $this->Custom->sendEmail($to, $from, $subject, $message, $kid_id);
                 echo " Employee Assigned successfully";
             } else {
@@ -803,6 +810,7 @@ class AppadminsController extends AppController {
         }
         $this->set(compact('passwordData', 'setPassword'));
     }
+
     public function iconDelete($id = null) {
         $this->viewBuilder()->layout('admins');
         if ($id) {
@@ -814,6 +822,7 @@ class AppadminsController extends AppController {
     }
 
     public function paymentGateways() {
+        
     }
 
     public function deactive($id = null, $table = null) {
@@ -1246,7 +1255,7 @@ class AppadminsController extends AppController {
                         $cenvertedTime = date('Y-m-d H:i:s', strtotime('+10 seconds', strtotime($exchangeData->created)));
                         $data['created'] = $cenvertedTime;
                         $data['is_altnative_product'] = 0;
-                         $data['is_exchange_pending'] = 1;
+                        $data['is_exchange_pending'] = 1;
                     }
                 } else {
                     $data['created'] = date('Y-m-d H:i:s');
@@ -1523,7 +1532,8 @@ class AppadminsController extends AppController {
                         $from = $fromMail->value;
                         $subject = $emailMessage->display;
                         $sitename = SITE_NAME;
-                        $message = $this->Custom->promocodesend($emailMessage->value, $promocode->promocode, $promocode->price, $promocode->comments, $sitename);
+                        $lasst_dtt = date_format($promocode->expiry_date, 'j\<\s\u\p\>S\<\/\s\u\p\> F Y');
+                        $message = $this->Custom->promocodesend($emailMessage->value, $promocode->promocode, $promocode->price, $promocode->comments, $sitename, $lasst_dtt);
                         $kid_id = 0;
                         $this->Custom->sendEmail($to, $from, $subject, $message);
 
@@ -1610,7 +1620,9 @@ class AppadminsController extends AppController {
             // $this->Users->updateAll(['is_redirect' => '4'], ['id' => $getUserId->user_id]);
 
             $getUserDetails = $this->Users->find('all')->where(['Users.id' => $getUserId->user_id])->first();
+            $bil_address = $this->ShippingAddress->find('all')->where(['user_id' => $getUserId->user_id, 'is_billing' => 1])->first();
             $totalProductscount = $this->Products->find('all')->where(['Products.payment_id' => $getpaymentid, 'is_complete' => 0])->count();
+
             $totalCheckoutproductCount = $this->Products->find('all')->where(['Products.payment_id' => $getpaymentid, 'checkedout' => 'N', 'is_complete' => 0])->count();
 
             //echo $totalProductscount;
@@ -1638,7 +1650,12 @@ class AppadminsController extends AppController {
                     $from = $fromMail->value;
                     $subject = $emailMessage->display;
                     $sitename = SITE_NAME;
-                    $message = $this->Custom->productFinalize($emailMessage->value, $getUserDetails->name, $name, $sitename);
+                    $track_number = $getUserId->order_usps_tracking_no;
+                    $purchase_date = date_format($getUserId->customer_purchasedate, 'm/d/Y');
+                    $address1 = $bil_address->address;
+                    $address3 = $bil_address->address_line_2;
+                    $address2 = $bil_address->state . ' ' . $bil_address->zipcode . ' ' . $bil_address->country;
+                    $message = $this->Custom->productFinalize($emailMessage->value, $getUserDetails->name, $name, $sitename, $track_number, $purchase_date, $address1, $address2);
                     $kid_id = 0;
                     $this->Custom->sendEmail($to, $from, $subject, $message);
 
@@ -1661,6 +1678,8 @@ class AppadminsController extends AppController {
             $this->Products->updateAll(['checkedout' => 'N'], ['id' => $product_id]);
             $name = $this->Auth->user('name');
             $getUserId = $this->Products->find('all')->where(['Products.id' => $product_id])->first();
+            $bil_address = $this->ShippingAddress->find('all')->where(['user_id' => $getUserId->user_id, 'is_billing' => 1])->first();
+
             $getUserDetails = $this->Users->find('all')->where(['Users.id' => $getUserId->user_id])->first();
 
             $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'PRODUCT_FINALIZE'])->first();
@@ -1698,7 +1717,12 @@ class AppadminsController extends AppController {
                     $from = $fromMail->value;
                     $subject = $emailMessage->display;
                     $sitename = SITE_NAME;
-                    $message = $this->Custom->productFinalize($emailMessage->value, $getUserDetails->name, $name, $sitename);
+                    $track_number = $getUserId->order_usps_tracking_no;
+                    $purchase_date = date_format($getUserId->customer_purchasedate, 'm/d/Y');
+                    $address1 = $bil_address->address;
+                    $address3 = $bil_address->address_line_2;
+                    $address2 = $bil_address->state . ' ' . $bil_address->zipcode . ' ' . $bil_address->country;
+                    $message = $this->Custom->productFinalize($emailMessage->value, $getUserDetails->name, $name, $sitename, $track_number, $purchase_date, $address1, $address2);
                     $kid_id = $paymentDetails->kid_id;
                     $this->Custom->sendEmail($to, $from, $subject, $message);
                 }
@@ -1985,8 +2009,9 @@ class AppadminsController extends AppController {
                         $subject = @$emailMessage->display;
 
                         $sitename = SITE_NAME;
+                        $lasst_dtt = date_format($giftcode->expiry_date, 'j\<\s\u\p\>S\<\/\s\u\p\> F Y');
 
-                        $message = $this->Custom->giftcodesend(@$emailMessage->value, $giftcode->giftcode, $giftcode->price, $giftcode->comments, $sitename);
+                        $message = $this->Custom->giftcodesend(@$emailMessage->value, $giftcode->giftcode, $giftcode->price, $giftcode->comments, $sitename, $lasst_dtt);
 
                         $kid_id = 0;
                         $this->Custom->sendEmail($to, $from, $subject, $message, $kid_id);
@@ -2417,13 +2442,15 @@ class AppadminsController extends AppController {
                     $from = $fromMail->value;
                     $subject = $emailMessage->display;
                     $sitename = SITE_NAME;
-                    $price = $getPaymentDetails->price;
+                    $price = number_format($getPaymentDetails->price, 2);
                     $transctionsId = $message['TRANS'];
                     $name = $userDetails->name;
                     $email = $useremail;
                     $sitename = HTTP_ROOT;
                     $rdate = date('Y-m-d  H:i:s');
-                    $email_message = $this->Custom->Refunded($emailMessage->value, $price, $transctionsId, $name, $email, $rdate, $sitename);
+                    $mEssAge = $data['refund_msg'];
+                    $last_4_digit = substr($getCardDetails->card_number, -4);
+                    $email_message = $this->Custom->Refunded($emailMessage->value, $price, $transctionsId, $name, $email, $rdate, $sitename, $mEssAge, $last_4_digit);
                     //echo $email_message; exit;
                     $this->Custom->sendEmail($to, $from, $subject, $email_message);
                     $toSupport = $this->Settings->find('all')->where(['name' => 'TO_HELP'])->first()->value;

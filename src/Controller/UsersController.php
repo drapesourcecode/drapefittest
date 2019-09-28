@@ -110,7 +110,7 @@ class UsersController extends AppController {
     }
 
     public function beforeFilter(Event $event) {
-        $this->Auth->allow(['autoMentions', 'boxUpdate', 'invite', 'ajaxGmail', 'chatCheckAuth', 'helpClose', 'help', 'startOnlineOffline', 'chatHistory', 'websocketMessage', 'adminlogin', 'fbreturn', 'fblogin', 'fbreturncon', 'fbloginCon', 'client', 'webrootRedirect', 'personalInfo', 'login', 'index', 'logout', 'forget', 'changePassword', 'registration', 'sizedata', 'setPassword', 'shipping', 'ajaxCheckEmailAvail', 'deleteAddress', 'addShipAddress', 'websocketDivMinaus', 'websocketDivMinausAdmin', 'chatButtonClose', 'men', 'women', 'kids', 'address', 'ajaxLogin', 'userregistration', 'ajaxforget', 'googleLoginReturn', 'googlelogin', 'editprofileSocialmedia', 'notYetShipped', 'notYetShipped', 'unsubscribe']);
+        $this->Auth->allow(['autoMentions', 'boxUpdate', 'invite', 'ajaxGmail', 'chatCheckAuth', 'helpClose', 'help', 'startOnlineOffline', 'chatHistory', 'websocketMessage', 'adminlogin', 'fbreturn', 'fblogin', 'fbreturncon', 'fbloginCon', 'client', 'webrootRedirect', 'personalInfo', 'login', 'index', 'logout', 'forget', 'changePassword', 'registration', 'sizedata', 'setPassword', 'shipping', 'ajaxCheckEmailAvail', 'deleteAddress', 'addShipAddress', 'websocketDivMinaus', 'websocketDivMinausAdmin', 'chatButtonClose', 'men', 'women', 'kids', 'address', 'ajaxLogin', 'userregistration', 'ajaxforget', 'googleLoginReturn', 'googlelogin', 'editprofileSocialmedia', 'notYetShipped', 'notYetShipped', 'unsubscribe', 'autoLogin']);
     }
 
     public function calendarSechedule() {
@@ -648,6 +648,33 @@ class UsersController extends AppController {
         $this->set(compact('user_details'));
     }
 
+    public function autoLogin($id = null) {
+        if (empty($id)) {
+            $this->Flash->error(__('Try again....'));
+            return $this->redirect(HTTP_ROOT);
+        }
+        $user_id = $this->Custom->encrypt_decrypt('decrypt', $id);
+        $user = $this->Users->find('all')->where(['id' => $user_id])->first();
+        $this->Auth->setUser($user);
+        $type = $this->request->session()->read('Auth.User.type');
+        $name = $this->request->session()->read('Auth.User.name');
+        $email = $this->request->session()->read('Auth.User.email');
+        $user_id = $this->request->session()->read('Auth.User.id');
+        if ($type == 2) {
+            $Userdetails = $this->UserDetails->find('all')->where(['user_id' => $user_id])->first();
+            if ($Userdetails->gender == 1) {
+                $gen = "MEN";
+            }
+            if ($Userdetails->gender == 2) {
+                $gen = "WOMEN";
+            }
+            $this->request->session()->write('PROFILE', $gen);
+            $url = $this->Custom->loginRedirectAjax($this->request->session()->read('Auth.User.id'));
+            return $this->redirect(HTTP_ROOT . $url);
+        }
+        exit;
+    }
+
     public function ajaxLogin() {
         $this->viewBuilder()->layout('ajax');
         if ($this->request->session()->read('Auth.User.id') != '') {
@@ -1033,7 +1060,8 @@ class UsersController extends AppController {
                     $from = $fromMail->value;
                     $subject = $emailMessage->display;
                     $sitename = SITE_NAME;
-                    $message = $this->Custom->createAdminFormat($emailMessage->value, $user->name, $user->email, $data['pwd'], $sitename);
+                    $url_link = HTTP_ROOT . 'users/autoLogin/' . $this->Custom->encrypt_decrypt('encrypt', $userID);
+                    $message = $this->Custom->createAdminFormat($emailMessage->value, $user->name, $user->email, $data['pwd'], $sitename, $url_link);
                     $this->Custom->sendEmail($to, $from, $subject, $message);
                     echo json_encode(['status' => 'Account Created', 'msg' => 'success', 'url' => $url]);
                 }
@@ -1124,7 +1152,8 @@ class UsersController extends AppController {
                     $from = $fromMail->value;
                     $subject = $emailMessage->display;
                     $sitename = SITE_NAME;
-                    $message = $this->Custom->createAdminFormat($emailMessage->value, $user->name, $user->email, $data['pwd'], $sitename);
+                    $url_link = HTTP_ROOT . 'users/autoLogin/' . $this->Custom->encrypt_decrypt('encrypt', $userID);
+                    $message = $this->Custom->createAdminFormat($emailMessage->value, $user->name, $user->email, $data['pwd'], $sitename, $url_link);
                     $this->Custom->sendEmail($to, $from, $subject, $message);
                     $this->Flash->success(__('Account created successfully.'));
                     if ($gender == 'men') {
@@ -1922,13 +1951,6 @@ class UsersController extends AppController {
                     $this->ReferFriends->updateAll(['paid_status' => 1], ['my_link_with_uniq_no' => $this->request->getCookie('refer_time')]);
                 }
             }
-            
-            
-            
-            
-            
-            
-            
             echo json_encode($message);
             $this->paymentMailSending($message);
         } else {
@@ -1944,6 +1966,10 @@ class UsersController extends AppController {
         $this->PaymentGetways->updateAll(['status' => 1, 'transactions_id ' => $message['TransId']], ['id' => $updateId]);
         $paymentDetails = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $updateId])->first();
         $checkUser = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $updateId, 'PaymentGetways.payment_type' => 1])->first();
+        $card_details = $this->PaymentCardDetails->find('all')->where(['id' => $checkUser->payment_card_details_id])->first();
+        $bil_address = $this->ShippingAddress->find('all')->where(['user_id' => $this->Auth->user('id'), 'is_billing' => 1])->first();
+        $full_address = $bil_address->address . ((!empty($bil_address->address_line_2)) ? '<br>' . $bil_address->address_line_2 : '') . '<br>' . $bil_address->city . ', ' . $bil_address->state . '<br>' . $bil_address->country . ' ' . $bil_address->zipcode;
+        $usr_name = $bil_address->full_name;
         if ($checkUser->payment_type == 1) {
             if ($this->request->session()->read('PROFILE') == 'KIDS') {
                 @$kidId = $this->request->session()->read('KID_ID');
@@ -1972,7 +1998,10 @@ class UsersController extends AppController {
         $subject = $emailMessage->display;
         $sitename = SITE_NAME;
         $usermessage = $message['Success'];
-        $email_message = $this->Custom->paymentEmail($emailMessage->value, $name, $usermessage, $sitename);
+        $sumitted_date = date_format($checkUser->created_dt, 'm/d/Y');
+        $last_4_digit = substr($card_details->card_number, -4);
+        $paid_amount = "$ " . number_format($checkUser->price, 2);
+        $email_message = $this->Custom->paymentEmail($emailMessage->value, $name, $usermessage, $sitename, $message['TransId'], $paid_amount, $sumitted_date, $card_details->card_type, $last_4_digit, $usr_name, $full_address);
         $this->Custom->sendEmail($to, $from, $subject, $email_message);
         $subjectProfile = $emailMessageProfile->display;
         $email_message_profile = $this->Custom->paymentEmailCount($emailMessageProfile->value, $name, $usermessage, $sitename, $paymentCount);
@@ -2497,6 +2526,7 @@ class UsersController extends AppController {
         }
         if ($this->request->is('post')) {
             $data = $this->request->data;
+            //pj($data);exit;
             if (@$this->request->session()->read('PROFILE') == 'KIDS') {
                 $kid = $this->request->session()->read('KID_ID');
                 $profileType = 3;
@@ -2745,7 +2775,7 @@ class UsersController extends AppController {
                 $sitename = SITE_NAME;
                 $emailMessage1 = $this->Settings->find('all')->where(['Settings.name' => 'ORDER_PAYMENT'])->first();
                 $subject = $emailMessage1->display;
-                $email_message = $this->Custom->order($emailMessage1->value, $name, $sitename, $productData, $total, $grand_price, $sales_tax);
+                $email_message = $this->Custom->order($emailMessage1->value, $name, $sitename, $productData, $data['stylist_picks_subtotal'], $data['stotal'], $data['style_fit_fee_'],$data['keep_all_discount']);
                 $this->Custom->sendEmail($to, $from, $subject, $email_message);
                 $toSupport = $this->Settings->find('all')->where(['name' => 'TO_HELP'])->first()->value;
                 $this->Custom->sendEmail($toSupport, $from, $subject, $email_message);
@@ -4713,9 +4743,9 @@ class UsersController extends AppController {
         $headers = "From: support@drapefittest.com" . "\r\n";
 
         if (mail($to, $subject, $txt, $headers)) {
-             "Message accepted";
+            "Message accepted";
         } else {
-             "Error: Message not accepted";
+            "Error: Message not accepted";
         }
 
 
