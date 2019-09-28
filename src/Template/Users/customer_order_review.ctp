@@ -332,7 +332,10 @@
                         <input type="hidden" name="stotal" id="stotal" value="<?php echo $final_sub_tot; ?>">
                         <input type="hidden" name="promoprice" id="promoprice" value="<?php echo $p_g_price; ?>">
                         <input type="hidden" name="wallet" id="wallet" value="<?php echo@$walletBalace; ?>">
-                        <input type="hidden" name="total" id="total" value="<?php $amount;; ?>">
+                        <input type="hidden" name="total" id="total" value="<?php echo $amount;  ?>">
+                        <input type="hidden" name="keep_all_discount" value="<?php echo '-$' . number_format((!empty($discount)?$discount:0), 2); ?>">
+                        <input type="hidden" name="stylist_picks_subtotal" value="<?php echo '$' . number_format($style_pick_total, 2);?>">
+                        <input type="hidden" name="style_fit_fee " value="<?php echo '-$' . number_format($styleist1, 2);?>">
 
                     </h4>    
                 </div>
