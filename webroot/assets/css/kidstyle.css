@@ -2191,11 +2191,15 @@ font-family: "Amazon Ember", Arial, sans-serif;
     text-align: center;
 }
 .copy-text {
-    float: left;
+    float: none;
     width: 100%;
     border: 1px solid #a5a5a5;
     margin: 7px 0 30px;
-    position: relative; 
+    position: relative;
+    display: inline-block;
+}
+.credit-right-main .credit-right .copy-text{
+    width: 60%;
 }
 
 .copy-text p {

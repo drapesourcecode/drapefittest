@@ -175,6 +175,15 @@ float: left;
 .form-box-data .date-box .select-boxes input::placeholder {
     text-transform: lowercase !important;
 }
+.form-box-data .date-box .select-boxes input::-ms-input-placeholder {
+  text-transform: lowercase !important;
+}
+.form-box-data .date-box .select-boxes input::-webkit-input-placeholder {
+  text-transform: lowercase !important;
+}
+.form-box-data .date-box .select-boxes input::-moz-placeholder {
+  text-transform: lowercase !important;
+}
 .right-bar select.error {
     color: #000000 !important;
 }
@@ -1208,3 +1217,4 @@ float: left;
     width: 42%;
 }
 }
+
