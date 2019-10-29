@@ -1,33 +1,18 @@
-
+<?= $this->Flash->render(); ?>
 <link href="<?php echo HTTP_ROOT ?>css/responsive-calendar.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>css/jquery-ui.css">
 <script src="<?php echo HTTP_ROOT ?>js/jquery-1.12.4.js"></script>
 <script src="<?php echo HTTP_ROOT ?>js/jquery-ui.js"></script>
-
-<script>
-    
+<script type="text/javascript">
     $(function () {
-        
-        
-        $("#datepicker").datepicker({minDate: 7, maxDate: "+3M +10D", onSelect: function (dateText, inst) {
-                var date = $(this).val();
-                $('#chose-date').val(date);
-                
-            }
-        }
-        );
-    });
+       // var newDate = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"}); 
+        ///alert(newDate+(10*86400000));
+        $("#datepicker").datepicker({minDate: 7, maxDate: "+3M +10D", onSelect: function (dateText, inst) {var date = $(this).val(); $('#chose-date').val(date);} } );});
 </script>
 <style type="text/css">
-    #datepicker {font-size:20px;}
-    .Calendar-text-center
-    {
-        width: 50%;
-        float: none;
-        text-align: center;
-        margin: 0 auto;
-    }
+    #datepicker {font-size:20px;}.Calendar-text-center {width: 50%;float: none; text-align: center;margin: 0 auto;}
 </style>
+
 <script type="text/javascript" src="<?= HTTP_ROOT; ?>js/setting.js"></script>
 <div class="style-bar">
     <div class="container">
@@ -113,7 +98,7 @@
 </section>
 <script>
 $(document).ready(function () {
- $('#s').delay(3000).fadeOut('slow');
- $('#e').delay(3000).fadeOut('slow');
+    $('#s').delay(3000).fadeOut('slow');
+    $('#e').delay(3000).fadeOut('slow');
 });
 </script>
