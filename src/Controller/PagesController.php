@@ -228,6 +228,7 @@ class PagesController extends AppController {
 
                 $this->Custom->sendEmail($toAdminEmail->value, $from, $subject, $message);
                 $this->Custom->sendEmail($tocustomer, $from, $subject1, $message1);
+                //$this->Custom->sendEmail('devadash143@gmail.com', $from, $subject, $message);
 
                 /* Mail sending below code */
                 $this->Flash->success(__('Thank you, We will get back to you soon.'));
