@@ -2,9 +2,6 @@
 <link rel="stylesheet" href="<?php echo HTTP_ROOT . 'assets/' ?>profile-style.css" type="text/css">
 <script type="text/javascript" src="<?= HTTP_ROOT; ?>js/setting.js"></script>
 <script src="<?= HTTP_ROOT; ?>js/jquery.twbs-toggle-buttons.min.js"></script>
-<script>
-//$('#tall_feet-error').focus();
-</script>
 <style type="text/css">
     /*new code*/
     .setting-box{padding-top:0px;}
@@ -642,185 +639,7 @@ if ($slug == 'schedule') {
                 </div>
             </div>
         </div>
-    <?php }  else if($this->request->session()->read('PROFILE')==''){?>
-
-
-<style type="text/css">
-            .select-service-main
-            {
-                width: 100%;
-                margin-top:130px;
-                float:left;
-                text-align: center;
-                margin-bottom: 23px;
-            }
-            .select-service
-            {
-                width: 42%;
-                float:none;
-                padding:15px;
-                border: 2px solid #ccc;
-                text-align: center;
-                margin: 0 auto;
-            }
-            .select-service-images
-            {
-                width: 100%;
-                float: left;
-                border-top: 2px solid #ff6c00;
-                margin-top: 20px;
-                padding-top: 20px !important;
-                margin-bottom: 20px;
-            }
-            .select-service-images img
-            {
-                width: 49%;
-            }
-            .select-service-text
-            {
-                width: 90%;
-                float: none;
-                padding: 10px;
-                text-align: center;
-                margin: 0 auto;
-            }
-            .select-service-text h2
-            {
-                font-size: 25px;
-                font-weight: 600;
-                margin: 0px;
-                margin-bottom: 15px;
-                margin-top: 15px;
-                display: inline-block;
-                font-family: "Amazon Ember", Arial, sans-serif;
-            }
-            .select-service-text p
-            {
-                margin: 0px;
-                font-size: 14px;
-                font-weight: normal;
-                margin-bottom: 15px;
-                font-family: "Amazon Ember", Arial, sans-serif;
-            }      
-
-
-
-
-            .select-service-button
-            {
-                width: 100%;
-                float: none;
-                padding: 10px 0 30px;
-                text-align: center;
-                background: #fff;
-                margin: 0 auto;
-            }
-            .select-service-button h2
-            {
-                font-size: 25px;
-                font-weight: 600;
-                margin-top: 15px;
-                margin-bottom: 0px;
-                font-family: "Amazon Ember", Arial, sans-serif;
-            }
-            .select-service-button p
-            {
-                margin: 0px;
-                font-size: 14px;
-                font-weight: normal;
-                margin-bottom: 15px;
-                font-family: "Amazon Ember", Arial, sans-serif;
-            }
-            .select-service-button input[type='submit']
-            {
-                background: #232f3e;
-                color: #ff6c00;
-                padding: 10px;
-                font-size: 15px;
-                display: inline-block;
-                font-weight: bold;
-                font-family: "Amazon Ember", Arial, sans-serif;
-                border:1px solid #232f3e;
-            }
-            .select-service-button input[type='submit']:hover,
-            .select-service-button input[type='submit']:focus
-            {
-                color: #232f3e;
-                background: #ff6c00;
-                text-decoration: none;
-                outline: none;
-                border:1px solid #ff6c00;
-            }
-            .select-service-button input[type=radio] 
-            {
-                position: absolute !important;
-                clip: rect(0, 0, 0, 0);
-                height: 1px;
-                width: 1px;
-                border: 0;
-                overflow: hidden;
-                margin: 4px 0 0;
-                margin-top: 1px;
-                line-height: normal;
-                display: inline-block;
-            }
-            .select-service-button label
-            {
-                width: 135px;
-                font-size: 14px;
-                text-align: center;
-                display: inline-block;
-                float: none;
-                padding: 10px 0px;
-                border: 1px solid #bbb;
-                margin: 20px -2px;
-                font-size: 15px;
-                font-weight: bold;
-                font-family: "Amazon Ember", Arial, sans-serif;
-            }
-            .select-service-button input[type=radio]:checked + label
-            {
-                background-color: #fe6c00;
-                -webkit-box-shadow: none;
-                box-shadow: none;
-                color: #232e3e;
-                padding: 10px 0px;
-                border: 1px solid #fe6c00;
-            }
-        </style>
-        <?php echo $this->Form->create(null, array('url' => ['controller' => 'users', 'action' => 'gender_update'], 'data-toggle' => "validator", 'id' => 'style')) ?>
-        <section class="select-service-main">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="select-service">
-                            <div class="select-service-button">
-                                <h2><?php echo $this->request->session()->read('Auth.User.name'); ?> select your FIT</h2>
-                                <input type="radio" name="selectservice" value='men' id="select-service-men">
-                                <label for="select-service-men">Men</label>
-
-                                <input type="radio" name="selectservice" value='wemen' id="select-service-women">
-                                <label for="select-service-women">Women</label>
-
-                                <input type='submit' name='submit' value='COMPLETE YOUR STYLE PROFILE'/>
-                            </div> 
-                            <div class="select-service-images">
-                                <img src="<?php echo HTTP_ROOT ?>images/Men1.jpg">
-                                <img src="<?php echo HTTP_ROOT ?>images/Women1.jpg">
-                            </div>
-
-                            <div class="select-service-text">
-                                <p>Complete Your FIT Profile and your stylist will send you the items based on Your budget.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <?php echo $this->Form->end(); ?>
-        
-        <?}else { ?>
+    <?php } else { ?>
 
         <div class="schedule-box">
             <div class="container">
@@ -1232,22 +1051,24 @@ if ($slug == 'reservation') {
                 //alert(result.valid);
                 $("#card_type_input").val(cardType);
                 if (cardType == 'Visa') {
-                    var backPosition = result.valid ? '1px -64px, 470px -82px' : '2px -22px, 470px -12px';
-
+                    var backPosition = result.valid ? '1px -58px, 470px -82px' : '2px -22px, 470px -12px';
                 } else if (cardType == 'MasterCard') {
-                    var backPosition = result.valid ? '2px -181px, 319px -84px' : '2px -22px, 471px 14px';
+                    var backPosition = result.valid ? '2px -167px, 319px -84px' : '2px -22px, 471px 14px';
                 } else if (cardType == 'Maestro') {
                     var backPosition = result.valid ? '2px -221px, 260px -87px' : '2px -22px, 260px -61px';
                 } else if (cardType == 'Discover') {
-                    var backPosition = result.valid ? '2px -261px, 480px -84px' : '2px -22px, 471px 14px';
+                    var backPosition = result.valid ? '2px -241px, 480px -84px' : '2px -22px, 471px 14px';
                 } else if (cardType == 'Amex') {
-                    var backPosition = result.valid ? '2px -143px, 470px -83px' : '3px -22px, 471px 14px';
+                    var backPosition = result.valid ? '2px -132px, 470px -83px' : '3px -22px, 471px 14px';
                 } else if (cardType == 'jcb') {
-                    var backPosition = result.valid ? '2px -301px, 470px -83px' : '3px -22px, 471px 14px';
-                } else {
+                    var backPosition = result.valid ? '2px -279px, 470px -83px' : '3px -22px, 471px 14px';
+                }
+                else if (cardType == 'diners_club_carte_blanche') {
+                    var backPosition = result.valid ? '2px -316px, 470px -83px' : '3px -22px, 471px 14px';
+                }
+                else {
                     var backPosition = result.valid ? '2px -121px, 470px -87px' : '2px -22px, 471px 14px';
                 }
-
 
 
                 //alert(backPosition);
@@ -1376,22 +1197,22 @@ if ($slug == 'reservation') {
                             }, 10000);
 
                         } else if (data.error == 'error') {
-                         
-                            $('#loaderPyament').hide();
+                          
+                            $("#loader").hide();
                             $('#msg').html('<p class="alert alert-danger" id="e" >'+data.ErrorMessage +'</p>');
                             $('.apply_card').removeAttr("disabled");
                             
                             window.setTimeout(function () {
 
                     $('#msg').html('');
-                }, 10000);
+                }, 5000);
                             
                             
                             
                         } 
                         
                         else if(data.ErrorCode!='') {
-                            $('#loaderPyament').hide();
+                            $("#loader").show();
                             var errorMessg = getErrorMessgeDetils(data.ErrorCode);
                             $('#msg').html('<p class="alert alert-danger">' + errorMessg + '</p>');
                             $('.apply_card').removeAttr("disabled");
@@ -8257,6 +8078,14 @@ if ($slug == 'style') {
             </div>
         </section>
     <?php } ?>
+
+
+
+
+
+
+
+
 <?php } ?> 
 <div id="loaderPyament" style="display: none; position: fixed; height: 100%; width: 100%; z-index: 11111111; padding-top: 20%; background: rgba(255, 255, 255, 0.7); top: 0; text-align: center;">
     <img src="<?php echo HTTP_ROOT . 'img/' ?>widget_loader.gif"/>
