@@ -63,6 +63,7 @@ class AppadminsController extends AppController {
         $this->loadModel('KidsPersonality');
         $this->loadModel('KidsPrimary');
         $this->loadModel('KidsSizeFit');
+        $this->loadModel('KidsDetails');
         $this->loadModel('KidClothingType');
         $this->loadModel('FabricsOrEmbellishments');
         $this->loadModel('KidStyles');
@@ -308,7 +309,8 @@ class AppadminsController extends AppController {
     public function kidProfile($payment_id = null) {
         $useridDetails = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $payment_id])->first();
         $userid = $useridDetails->user_id;
-        $shipping_address = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $userid, 'default_set' => 1])->first();
+        $kidid = $useridDetails->kid_id;
+        $shipping_address = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $userid,'ShippingAddress.kid_id' => $kidid, 'default_set' => 1])->first();
         $this->KidsDetails->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
         $kid = $this->KidsDetails->find('all')->contain(['Users', 'KidsPersonality', 'KidsSizeFit', 'KidClothingType', 'KidsPrimary', 'KidsPricingShoping', 'KidPurchaseClothing', 'KidStyles'])->where(['KidsDetails.id' => $useridDetails->kid_id])->group(['KidsDetails.id'])->first();
 
@@ -729,7 +731,9 @@ class AppadminsController extends AppController {
         $this->PaymentGetways->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
         $userdetails = $this->PaymentGetways->find('all')->contain(['Users', 'Users.UserDetails'])->where(['PaymentGetways.status' => 1, 'PaymentGetways.id' => $payent_id])->first();
         $id = $userdetails->user_id;
-        $shipping_address = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $id, 'default_set' => 1])->first();
+        $kid_id = $userdetails->kid_id;
+        $shipping_address = $this->ShippingAddress->find('all')->where(['user_id' => $id,'kid_id' => $kid_id, 'default_set' => 1])->first();
+        //pj($shipping_address);exit;
         $MenStats = $this->MenStats->find('all')->where(['MenStats.user_id' => $id])->first();
         $TypicallyWearMen = $this->TypicallyWearMen->find('all')->where(['TypicallyWearMen.user_id' => $id])->first();
         $MenStyle = $this->MenStyle->find('all')->where(['MenStyle.user_id' => $id])->first();
@@ -899,8 +903,8 @@ class AppadminsController extends AppController {
 
         $MenStats = $this->MenStats->find('all')->where(['MenStats.user_id' => $id])->first();
         $TypicallyWearMen = $this->TypicallyWearMen->find('all')->where(['TypicallyWearMen.user_id' => $id])->first();
-
-        $shipping_address = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $id, 'default_set' => 1])->first();
+        $kid_id = $userdetails->kid_id;
+        $shipping_address = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $id, 'ShippingAddress.kid_id' => $kid_id,'default_set' => 1])->first();
 
         $this->viewBuilder()->layout('');
         $MenFit = $this->MenFit->find('all')->where(['MenFit.user_id' => $id])->first();
@@ -982,8 +986,9 @@ class AppadminsController extends AppController {
 
         $useridDetails = $this->PaymentGetways->find('all')->where(['PaymentGetways.id' => $payment_id])->first();
         $userid = $useridDetails->user_id;
+        $kidid = $useridDetails->kid_id;
 
-        $shipping_address = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $userid, 'default_set' => 1])->first();
+        $shipping_address = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $userid,'ShippingAddress.kid_id' => $kidid, 'default_set' => 1])->first();
         // echo $useridDetails->kid_id;
 
         $this->KidsDetails->belongsTo('Users', ['className' => 'Users', 'foreignKey' => 'user_id']);
@@ -1523,20 +1528,21 @@ class AppadminsController extends AppController {
 
                         $newEntity5 = $this->UserMailTemplatePromocode->patchEntity($newEntity5, $data);
                         $this->UserMailTemplatePromocode->save($newEntity5);
-
-                        $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'PROMOCODE'])->first();
-
-                        $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
-                        // echo $fromMail;  exit;
-                        $to = $useremail->email;
-                        $from = $fromMail->value;
-                        $subject = $emailMessage->display;
-                        $sitename = SITE_NAME;
-                        $lasst_dtt = date_format($promocode->expiry_date, 'j\<\s\u\p\>S\<\/\s\u\p\> F Y');
-                        $message = $this->Custom->promocodesend($emailMessage->value, $promocode->promocode, $promocode->price, $promocode->comments, $sitename, $lasst_dtt);
-                        $kid_id = 0;
-                        $this->Custom->sendEmail($to, $from, $subject, $message);
-
+                        
+                        $userpreferen = $this->EmailPreferences->find('all')->where(['EmailPreferences.user_id' => $userid])->first();
+                        if($userpreferen->preferences == 0){
+                            $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'PROMOCODE'])->first();
+                            $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
+                            // echo $fromMail;  exit;
+                            $to = $useremail->email;
+                            $from = $fromMail->value;
+                            $subject = $emailMessage->display;
+                            $sitename = SITE_NAME;
+                            $lasst_dtt = date_format($promocode->expiry_date, 'j\<\s\u\p\>S\<\/\s\u\p\> F Y');
+                            $message = $this->Custom->promocodesend($emailMessage->value, $promocode->promocode, $promocode->price, $promocode->comments, $sitename, $lasst_dtt);
+                            $kid_id = 0;
+                            $this->Custom->sendEmail($to, $from, $subject, $message);
+                        }
 //email creation
                         $this->Flash->success(__('Mail sentsuccessfully.'));
                     }
@@ -2000,22 +2006,23 @@ class AppadminsController extends AppController {
 
                         $newEntity5 = $this->UserMailTemplateGiftcode->patchEntity($newEntity5, $data);
                         $this->UserMailTemplateGiftcode->save($newEntity5);
+                        
+                        $userpreferen = $this->EmailPreferences->find('all')->where(['EmailPreferences.user_id' => $userid])->first();
+                        if($userpreferen->preferences == 0){
+                            $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'GIFTCODE'])->first();
+                            $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
+                            $to = $useremail->email;
+                            $from = $fromMail->value;
+                            $subject = @$emailMessage->display;
 
-                        $emailMessage = $this->Settings->find('all')->where(['Settings.name' => 'GIFTCODE'])->first();
+                            $sitename = SITE_NAME;
+                            $lasst_dtt = date_format($giftcode->expiry_date, 'j\<\s\u\p\>S\<\/\s\u\p\> F Y');
 
-                        $fromMail = $this->Settings->find('all')->where(['Settings.name' => 'FROM_EMAIL'])->first();
-                        $to = $useremail->email;
-                        $from = $fromMail->value;
-                        $subject = @$emailMessage->display;
+                            $message = $this->Custom->giftcodesend(@$emailMessage->value, $giftcode->giftcode, $giftcode->price, $giftcode->comments, $sitename, $lasst_dtt);
 
-                        $sitename = SITE_NAME;
-                        $lasst_dtt = date_format($giftcode->expiry_date, 'j\<\s\u\p\>S\<\/\s\u\p\> F Y');
-
-                        $message = $this->Custom->giftcodesend(@$emailMessage->value, $giftcode->giftcode, $giftcode->price, $giftcode->comments, $sitename, $lasst_dtt);
-
-                        $kid_id = 0;
-                        $this->Custom->sendEmail($to, $from, $subject, $message, $kid_id);
-
+                            $kid_id = 0;
+                            $this->Custom->sendEmail($to, $from, $subject, $message, $kid_id);
+                        }
 
                         $this->Flash->success(__('Mail sentsuccessfully.'));
                     }
@@ -2428,7 +2435,7 @@ class AppadminsController extends AppController {
                 // PJ($arr_user_info); 
                 $message = $this->authorizeCreditCard($arr_user_info);
                 if (@$message['Code'] == '1') {
-                    $this->PaymentGetways->updateAll(['refound_status' => 1, 'refund_transactions_id ' => $message['TRANS'], 'refound_date' => date('Y-m-d H:i:s'), 'refund_msg' => $data['refund_msg']], ['id' => $getPaymentDetails->id]);
+                    $this->PaymentGetways->updateAll(['refound_status' => 1,'work_status' => 2, 'refund_transactions_id ' => $message['TRANS'], 'refound_date' => date('Y-m-d H:i:s'), 'refund_msg' => $data['refund_msg']], ['id' => $getPaymentDetails->id]);
                     if (($getPaymentDetails->user_id != '') && ($getPaymentDetails->kid_id == 0)) {
                         $this->Users->updateAll(['is_redirect' => 5,], ['id' => $getPaymentDetails->user_id]);
                     } else if (($getPaymentDetails->user_id != '') && ($getPaymentDetails->kid_id != '')) {
@@ -2563,8 +2570,12 @@ class AppadminsController extends AppController {
 
                 if ((@$data['try_new_items_with_scheduled_fixes'] == 0) || ($data['try_new_items_with_scheduled_fixes'] == '')) {
                     $getLetData = $this->LetsPlanYourFirstFix->find('all')->where(['id' => $data['dataid']])->first();
+                    $userDetails = $this->Users->find('all')->where(['id' => $getLetData->user_id])->first();
+                    $name = $userDetails->name;
+
                     if ($getLetData->kid_id != '' && $getLetData->user_id != '') {
-                        $userDetails = $this->KidDetails->find('all')->where(['id' => $getLetData->kid_id])->first();
+                        $userDetails = $this->KidsDetails->find('all')->where(['id' => $getLetData->kid_id])->first();
+                        $userDetails = $this->Users->find('all')->where(['id' => $getLetData->user_id])->first();
                         $name = $userDetails->kids_first_name;
                     } else {
                         $userDetails = $this->Users->find('all')->where(['id' => $getLetData->user_id])->first();
