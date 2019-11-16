@@ -366,7 +366,7 @@ class CustomComponent extends Component {
         //$email->transport('default');
         $res = $email->from($from)
                 ->to($to)
-                ->bcc('devadash143@gmail.com')
+                //->bcc('devadash143@gmail.com')
                 ->emailFormat('html')
                 ->subject($subject)
                 ->viewVars(array('$msg' => $message))
@@ -2092,6 +2092,21 @@ class CustomComponent extends Component {
             $msg = str_replace("[SITE_NAME]", "<a href='" . HTTP_ROOT . "'>" . SITE_NAME . "</a>", $msg);
         }
         return $msg;
+    }
+    function styleFitFee() {
+        $table = TableRegistry::get('Settings');
+        $query = $table->find('all')->where(['name' => 'style_fee'])->first();
+        $name = 0;
+        if (!empty($query->value)) {
+            $name = $query->value;
+        }
+        
+        return $name;
+    }
+    function getPromoCode($paymentId=null){
+        $table = TableRegistry::get('UserAppliedCodeOrderReview');
+        $query = $table->find('all')->where(['payment_id' => $paymentId])->order(['id'=>'ASC']);                
+        return $query;
     }
 
 }
