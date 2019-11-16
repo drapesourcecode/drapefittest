@@ -38,16 +38,16 @@
             <div class="col-md-3">
                 <div class="how-it-works">
                     <div class="image-style4"></div>              
-                    <h4>1.</h4>
-                    <p>Complete Your Style FIT with all lots of choices. A personal stylist will assign to you and you connect and chat with your stylist when you need.</p>
+                    <h4>1.Fill out the quiz</h4>
+                    <p>Take our quiz to tell us about your shape and style.Your  Personal Stylist will connect with you.</p>
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="how-it-works">
                     <div class="image-style5"></div>
-                    <h4>2.</h4>
-                    <p>Your personal stylist will work for you to get hand picked product  for you and it will shipped to your door.</p>
+                    <h4>2.We deliver the goods</h4>
+                    <p>Your personal stylist will start putting together the perfect Fit  box of looks.For just $20 your stylist-picked items get delivered to your door. Try everything on in the comfort of your home!</p>
                 </div>
             </div>
 
@@ -55,16 +55,16 @@
             <div class="col-md-3">
                 <div class="how-it-works">
                     <div class="image-style6"></div>
-                    <h4>3.</h4>
-                    <p>Take 5 days to FIT,Choose and think and connect your personal stylist with questions you have.</p>
+                    <h4>3.Keep what you love</h4>
+                    <p>Take 5 days to FIT,Choose and think and connect your personal stylist with questions you have.Try  before Buy . Keep what you love.</p>
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="how-it-works">
                     <div class="image-style7"></div>
-                    <h4>4.</h4>
-                    <p>Send back the what you don’t like or doesn’t FIT.Shipping is free both the ways.</p>
+                    <h4>4.Easy Return</h4>
+                    <p>Send back what you don’t like or doesn’t FIT.Shipping is free both the ways.Prepaid return envelope included.</p>
                 </div>
             </div>
         </div>
@@ -88,23 +88,26 @@
                     <h2>WHAT A FIT FOR WOMEN</h2>
                     <ul>
                         <li>
-                            Feel free to get connected with your personal stylist in no cost.Doesn’t matter whether you are using our FIT or not.Your assign stylist will help you get your wardrobe in better shape and you style.
+                            Get a new look every month! Discover the latest fashion brands. Risk Free!
                         </li>
 
                         <li>
-                            Shipping is free both ways.
+                            Expert Stylists with better styling advice .
                         </li>
 
                         <li>
-                            No extra or hidden cost.Choose what you like or return all with no cost.
+                           Take our quiz to tell us about your age , size  and budget . Your personal stylist will start putting together the perfect  Fit box of looks.
                         </li>
 
                         <li>
-                            Our stylist are certified and backed by well known  designer.
+                            Delivered right to your door, you can try on each item conveniently at home. Keep only what you want.
                         </li>
 
                         <li>
-                            We are here to make style for everyone.
+                            Shipping is free both ways.Pick your delivery date. You have 5 days to buy or return.After 5 days, you are only charged for what you keep.
+                        </li>
+                        <li>
+                            Receive a box monthly or quarterly.Choose your frequency. Skip or Cancel anytime.
                         </li>
                     </ul>
                 </div>

@@ -223,12 +223,15 @@
                         <li> Stylist Picks Subtotal<span> <?php echo '$' . number_format($style_pick_total, 2); ?></span></li>
 
                         <?php
+                        $totalpropric = $this->User->totalprodiscount($paymentId);
+                        
                         if ($style_pick_total != 0) {
                             if ($allKeepsProducts == 1) {
                                 if ($style_pick_total > 1) {
                                     $price = $style_pick_total;
                                     $percentage = 25;
-                                    $discount = ($percentage / 100) * $price;
+                                    //$discount = ($percentage / 100) * $price;
+                                    $discount = ($percentage / 100) * $totalpropric;
                                     $subTotal = $price - $discount;
                                 }
                                 ?>
@@ -238,23 +241,49 @@
                                 $subTotal = $style_pick_total;
                             }
                         }
+                        $isstylefee = $this->User->isstylefee($paymentId);
                         ?>
                                 
-                        <li> Style Fit Fee <span> -<?php
-                                if ($subTotal != 0) {
+                        <li> Style Fit Fee  <span> -<?php
+                        
+                                
+                                if($isstylefee==1 ||  $subTotal==0){
+                                    echo '$' . number_format(0, 2);
+                                    $styleist1=0;
+                                }else{
+                                    echo '$' . number_format($styleist, 2);
+                                    $styleist1=$styleist;
+                                }
+                        
+                                /*if ($subTotal != 0) {
                                     echo '$' . number_format($styleist, 2);
                                     $styleist1=$styleist;
                                 } else {
                                     echo '$' . number_format(0, 2);
                                     $styleist1=0;
-                                }
+                                }*/
                                 ?></span>
-                        </li>
-                              
-
-
-
-                        <li> Order Subtotal<span><?php $final_sub_tot = $subTotal-$styleist1; echo '$' . number_format($final_sub_tot, 2); ?></span></li>
+                        </li> 
+                        
+                        <li> Order Subtotal<span><?php $final_sub_tot = $subTotal-$styleist1; 
+                        if($final_sub_tot<0){
+                            echo '$' . number_format(0, 2);
+                        }else{
+                            echo '$' . number_format($final_sub_tot, 2);
+                        }
+                        
+                        
+                        ?></span></li>
+                        <li> Account Credit<span><?php $final_sub_tot = $subTotal-$styleist1; 
+                        if(@$discount>$style_pick_total){
+                            $creditblnc=$discount-$style_pick_total;
+                            echo '$' . number_format($creditblnc, 2);
+                        }else{
+                            echo '$' . number_format(0, 2);
+                        }
+                        
+                        
+                        ?></span></li>
                         <li>
                             <ul id="promo_applied">
                                 <?php $applied_promo_codes = $this->User->getPromoCode($or_payment_id);
@@ -327,12 +356,12 @@
                     </ul>
                     
                     <h4>Order Total<span id="totalSpan"><?php echo '$' . number_format($amount, 2); ?></span>
-                        <input type="hidden" id="orderTotal" name="orderTotal" value="<?=$subTotal-$styleist1;?>">
-                        <input type="hidden" id="paymentID" name = 'paymentID' value="<?=$or_payment_id;?>">
-                        <input type="hidden" name="stotal" id="stotal" value="<?php echo $final_sub_tot; ?>">
+                        <input type="hidden" id="orderTotal" name="orderTotal" value="<?= @$subTotal-$styleist1;?>">
+                        <input type="hidden" id="paymentID" name = 'paymentID' value="<?= @$or_payment_id;?>">
+                        <input type="hidden" name="stotal" id="stotal" value="<?php echo @$final_sub_tot; ?>">
                         <input type="hidden" name="promoprice" id="promoprice" value="<?php echo $p_g_price; ?>">
                         <input type="hidden" name="wallet" id="wallet" value="<?php echo@$walletBalace; ?>">
-                        <input type="hidden" name="total" id="total" value="<?php echo $amount;  ?>">
+                        <input type="hidden" name="total" id="total" value="<?php echo @$amount;  ?>">
                         <input type="hidden" name="keep_all_discount" value="<?php echo '-$' . number_format((!empty($discount)?$discount:0), 2); ?>">
                         <input type="hidden" name="stylist_picks_subtotal" value="<?php echo '$' . number_format($style_pick_total, 2);?>">
                         <input type="hidden" name="style_fit_fee " value="<?php echo '-$' . number_format($styleist1, 2);?>">

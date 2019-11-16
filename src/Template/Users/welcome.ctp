@@ -555,7 +555,7 @@
         <div class="row">
             <div class="col-sm-12 col-lg-12 col-md-12">
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $progressbar_count->is_progressbar; ?>" aria-valuemin="0" aria-valuemax="50" >
+                    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $progressbar_count->is_progressbar; ?>" aria-valuemin="0" aria-valuemax="50" >   
 
                         <span  class="popOver" data-toggle="tooltip" data-placement="top" title="<?php echo $progressbar_count->is_progressbar; ?>%"> </span>     
 
@@ -1233,6 +1233,7 @@ if ($slug == 'reservation') {
                 $("#card_type_input").val(cardType);
                 if (cardType == 'Visa') {
                     var backPosition = result.valid ? '1px -58px, 470px -82px' : '2px -22px, 470px -12px';
+
                 } else if (cardType == 'MasterCard') {
                     var backPosition = result.valid ? '2px -167px, 319px -84px' : '2px -22px, 471px 14px';
                 } else if (cardType == 'Maestro') {

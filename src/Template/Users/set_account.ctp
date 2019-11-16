@@ -645,7 +645,7 @@
                                 <h6>I'd like to recive</h6>
                                 <div class="email-label">
                                     <label for="exclusive_offers" class="input-control radio">
-                                        <input type="radio" id="exclusive_offers" <?php if (@$EmailPreference->preferences == 0) { ?> checked="checked" <?php } ?> name="email_preferences" value="0">
+                                        <input type="radio" id="exclusive_offers" <?php if (@$EmailPreference->preferences == 0 || @$EmailPreference->preferences != 0) { ?> checked="checked" <?php } ?> name="email_preferences" value="0">
                                         <span class="input-control__indicator"></span>Exclusive offers,news,styling,tips and more !
                                     </label>
                                     <label for="exclusive_offers2" class="input-control radio">
@@ -805,11 +805,11 @@
 
                                         <label for="exclusive_offersx<?php echo @$kid->id; ?><?php echo @$countkid; ?>" class="input-control radio">
 
-                                            <input type="radio" id="exclusive_offersx<?php echo @$kid->id; ?><?php echo @$countkid; ?>" name="email_preferences" <?php if (@$kid->email_preference->preferences == 1) { ?> checked='checked' <?php } ?> value="1" >
+                                            <input type="radio" id="exclusive_offersx<?php echo @$kid->id; ?><?php echo @$countkid; ?>" name="email_preferences" <?php if (@$kid->email_preference->preferences == 0 || @$kid->email_preference->preferences != 1) { ?> checked='checked' <?php } ?> value="0" >
                                             <span class="input-control__indicator"></span>Exclusive offers,news,styling,tips and more !
                                         </label>
                                         <label for="exclusive_offers2<?php echo @$kid->id; ?><?php echo @$countkid; ?>" class="input-control radio">
-                                            <input type="radio" id="exclusive_offers2<?php echo @$kid->id; ?><?php echo @$countkid; ?>" name="email_preferences"  <?php if (@$kid->email_preference->preferences == 0) { ?> checked="checked" <?php } ?> value="0" >
+                                            <input type="radio" id="exclusive_offers2<?php echo @$kid->id; ?><?php echo @$countkid; ?>" name="email_preferences"  <?php if (@$kid->email_preference->preferences == 1) { ?> checked="checked" <?php } ?> value="1" >
                                             <span class="input-control__indicator"></span>No emails, please
                                         </label>
                                     </div>
