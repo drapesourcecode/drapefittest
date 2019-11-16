@@ -93,6 +93,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/who-we-are', ['controller' => 'pages', 'action' => 'whoWeAre']);
     $routes->connect('/work-with-us', ['controller' => 'pages', 'action' => 'WorkWithUs']);
     $routes->connect('/help-center', ['controller' => 'pages', 'action' => 'helpCenter']);
+    $routes->connect('/map', ['controller' => 'pages', 'action' => 'map']);
 
     $routes->connect('/privacy-policy', ['controller' => 'pages', 'action' => 'privacy']);
     $routes->connect('/terms-conditions', ['controller' => 'pages', 'action' => 'termsCondition']);
@@ -104,7 +105,18 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/gifts', ['controller' => 'pages', 'action' => 'gifts']);
     $routes->connect('/sitemap', ['controller' => 'pages', 'action' => 'sitemap']);
     $routes->connect('/supply-chain-information', ['controller' => 'pages', 'action' => 'supplyChainInformation']);
-    $routes->connect('/influencer-Program', ['controller' => 'pages', 'action' => 'influencerProgram']);
+     $routes->connect('/influencer-Program', ['controller' => 'pages', 'action' => 'influencerProgram']);
+    $routes->connect('/news', ['controller' => 'pages', 'action' => 'news']);
+    $routes->connect('/investors', ['controller' => 'pages', 'action' => 'investors']);
+    $routes->connect('/executive-team', ['controller' => 'pages', 'action' => 'executive']);
+    $routes->connect('/our-stylist', ['controller' => 'pages', 'action' => 'outStylist']);
+    $routes->connect('/return-exchange', ['controller' => 'pages', 'action' => 'returnExchange']);
+    $routes->connect('/track-order', ['controller' => 'pages', 'action' => 'trackOrder']);
+    $routes->connect('/our-mission', ['controller' => 'pages', 'action' => 'ourMission']);
+    $routes->connect('/feedback-review', ['controller' => 'pages', 'action' => 'feedbackReview']);
+    $routes->connect('/style-blog', ['controller' => 'pages', 'action' => 'styleBlog']);
+    $routes->connect('/investors', ['controller' => 'pages', 'action' => 'investors']);
+    
 
 
 
