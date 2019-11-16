@@ -16,7 +16,6 @@
         <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>assets/css/style.css" type="text/css">
         <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>assets/css/design.css" type="text/css">
         <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>assets/css/responsive-accordion.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>assets/css/kidbootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="<?php echo HTTP_ROOT ?>assets/css/kidstyle.css" type="text/css">
         <script src='<?= $this->Url->script('jquery.min.js'); ?>'></script>
         <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
@@ -77,4 +76,16 @@
             });
         });
     </script>
+    <script type="text/javascript">
+  function downloadJSAtOnload() {
+    var element = document.createElement("script");
+    element.src = "https://cdn.collectiveray.com/defer.js";
+    document.body.appendChild(element);
+  }
+  if (window.addEventListener)
+    window.addEventListener("load", downloadJSAtOnload, false);
+  else if (window.attachEvent)
+    window.attachEvent("onload", downloadJSAtOnload);
+  else window.onload = downloadJSAtOnload;
+</script>
 </html>

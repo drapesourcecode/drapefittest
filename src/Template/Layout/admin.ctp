@@ -29,9 +29,16 @@
   <?= $this->Flash->render() ?>
   <div class="wrapper">
    <?php echo $this->element('admin_header'); ?>
-   <?php echo $this->element('admin_sidebar'); ?>
+   <?php
+  
+   echo $this->element('admin_sidebar'); ?>
+
+   <?php 
+  
+   echo $this->fetch('content') ;
+  
+   ?>
    
-   <?= $this->fetch('content') ?>
     <?php  echo $this->cell('Chat::direct_chat_cell'); ?>
    <?php echo $this->element('admin_footer'); ?>
     
