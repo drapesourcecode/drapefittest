@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>WE DO BEST FIT</h2>
-                <p>We are the best personal style provider.We do give our client with plenty of options to get a best FIT.Our website site is very simple and easy to use.</p>
+                <p>We are the best online personal style provider.We do give our client with plenty of options to get a best FIT.Upgrade your style in  easy  steps....</p>
             </div>
         </div>
         <div class="row">

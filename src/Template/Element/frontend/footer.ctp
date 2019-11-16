@@ -67,10 +67,6 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
                             <?php } ?>
                             <img src="<?= $this->Url->image('logo.png'); ?>" alt="drapfit logo">
                         </a>
-
-
-
-
                         </br>
                         <p>WE DO BEST FIT</p>
                 </div>
@@ -79,10 +75,13 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
                 <div class="footer-links">
                     <h3>About Us</h3>
                     <ul>
-                        <a href="footer.ctp"></a>
+                        <!-- <a href="footer.ctp"></a> -->
                         <li><a href="<?php echo HTTP_ROOT . 'who-we-are' ?>">Who we are</a></li>
-                        <li><a href="<?php echo HTTP_ROOT . 'work-with-us' ?>">Work with us</a></li>
-                        <li><a href="<?php echo HTTP_ROOT . 'careers' ?>">Careers</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'our-mission' ?>">Our mission</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'our-stylist'?>">Our stylist</a></li>
+                        <!-- <li><a href="<?php echo HTTP_ROOT . 'news' ?>">News</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'investors' ?>">Investors</a></li> -->
+                        <li><a href="<?php echo HTTP_ROOT . 'executive-team' ?>">Executive Team</a></li>
                     </ul>
                 </div>
             </div>
@@ -98,22 +97,35 @@ if ($this->request->session()->read('PROFILE') == 'KIDS') {
             </div>
             <div class="col-md-2">
                 <div class="footer-links">
-                    <h3>Questions ?</h3>
+                    <h3>The Company</h3>
                     <ul>
-                        <li><a href="<?php echo HTTP_ROOT . 'faq' ?>">FAQ</a></li>                
-                        <li><a href="<?php echo HTTP_ROOT . 'contact-us' ?>">Contact Us</a></li>
-                        <li><a href="<?php echo HTTP_ROOT . 'help-center' ?>">Help Center</a></li>
-                        <li><a href="<?php echo HTTP_ROOT . 'privacy-policy' ?>">Privacy Policy</a></li>
-                        <li><a href="<?php echo HTTP_ROOT . 'terms-conditions' ?>">Terms & Conditions</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'style-blog' ?>">Style Blog</a></li>                
+                        <li><a href="<?php echo HTTP_ROOT . 'news' ?>">News</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'investors' ?>">Investors Relation</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'careers' ?>">Careers</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'feedback-review' ?>">Feedback & Reviews</a></li>
+                        <?php /* ?><li><a href="<?php echo HTTP_ROOT . 'terms-conditions' ?>">Terms & Conditions</a></li><?php */ ?>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
+                <div class="footer-links">
+                    <h3>Customer Care</h3>
+                    <ul>
+                        <li><a href="<?php echo HTTP_ROOT . 'faq' ?>">FAQ</a></li>                
+                        <li><a href="<?php echo HTTP_ROOT . 'gifts' ?>">Gift Card</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'return-exchange' ?>">Return & Exchange</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'track-order' ?>">Track Order</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'help-center' ?>">Help Center</a></li>
+                        <li><a href="<?php echo HTTP_ROOT . 'contact-us' ?>">Contact Us</a></li>
+                        <!-- <li><a href="<?php echo HTTP_ROOT . 'privacy-policy' ?>">Track Order</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
                 <div class="footer-social">
                     <h3>Follow Us :</h3>
-                    <?php
-                    echo $this->cell('Chat::social_media');
-                    ?>
+                    <?php echo $this->cell('Chat::social_media');?>
                 </div>           
             </div>         
         </div>
