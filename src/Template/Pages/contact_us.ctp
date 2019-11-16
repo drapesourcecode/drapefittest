@@ -1,5 +1,5 @@
 <style>
-  .contactPage{
+ .contactPage{
     background: #fff;
     float: left;
     width: 100%;
@@ -80,12 +80,21 @@
     margin: 25px 0;
 }
 </style>
-<script src="<?php echo HTTP_ROOT ?>jqvalidations/dist/jquery.validate.js"></script>
-<section class="contact-banner">
+<section class="page-sections">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-lg-12 col-md-12">
-                <h1>Contact Us</h1>
+                <?php echo $pageDetails->description ?>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="<?php echo HTTP_ROOT ?>jqvalidations/dist/jquery.validate.js"></script>
+<!--<section class="contact-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12">
+                <?php //echo $pageDetails->description ?>
             </div>
         </div>
     </div>
@@ -94,21 +103,21 @@
  <div class="container">
   <ul>
    <li><a href="<?php echo HTTP_ROOT ?>">Home</a></li>
-   <li class="active"><?php echo $pageDetails->page_title; ?></li>
+   <li class="active"><?php //echo $pageDetails->page_title; ?></li>
   </ul>
  </div>
 </section>-->
 <section class="textureOne contactPage">
  <div class="container">
-  <?php echo $pageDetails->description ?>
+  <?php //echo $pageDetails->description ?>
   <!-- <div class="map">
    <?php echo $map->code; ?>
-  </div> -->
+  </div> 
   <div class="row">
     <div class="col-sm-12 col-lg-12 col-md-12">
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
     </div>
-  </div>
+  </div>-->
   <div class="inquiryForm" tyle="width: 100%; margin: 10px 0;">
     <div class="row">
 <div class="col-sm-12 col-lg-12 col-md-12">
