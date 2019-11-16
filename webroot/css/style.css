@@ -828,7 +828,7 @@ button#signupbtn {
 }
 .banner-text p 
 {
-    width: 70%;
+    width: 96%;
     font-size: 16px;
     margin: 10px auto;
     font-family: "Amazon Ember", Arial, sans-serif;
@@ -1398,11 +1398,10 @@ button#signupbtn {
 {
     color: #232f3e !important;
     font-size: 14px;
-    font-weight: 700;
     text-decoration: none;
     font-family: "Amazon Ember", Arial, sans-serif;
 }
-.footer-links ul li a:hover{ color: #ff6c00; }
+.footer-links ul li a:hover{ color: #ff6c00 !important; }
 .footer-social 
 {
     width: 100%;
@@ -6163,7 +6162,7 @@ details summary:hover
     height: auto;
     overflow: hidden;
     margin-bottom: 0;
-    height: 410px;
+    height: 513px;
     text-align: center;
 }
 .mens-fit-image img {
@@ -6456,6 +6455,34 @@ details summary:hover
 .jssocials{
 	text-align: center;
 }
+
+.footer .col-md-2 {
+    width: 15%;
+}
+.copy-right{
+    text-align: left;
+        padding: 15px 0px;
+}
+.copy-right ul{
+    float: left;
+    width: 100%;
+    text-align: right;
+}
+
+.copy-right ul li{
+    display: inline-block;
+    margin-left: 15px;
+}
+.copy-right ul li a{
+    color: #fff;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-size: 15px;
+}
+.copy-right ul li a:hover{
+    color: #ef6b03;
+    text-decoration: none;
+}
+
 /*Responssive style section starts from here*/
 @media only screen and (max-width: 1199px) 
 {
