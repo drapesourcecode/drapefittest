@@ -16,13 +16,13 @@
         </b>
         <?php
     } else {
-        if ($paramAction = $this->request->params['action'] == 'index') {
+       // if ($paramAction = $this->request->params['action'] == 'index') {
             if ($this->request->session()->read('help-active') != 1 || $this->request->session()->read('help-active') != 2) {
                 ?>
                 <a href="<?php echo HTTP_ROOT . 'help' ?>" class="live-chat-side help">Help</a> 
                 <?php
             }
-        }
+       // }
     }
     ?>
 
