@@ -116,6 +116,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/feedback-review', ['controller' => 'pages', 'action' => 'feedbackReview']);
     $routes->connect('/style-blog', ['controller' => 'pages', 'action' => 'styleBlog']);
     $routes->connect('/investors', ['controller' => 'pages', 'action' => 'investors']);
+    $routes->connect('/under-construction', ['controller' => 'users', 'action' => 'underConstruction']);
     
 
 
