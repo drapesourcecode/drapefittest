@@ -110,7 +110,7 @@ class UsersController extends AppController {
     }
 
     public function beforeFilter(Event $event) {
-        $this->Auth->allow(['autoMentions', 'boxUpdate', 'invite','demoemail', 'ajaxGmail', 'chatCheckAuth', 'helpClose', 'help', 'startOnlineOffline', 'chatHistory', 'websocketMessage', 'adminlogin', 'fbreturn', 'fblogin', 'fbreturncon', 'fbloginCon', 'client', 'webrootRedirect', 'personalInfo', 'login', 'index', 'logout', 'forget', 'changePassword', 'registration', 'sizedata', 'setPassword', 'shipping', 'ajaxCheckEmailAvail', 'deleteAddress', 'addShipAddress', 'websocketDivMinaus', 'websocketDivMinausAdmin', 'chatButtonClose', 'men', 'women', 'kids', 'address', 'ajaxLogin', 'userregistration', 'ajaxforget', 'googleLoginReturn', 'googlelogin', 'editprofileSocialmedia', 'notYetShipped', 'notYetShipped', 'unsubscribe', 'autoLogin','checkEmail','autocheckoutmail']);
+        $this->Auth->allow(['autoMentions', 'boxUpdate', 'invite','demoemail','underConstruction', 'ajaxGmail', 'chatCheckAuth', 'helpClose', 'help', 'startOnlineOffline', 'chatHistory', 'websocketMessage', 'adminlogin', 'fbreturn', 'fblogin', 'fbreturncon', 'fbloginCon', 'client', 'webrootRedirect', 'personalInfo', 'login', 'index', 'logout', 'forget', 'changePassword', 'registration', 'sizedata', 'setPassword', 'shipping', 'ajaxCheckEmailAvail', 'deleteAddress', 'addShipAddress', 'websocketDivMinaus', 'websocketDivMinausAdmin', 'chatButtonClose', 'men', 'women', 'kids', 'address', 'ajaxLogin', 'userregistration', 'ajaxforget', 'googleLoginReturn', 'googlelogin', 'editprofileSocialmedia', 'notYetShipped', 'notYetShipped', 'unsubscribe', 'autoLogin','checkEmail','autocheckoutmail']);
     }
 
     public function calendarSechedule() {
@@ -234,13 +234,13 @@ class UsersController extends AppController {
     public function help() {
         if (@$this->request->session()->read('help-active') == 2) {
             $this->request->session()->write('help-active', '1');
-            return $this->redirect(HTTP_ROOT);
+            return $this->redirect($this->referer());
         }
         if (@$this->request->session()->read('help-active') == '') {
             $this->request->session()->write('help-active', '1');
-            return $this->redirect(HTTP_ROOT);
+            return $this->redirect($this->referer());
         } else {
-            return $this->redirect(HTTP_ROOT);
+            return $this->redirect($this->referer());
         }
     }
 
@@ -248,21 +248,21 @@ class UsersController extends AppController {
         $this->viewBuilder()->layout('default');
         if ($this->request->session()->read('help-active') != '') {
             $this->request->session()->write('help-active', '');
-            return $this->redirect(HTTP_ROOT);
+            return $this->redirect($this->referer());
         }
     }
 
     public function men() {
-        $title_for_layout = "Stylish Men’s Clothing | Men’s Fashion wear at Best prices | Drape fit";
-        $metaKeyword = "Men’s Clothing, men’s Cloth, Mens Fashion, Monthly Subscription Boxes for Men, personal stylist for mens, Men’s subscription box, Online Shopping for Men, mens outfit subscription, Shop Men’s Clothes, Online Shopping for Men, Mens Fashion clothing, Men’s Style & Fashion, men clothing styles";
+        $title_for_layout = "Monthly Subscription Boxes for Men | Men's monthly box subscription | Men's monthly fashion box";
+        $metaKeyword = "Monthly Subscription Boxes for Men,men's monthly box subscription,men's monthly fashion box,men's clothing subscription box,Men's Clothing Subscription,clothing subscription box for men,best men's fashion subscription boxes,cool subscription boxes for men";
         $metaDescription = "Browse the wide range of latest Men’s fashion clothing with top brands and find the perfect fit for you! Complete your Style FIT and get an expert personal stylist for you! No hidden cost and shipping is always free!";
         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout'));
         $this->viewBuilder()->layout('default');
     }
 
     public function women() {
-        $title_for_layout = "Women’s Fashion |Women’s Stylish Clothing for every Occasions| Drape fit";
-        $metaKeyword = "Women’s Clothing, Women’s Clothes, Personal Stylist For women, women’s fashion, Online Shopping for Women, Subscription Boxes for Women, women’s personal stylist clothing, womens fashion box, women’s personal stylist box, women’s fashion subscription box, womens fashion box, Women’s Clothes Online, Best Clothing Boxes, Personal Stylist For women";
+        $title_for_layout = "Monthly Subscription Boxes for Women | Subscription Boxes for women | Fashion Subscription Boxes for Women";
+        $metaKeyword = "Monthly Subscription Boxes for Women,Subscription Boxes for women,Fashion Subscription Boxes for Women,Fashion Subscription Boxes for Women,Women's Clothing Monthly Subscription Box,best subscription boxes for women,women's monthly clothing subscription,women's clothing subscription service,womens clothes delivered monthly,women's personal stylist clothing subscription";
         $metaDescription = "Get the trendiest women’s fashion collections here! Shop from the huge range of handpicked fashion clothing for women with pocket friendly deals! Complete your Style FIT and get the complete style fit box";
         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout'));
 
@@ -270,10 +270,9 @@ class UsersController extends AppController {
     }
 
     public function kids() {
-        $title_for_layout = "Kid’s clothing| Kid’s Fashion at very cheapest price| Drape fit";
+        $title_for_layout = "Kids Clothes Subscription Boxes | Monthly Clothing Subscription Boxes For kids |Monthly Subscription Boxes for Kids";
 
-        $metaKeyword = "Kids Clothing, kid’s cloth, Kids Clothing Box, Kids subscription box, baby clothes, Kids Wear, Kids Dresses, Kid’s Fashion, Kids and Baby Clothing, Kids Wear Online, Kids clothing subscription box, subscription boxes for children, kids clothes online, kids dress collection, kids dress design";
-
+        $metaKeyword = "Kids Clothes Subscription Boxes,Monthly Clothing Subscription Boxes For kids,Monthly Subscription Boxes for Kids,subscription boxes for children,subscription boxes for boys,monthly subscriptions for kids";
         $metaDescription = "Now it’s time for upgrade your children’s wardrobe with these trendy and cute kids fashion clothing with top brands! Give your kids a new fashion look at great deals! Shop more and enjoy free shipping worldwide!";
         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout'));
         $this->viewBuilder()->layout('default');
@@ -537,8 +536,8 @@ class UsersController extends AppController {
     }
 
     public function index($slug = null) {
-        $title_for_layout = "Get Men’s Cloth, Women’s Cloth, and Kids Cloth at Great Deals| Drape fit";
-        $metaKeyword = "Personal Style, Women's Fashion,Men's Clothing, Women's Clothing,Kids Clothing,men's Clothing Boxes, women's lothes,men's subscription box, men's cloths,mens outfit subscription, Personal Stylist For women, womens fashion box, Kids Clothing Box, Kids clothing subscription box, kid's clothes sale, Kids Clothing Box,Shop Men's Clothes";
+        $title_for_layout = "Get Men’s Cloth, Women’s Cloth, and Kids Cloth at Great Deals - Drape fit";
+        $metaKeyword = "Monthly Clothing Subscription Boxes For kids,Monthly Subscription Boxes for Kids,subscription boxes for children,subscription boxes for boys,monthly subscriptions for kids,Monthly Subscription Boxes for Men,men's monthly box subscription,men's monthly fashion box,men's clothing subscription box,Men's Clothing Subscription,clothing subscription box for men,best men's fashion subscription boxes,cool subscription boxes for men,Monthly Subscription Boxes for Women,Subscription Boxes for women,Fashion Subscription Boxes for Women,Fashion Subscription Boxes for Women,Women's Clothing Monthly Subscription Box,best subscription boxes for women,women's monthly clothing subscription,women's clothing subscription service,womens clothes delivered monthly,women's personal stylist clothing subscription";
         $metaDescription = "Now upgrade your Personal style with the best fashion site in the world! Get the latest fashion clothing for men, women and kids that fit with your age, size, and budget. Enjoy free shipping worldwide";
         $this->set(compact('metaDescription', 'metaKeyword', 'title_for_layout'));
         $this->viewBuilder()->layout('default');
@@ -1241,17 +1240,36 @@ class UsersController extends AppController {
                 if (!empty($this->request->session()->read('KID_ID'))) {
                     $kidmenu = $this->KidsDetails->find('all')->where(['KidsDetails.id' => $this->request->session()->read('KID_ID')])->first();
                     $LetsPlanYourFirstFixData = $this->LetsPlanYourFirstFix->find('all')->where(['LetsPlanYourFirstFix.kid_id' => $this->request->session()->read('KID_ID')])->first();
+                    
+                    
+                if($kidmenu->is_progressbar<=99){
+                    return $this->redirect(HTTP_ROOT . 'welcome/style/');
+
+                    }
                 }
             }
 
             if ($this->request->session()->read('PROFILE') == 'MEN') {
                 $kidmenu = $this->KidsDetails->find('all')->where(['KidsDetails.id' => $this->request->session()->read('KID_ID')])->first();
                 $LetsPlanYourFirstFixData = $this->LetsPlanYourFirstFix->find('all')->where(['user_id' => $this->Auth->user('id'), 'kid_id' => 0])->first();
+                
+                $checkisprogress = $this->UserDetails->find('all')->where(['user_id' => $this->Auth->user('id')])->first()->is_progressbar;
+                if($checkisprogress<=99){
+                    return $this->redirect(HTTP_ROOT . 'welcome/style/');
+
+                }
             }
             if ($this->request->session()->read('PROFILE') == 'WOMEN') {
 
                 $kidmenu = $this->KidsDetails->find('all')->where(['KidsDetails.id' => $this->request->session()->read('KID_ID')])->first();
                 $LetsPlanYourFirstFixData = $this->LetsPlanYourFirstFix->find('all')->where(['user_id' => $this->Auth->user('id'), 'kid_id' => 0])->first();
+                
+                $checkisprogress = $this->UserDetails->find('all')->where(['user_id' => $this->Auth->user('id')])->first()->is_progressbar;
+                if($checkisprogress<=99){
+                    return $this->redirect(HTTP_ROOT . 'welcome/style/');
+
+                }
+                
             }
         }
 
@@ -1299,10 +1317,10 @@ class UsersController extends AppController {
                 if (!empty($this->request->session()->read('KID_ID'))) {
                     $kidmenu = $this->KidsDetails->find('all')->where(['KidsDetails.id' => $this->request->session()->read('KID_ID')])->first();
                     $payerName = $kidmenu->kids_first_name;
-                    $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $this->Auth->user('id')]);
+                    //$this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $this->Auth->user('id')]);
                 } else {
                     $userDetails = $this->Users->find('all')->contain('UserDetails')->where(['Users.id' => $this->Auth->user('id')])->first();
-                    $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $this->Auth->user('id')]);
+                    //$this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $this->Auth->user('id')]);
                     $payerName = $userDetails->first_name . ' ' . $userDetails->last_name;
                 }
             }
@@ -1419,7 +1437,7 @@ class UsersController extends AppController {
                     $LetsPlanYourFirstFix = $this->LetsPlanYourFirstFix->patchEntity($LetsPlanYourFirstFix, $data);
                     $this->LetsPlanYourFirstFix->save($LetsPlanYourFirstFix);
                 }
-                $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $this->Auth->user('id')]);
+                //$this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $this->Auth->user('id')]);
                 return $this->redirect(HTTP_ROOT . 'welcome/reservation');
             }
             if (@$data['shipping_address'] == 'shipping_address') {
@@ -1447,7 +1465,7 @@ class UsersController extends AppController {
                 $data['date_in_time'] = $data['date_in_time'];
                 $entity = $this->DeliverDate->patchEntity($entity, $data);
                 $this->DeliverDate->save($entity);
-                $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $this->Auth->user('id')]);
+                //$this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $this->Auth->user('id')]);
                 return $this->redirect(HTTP_ROOT . 'welcome/addressbook');
             }
             if (@$data['deliverAddress'] == 'deliverAddress') {
@@ -1512,7 +1530,7 @@ class UsersController extends AppController {
                     $LetsPlanYourFirstFix = $this->ShippingAddress->patchEntity($shippingAddress, $data);
                     $this->ShippingAddress->save($shippingAddress);
                 }
-                $this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $this->Auth->user('id')]);
+                //$this->UserDetails->updateAll(['is_progressbar' => 100], ['user_id' => $this->Auth->user('id')]);
                 return $this->redirect(HTTP_ROOT . 'welcome/payment');
             }
             if (@$data['card_payment'] == 'Add your card') {
@@ -1821,6 +1839,7 @@ class UsersController extends AppController {
         } elseif ($Usersdata->is_redirect == 6) {
             $url = 'customer-order-review';
         }
+        
         return $this->redirect(HTTP_ROOT . $url);
     }
 
@@ -2094,7 +2113,7 @@ class UsersController extends AppController {
 
     public function setAccount($slg = null) {
         $this->viewBuilder()->layout('default');
-        if (@$this->request->session()->read('PROFILE') == 'KIDS') {
+        /*if (@$this->request->session()->read('PROFILE') == 'KIDS') {
             $getUsersDetails = $this->KidsDetails->find('all')->where(['id' => @$this->request->session()->read('KID_ID')])->first();
         } else {
             $this->Users->hasOne('UserDetails', ['className' => 'UserDetails', 'foreignKey' => 'user_id']);
@@ -2103,8 +2122,12 @@ class UsersController extends AppController {
         if ($getUsersDetails->is_redirect == 6) {
             return $this->redirect(HTTP_ROOT . 'customer-order-review');
         }
-        $userComplete = $this->UserDetails->find('all')->where(['UserDetails.is_progressbar' => 100, 'UserDetails.user_id' => $this->Auth->user('id')])->first();
-        if ($userComplete->is_progressbar == 100) {
+        if (@$this->request->session()->read('PROFILE') == 'KIDS') {
+            $userComplete = $this->KidsDetails->find('all')->where(['KidsDetails.is_progressbar' => 100, 'KidsDetails.id' => @$this->request->session()->read('KID_ID')])->first();
+        }else{
+            $userComplete = $this->UserDetails->find('all')->where(['UserDetails.is_progressbar' => 100, 'UserDetails.user_id' => $this->Auth->user('id')])->first();
+        }
+        if ($userComplete->is_progressbar == 100) {*/
             $credit_balance = $this->UserUsesPromocode->find('all')->Select(['Total_promo_price' => 'SUM(UserUsesPromocode.price)'])->where(['UserUsesPromocode.user_id' => $this->Auth->user('id')])->first();
             $ship_address = $this->ShippingAddress->find('all')->where(['user_id' => $this->Auth->user('id'), 'ShippingAddress.default_set' => 1])->first();
             $ShippingAddress = $this->ShippingAddress->find('all')->where(['ShippingAddress.user_id' => $this->Auth->user('id')]);
@@ -2115,10 +2138,10 @@ class UsersController extends AppController {
             $savecard = $this->PaymentCardDetails->find('all')->where(['PaymentCardDetails.user_id' => $this->Auth->user('id'), 'PaymentCardDetails.is_save' => 1]);
             $LetsPlanYourFirstFixData = $this->LetsPlanYourFirstFix->find('all')->where(['kid_id' => 0, 'user_id' => $this->Auth->user('id')])->first();
             $this->set(compact('LetsPlanYourFirstFixData', 'savecard', 'user_details', 'PersonalizedFix', 'SizeChart', 'ship_address', 'credit_balance', 'bill_address', 'ShippingAddress', 'EmailPreference', 'slg'));
-        } else {
+        /*} else {
             $this->Flash->error(__('Please complete your profile first'));
             return $this->redirect(HTTP_ROOT . 'welcome/style');
-        }
+        }*/
     }
 
     public function ajaxShippingAddress() {
@@ -5319,6 +5342,9 @@ if(mail($to, $subject, $htmlContent, $headers)){
             }            
         }
         exit;
+    }
+    public function underConstruction(){
+        
     }
 
 
